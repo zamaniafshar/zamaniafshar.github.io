@@ -7,9 +7,10 @@ class HomeSliverAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return SliverAppBar(
       expandedHeight: ScreenUtil().screenHeight,
-      backgroundColor: Colors.black,
+      backgroundColor: theme.colorScheme.background,
       centerTitle: true,
       pinned: true,
       title: Directionality(
@@ -22,15 +23,13 @@ class HomeSliverAppBar extends StatelessWidget {
             children: [
               Text(
                 "Zamani.afshar",
-                style: TextStyle(
+                style: theme.textTheme.headlineLarge!.copyWith(
                   fontFamily: 'SassyFrass',
-                  fontSize: 45,
-                  color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               75.horizontalSpace,
-              CustomNavigationBar(),
+              const CustomNavigationBar(),
             ],
           ),
         ),
@@ -62,19 +61,16 @@ class HomeSliverAppBar extends StatelessWidget {
                 20.verticalSpace,
                 Text(
                   'Mohammad Amin Zamani afshar',
-                  style: TextStyle(
+                  style: theme.textTheme.headlineLarge!.copyWith(
                     color: Colors.white,
-                    fontSize: 36,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
                 10.verticalSpace,
                 Text(
                   'Flutter Developer',
-                  style: TextStyle(
+                  style: theme.textTheme.headlineMedium!.copyWith(
                     color: Colors.white,
-                    fontSize: 34,
-                    fontWeight: FontWeight.w300,
                   ),
                 ),
               ],

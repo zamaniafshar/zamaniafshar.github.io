@@ -5,6 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:personal_website/localization/app_localization.dart';
 import 'package:personal_website/localization/app_localization_notifier.dart';
 import 'package:personal_website/localization/localizations.dart';
+import 'package:personal_website/theme/themes.dart';
 import 'package:personal_website/ui/screens/home/home.dart';
 
 class PersonalWebsiteApp extends StatelessWidget {
@@ -26,12 +27,13 @@ class PersonalWebsiteApp extends StatelessWidget {
                 debugShowCheckedModeBanner: false,
                 locale: localization.locale,
                 supportedLocales: kLocalesList,
+                theme: getLightTheme,
+                home: const HomeScreen(),
                 localizationsDelegates: const [
                   GlobalMaterialLocalizations.delegate,
                   GlobalWidgetsLocalizations.delegate,
                   GlobalCupertinoLocalizations.delegate,
                 ],
-                home: const HomeScreen(),
                 builder: (context, child) {
                   return MediaQuery(
                     data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),

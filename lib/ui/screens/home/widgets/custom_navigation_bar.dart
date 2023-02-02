@@ -18,6 +18,7 @@ class CustomNavigationBar extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedIndex = ref.watch(navigationBarSelectedIndex);
     final localization = AppLocalization.of(context);
+    final theme = Theme.of(context);
     final List<String> labels = [
       localization.home,
       localization.aboutMe,
@@ -36,8 +37,8 @@ class CustomNavigationBar extends HookConsumerWidget {
           for (int i = 0; i < labels.length; i++)
             NavigationItem(
               label: labels[i],
-              selectedColor: Colors.green,
-              unSelectedColor: Colors.white,
+              selectedColor: theme.primaryColor,
+              unSelectedColor: theme.colorScheme.onBackground,
               isSelected: selectedIndex == i,
               onTap: () {
                 ref.read(navigationBarSelectedIndex.notifier).state = i;
@@ -79,9 +80,8 @@ class NavigationItem extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme.labelLarge!.copyWith(fontFamily: 'Vazir');
+    final textStyle = Theme.of(context).textTheme.titleMedium!.copyWith(fontFamily: 'Vazir');
     final textSize = calculateTextSize(context, textStyle);
-    print(textSize);
     final controller = useAnimationController(
       duration: const Duration(milliseconds: 200),
     );
