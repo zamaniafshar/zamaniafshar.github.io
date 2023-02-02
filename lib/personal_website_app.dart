@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:personal_website/localization/app_localization.dart';
 import 'package:personal_website/localization/app_localization_notifier.dart';
+import 'package:personal_website/localization/localizations.dart';
 import 'package:personal_website/ui/screens/home/home.dart';
 
 class PersonalWebsiteApp extends StatelessWidget {
@@ -23,6 +25,12 @@ class PersonalWebsiteApp extends StatelessWidget {
               child: MaterialApp(
                 debugShowCheckedModeBanner: false,
                 locale: localization.locale,
+                supportedLocales: kLocalesList,
+                localizationsDelegates: const [
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
                 home: const HomeScreen(),
                 builder: (context, child) {
                   return MediaQuery(
