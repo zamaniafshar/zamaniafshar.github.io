@@ -12,24 +12,27 @@ class HomeSliverAppBar extends StatelessWidget {
       backgroundColor: Colors.black,
       centerTitle: true,
       pinned: true,
-      title: Container(
-        width: double.infinity,
-        padding: EdgeInsets.symmetric(horizontal: 150.w),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Text(
-              "Zamani.afshar",
-              style: TextStyle(
-                fontFamily: 'SassyFrass',
-                fontSize: 45,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
+      title: Directionality(
+        textDirection: TextDirection.ltr,
+        child: Container(
+          width: double.infinity,
+          padding: EdgeInsets.symmetric(horizontal: 150.w),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Text(
+                "Zamani.afshar",
+                style: TextStyle(
+                  fontFamily: 'SassyFrass',
+                  fontSize: 45,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            75.horizontalSpace,
-            CustomNavigationBar(),
-          ],
+              75.horizontalSpace,
+              CustomNavigationBar(),
+            ],
+          ),
         ),
       ),
       flexibleSpace: FlexibleSpaceBar(
