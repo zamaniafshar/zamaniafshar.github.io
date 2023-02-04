@@ -4,16 +4,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:personal_website/localization/app_localization.dart';
 
-import 'package:personal_website/ui/screens/home/providers.dart';
+import 'package:personal_website/ui/screens/home/providers/providers.dart';
 
 class CustomNavigationBar extends HookConsumerWidget {
   const CustomNavigationBar({
     super.key,
     this.onChange,
+    required this.unSelectedColor,
   });
 
   final void Function(int index)? onChange;
-
+  final Color unSelectedColor;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedIndex = ref.watch(navigationBarSelectedIndex);
@@ -38,7 +39,7 @@ class CustomNavigationBar extends HookConsumerWidget {
             NavigationItem(
               label: labels[i],
               selectedColor: theme.primaryColor,
-              unSelectedColor: theme.colorScheme.onBackground,
+              unSelectedColor: unSelectedColor,
               isSelected: selectedIndex == i,
               onTap: () {
                 ref.read(navigationBarSelectedIndex.notifier).state = i;

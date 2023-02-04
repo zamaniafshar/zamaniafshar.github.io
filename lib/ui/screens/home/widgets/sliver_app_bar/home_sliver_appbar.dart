@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:personal_website/ui/screens/home/widgets/custom_navigation_bar.dart';
+import 'package:personal_website/ui/screens/home/widgets/sliver_app_bar/home_sliver_title.dart';
 
 class HomeSliverAppBar extends StatelessWidget {
   const HomeSliverAppBar({super.key});
@@ -13,26 +13,9 @@ class HomeSliverAppBar extends StatelessWidget {
       backgroundColor: theme.colorScheme.background,
       centerTitle: true,
       pinned: true,
-      title: Directionality(
+      title: const Directionality(
         textDirection: TextDirection.ltr,
-        child: Container(
-          width: double.infinity,
-          padding: EdgeInsets.symmetric(horizontal: 150.w),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Text(
-                "Zamani.afshar",
-                style: theme.textTheme.headlineLarge!.copyWith(
-                  fontFamily: 'SassyFrass',
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              75.horizontalSpace,
-              const CustomNavigationBar(),
-            ],
-          ),
-        ),
+        child: HomeSliverTitle(),
       ),
       flexibleSpace: FlexibleSpaceBar(
         background: Stack(
