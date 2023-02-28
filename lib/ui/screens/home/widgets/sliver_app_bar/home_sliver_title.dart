@@ -35,31 +35,24 @@ class HomeSliverTitle extends HookConsumerWidget {
 
     return Container(
       height: kToolbarHeight,
-      padding: EdgeInsets.symmetric(horizontal: screen.fromMTD(10, 40, 60)),
+      padding: EdgeInsets.symmetric(
+        horizontal: screen.fromMTD(15, 40, screen.w(0.1)),
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Flexible(
-            flex: 2,
-            child: Align(
-              alignment: screen.adaptive(
-                defaultValue: Alignment.center,
-                mobile: Alignment.centerLeft,
-              )!,
-              child: Text(
-                "Zamani.afshar",
-                style: theme.textTheme.headlineLarge!.copyWith(
-                  fontFamily: 'SassyFrass',
-                  fontWeight: FontWeight.bold,
-                  color: Color.lerp(Colors.white, Colors.black, animation.value),
-                ),
-              ),
+          Text(
+            "Zamani.afshar",
+            style: theme.textTheme.headlineLarge!.copyWith(
+              fontFamily: 'SassyFrass',
+              fontWeight: FontWeight.bold,
+              color: Color.lerp(Colors.white, Colors.black, animation.value),
             ),
           ),
-          const SizedBox(),
+          const Expanded(child: SizedBox()),
           Expanded(
-            flex: screen.fromMTD(1, 3, 4)!,
+            flex: 2,
             child: FractionallySizedBox(
               widthFactor: screen.adaptive(defaultValue: 1, desktop: 0.8),
               child: Builder(

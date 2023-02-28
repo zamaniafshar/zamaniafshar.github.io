@@ -14,6 +14,7 @@ class HomeSliverAppBar extends StatelessWidget {
       backgroundColor: theme.colorScheme.background,
       centerTitle: true,
       pinned: true,
+      titleSpacing: 0,
       actions: const [SizedBox()],
       title: const Directionality(
         textDirection: TextDirection.ltr,
@@ -36,38 +37,48 @@ class HomeSliverAppBar extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ConstrainedBox(
-                  constraints: BoxConstraints(
+                  constraints: const BoxConstraints(
                     maxWidth: 250,
                     maxHeight: 250,
-                    minWidth: 70,
-                    minHeight: 70,
+                    minWidth: 120,
+                    minHeight: 120,
                   ),
                   child: CircleAvatar(
-                    radius: 130,
+                    radius: screen.w(0.5) / 2,
                     backgroundColor: Colors.white,
                     child: Container(
                       padding: const EdgeInsets.all(8.0),
                       height: double.infinity,
                       width: double.infinity,
-                      child: CircleAvatar(
+                      child: const CircleAvatar(
                         foregroundImage: AssetImage('assets/images/my_picture2.jpg'),
                       ),
                     ),
                   ),
                 ),
-                screen.verticalSpace(0.15),
-                Text(
-                  'Mohammad Amin Zamani afshar',
-                  style: theme.textTheme.headlineLarge!.copyWith(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500,
+                screen.verticalSpace(0.07),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: screen.fromMTD(15, 10, 0)),
+                  child: FittedBox(
+                    child: Text(
+                      'Mohammad Amin Zamani afshar',
+                      style: theme.textTheme.headlineLarge!.copyWith(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
                   ),
                 ),
-                screen.verticalSpace(0.1),
-                Text(
-                  'Flutter Developer',
-                  style: theme.textTheme.headlineMedium!.copyWith(
-                    color: Colors.white,
+                screen.verticalSpace(0.02),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: screen.fromMTD(screen.w(0.3), 0, 0)),
+                  child: FittedBox(
+                    child: Text(
+                      'Flutter Developer',
+                      style: theme.textTheme.headlineMedium!.copyWith(
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                 ),
               ],
