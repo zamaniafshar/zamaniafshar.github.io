@@ -1,20 +1,16 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:personal_website/responsive/screen.dart';
 
 class HomeSliverListContent extends StatelessWidget {
   const HomeSliverListContent({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final screen = Screen.of(context);
     return SliverList(
       delegate: SliverChildListDelegate.fixed(
         [
-          300.verticalSpace,
-          300.verticalSpace,
-          300.verticalSpace,
-          300.verticalSpace,
+          screen.verticalSpace(1),
         ],
       ),
     );

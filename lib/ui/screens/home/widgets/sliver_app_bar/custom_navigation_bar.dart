@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:personal_website/localization/app_localization.dart';
 
@@ -11,10 +10,12 @@ class CustomNavigationBar extends HookConsumerWidget {
     super.key,
     this.onChange,
     required this.unSelectedColor,
+    this.axis = Axis.horizontal,
   });
 
   final void Function(int index)? onChange;
   final Color unSelectedColor;
+  final Axis axis;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedIndex = ref.watch(navigationBarSelectedIndex);
@@ -28,15 +29,11 @@ class CustomNavigationBar extends HookConsumerWidget {
       localization.contact,
     ];
 
-    return Container(
-      padding: const EdgeInsets.only(top: 7),
-      width: 600.w,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          for (int i = 0; i < labels.length; i++)
-            NavigationItem(
+    List<Widget> buildItems() {
+      return [
+        for (int i = 0; i < labels.length; i++)
+          Expanded(
+            child: NavigationItem(
               label: labels[i],
               selectedColor: theme.primaryColor,
               unSelectedColor: unSelectedColor,
@@ -46,8 +43,22 @@ class CustomNavigationBar extends HookConsumerWidget {
                 onChange?.call(i);
               },
             ),
-        ],
-      ),
+          ),
+      ];
+    }
+
+    if (axis == Axis.vertical) {
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: buildItems(),
+      );
+    }
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: buildItems(),
     );
   }
 }
@@ -108,40 +119,44 @@ class NavigationItem extends HookWidget {
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
         onTap: onTap,
-        child: Center(
-          child: SizedBox(
-            // text height + space + divider maxHeight
-            height: textSize.height + 2 + 5,
-            child: HookBuilder(
-              builder: (context) {
-                useAnimation(controller);
-                return Column(
-                  children: [
-                    Text(
-                      label,
-                      style: textStyle.copyWith(
-                        color: Color.lerp(
-                          unSelectedColor,
-                          selectedColor,
-                          controller.value,
+        child: LayoutBuilder(builder: (context, constraints) {
+          return SizedBox(
+            height: constraints.maxHeight,
+            child: Center(
+              child: SizedBox(
+                height: constraints.maxHeight * 0.6,
+                child: HookBuilder(
+                  builder: (context) {
+                    useAnimation(controller);
+                    return Column(
+                      children: [
+                        Text(
+                          label,
+                          style: textStyle.copyWith(
+                            color: Color.lerp(
+                              unSelectedColor,
+                              selectedColor,
+                              controller.value,
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                    2.verticalSpace,
-                    Container(
-                      width: controller.value * textSize.width,
-                      height: heightAnimation.value,
-                      decoration: BoxDecoration(
-                        color: selectedColor,
-                        borderRadius: BorderRadius.circular(5.r),
-                      ),
-                    ),
-                  ],
-                );
-              },
+                        const SizedBox(height: 2),
+                        Container(
+                          width: controller.value * textSize.width,
+                          height: heightAnimation.value,
+                          decoration: BoxDecoration(
+                            color: selectedColor,
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                ),
+              ),
             ),
-          ),
-        ),
+          );
+        }),
       ),
     );
   }

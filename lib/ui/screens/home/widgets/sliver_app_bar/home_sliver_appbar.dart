@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:personal_website/responsive/screen.dart';
 import 'package:personal_website/ui/screens/home/widgets/sliver_app_bar/home_sliver_title.dart';
 
 class HomeSliverAppBar extends StatelessWidget {
@@ -8,11 +8,13 @@ class HomeSliverAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final screen = Screen.of(context);
     return SliverAppBar(
-      expandedHeight: ScreenUtil().screenHeight,
+      expandedHeight: screen.height,
       backgroundColor: theme.colorScheme.background,
       centerTitle: true,
       pinned: true,
+      actions: const [SizedBox()],
       title: const Directionality(
         textDirection: TextDirection.ltr,
         child: HomeSliverTitle(),
@@ -33,15 +35,27 @@ class HomeSliverAppBar extends StatelessWidget {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CircleAvatar(
-                  radius: 135.r,
-                  backgroundColor: Colors.white,
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxWidth: 250,
+                    maxHeight: 250,
+                    minWidth: 70,
+                    minHeight: 70,
+                  ),
                   child: CircleAvatar(
-                    radius: 130.r,
-                    foregroundImage: AssetImage('assets/images/my_picture2.jpg'),
+                    radius: 130,
+                    backgroundColor: Colors.white,
+                    child: Container(
+                      padding: const EdgeInsets.all(8.0),
+                      height: double.infinity,
+                      width: double.infinity,
+                      child: CircleAvatar(
+                        foregroundImage: AssetImage('assets/images/my_picture2.jpg'),
+                      ),
+                    ),
                   ),
                 ),
-                20.verticalSpace,
+                screen.verticalSpace(0.15),
                 Text(
                   'Mohammad Amin Zamani afshar',
                   style: theme.textTheme.headlineLarge!.copyWith(
@@ -49,7 +63,7 @@ class HomeSliverAppBar extends StatelessWidget {
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                10.verticalSpace,
+                screen.verticalSpace(0.1),
                 Text(
                   'Flutter Developer',
                   style: theme.textTheme.headlineMedium!.copyWith(
