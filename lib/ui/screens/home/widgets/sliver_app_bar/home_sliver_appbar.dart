@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:personal_website/responsive/screen.dart';
+import 'package:personal_website/core/responsive/screen.dart';
 import 'package:personal_website/ui/screens/home/widgets/sliver_app_bar/home_sliver_title.dart';
 
 class HomeSliverAppBar extends StatelessWidget {

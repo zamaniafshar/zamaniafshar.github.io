@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:personal_website/data/models/app_localization_data.dart';
+import 'package:personal_website/config/localization/app_localization_data.dart';
 
 const kPersianLocale = Locale('fa', 'IR');
 const kEnglishLocale = Locale('en', 'US');

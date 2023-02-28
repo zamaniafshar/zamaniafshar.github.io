@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:personal_website/responsive/screen_data.dart';
-import 'package:personal_website/responsive/screen_type.dart';
+import 'package:personal_website/core/responsive/screen_data.dart';
+import 'package:personal_website/core/responsive/screen_type.dart';
 
 class Screen extends InheritedWidget {
   Screen({

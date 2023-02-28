@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:personal_website/responsive/screen.dart';
+import 'package:personal_website/core/responsive/screen.dart';
 
 class HomeSliverListContent extends StatelessWidget {
   const HomeSliverListContent({super.key});

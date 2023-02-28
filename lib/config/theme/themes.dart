@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:personal_website/theme/app_colors.dart';
+import 'package:personal_website/config/theme/app_colors.dart';
 
 ThemeData get getLightTheme {
   return ThemeData(

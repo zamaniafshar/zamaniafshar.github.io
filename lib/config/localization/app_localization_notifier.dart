@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:personal_website/data/models/app_localization_data.dart';
+import 'package:personal_website/config/localization/app_localization_data.dart';
 
 import 'localizations.dart';
 

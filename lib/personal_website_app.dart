@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:personal_website/localization/app_localization.dart';
-import 'package:personal_website/localization/app_localization_notifier.dart';
-import 'package:personal_website/localization/localizations.dart';
-import 'package:personal_website/responsive/screen.dart';
-import 'package:personal_website/theme/themes.dart';
+import 'package:personal_website/config/localization/app_localization.dart';
+import 'package:personal_website/config/localization/app_localization_notifier.dart';
+import 'package:personal_website/config/localization/localizations.dart';
+import 'package:personal_website/core/responsive/screen.dart';
+import 'package:personal_website/config/theme/themes.dart';
 import 'package:personal_website/ui/screens/home/home.dart';
 
 class PersonalWebsiteApp extends StatelessWidget {
