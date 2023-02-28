@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:personal_website/config/localization/app_localization.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:personal_website/ui/screens/home/providers/providers.dart';
 
 class CustomNavigationBar extends HookConsumerWidget {
@@ -19,7 +18,7 @@ class CustomNavigationBar extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedIndex = ref.watch(navigationBarSelectedIndex);
-    final localization = AppLocalization.of(context);
+    final localization = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
     final List<String> labels = [
       localization.home,
@@ -83,7 +82,7 @@ class NavigationItem extends HookWidget {
     final textPainter = TextPainter(
       text: TextSpan(text: label, style: style),
       maxLines: 1,
-      locale: AppLocalization.of(context).locale,
+      locale: Localizations.localeOf(context),
       textScaleFactor: MediaQuery.of(context).textScaleFactor,
       textDirection: Directionality.of(context),
     )..layout();

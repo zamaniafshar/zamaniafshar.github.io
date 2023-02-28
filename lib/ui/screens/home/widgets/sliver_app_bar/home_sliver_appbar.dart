@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:personal_website/core/responsive/screen.dart';
 import 'package:personal_website/ui/screens/home/widgets/sliver_app_bar/home_sliver_title.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeSliverAppBar extends StatelessWidget {
   const HomeSliverAppBar({super.key});
@@ -9,6 +10,7 @@ class HomeSliverAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final screen = Screen.of(context);
+    final localization = AppLocalizations.of(context)!;
     return SliverAppBar(
       expandedHeight: screen.height,
       backgroundColor: theme.colorScheme.background,
@@ -61,7 +63,7 @@ class HomeSliverAppBar extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: screen.fromMTD(15, 10, 0)),
                   child: FittedBox(
                     child: Text(
-                      'Mohammad Amin Zamani afshar',
+                      localization.myName,
                       style: theme.textTheme.headlineLarge!.copyWith(
                         color: Colors.white,
                         fontWeight: FontWeight.w500,
@@ -74,7 +76,7 @@ class HomeSliverAppBar extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: screen.fromMTD(screen.w(0.3), 0, 0)),
                   child: FittedBox(
                     child: Text(
-                      'Flutter Developer',
+                      localization.jobTitle,
                       style: theme.textTheme.headlineMedium!.copyWith(
                         color: Colors.white,
                       ),
