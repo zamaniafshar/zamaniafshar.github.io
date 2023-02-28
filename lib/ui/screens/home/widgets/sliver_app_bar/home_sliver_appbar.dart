@@ -45,7 +45,7 @@ class HomeSliverAppBar extends StatelessWidget {
                   ),
                   child: CircleAvatar(
                     radius: screen.w(0.5) / 2,
-                    backgroundColor: Colors.white,
+                    backgroundColor: Colors.white12,
                     child: Container(
                       padding: const EdgeInsets.all(8.0),
                       height: double.infinity,
