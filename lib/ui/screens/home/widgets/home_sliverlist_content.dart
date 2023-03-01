@@ -13,6 +13,7 @@ class HomeSliverListContent extends StatelessWidget {
       delegate: SliverChildListDelegate.fixed(
         [
           AboutMe(),
+          screen.verticalSpace(1),
         ],
       ),
     );
