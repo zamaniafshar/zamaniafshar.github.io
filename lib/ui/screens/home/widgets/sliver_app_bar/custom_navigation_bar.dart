@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:personal_website/core/extensions/extensions.dart';
 import 'package:personal_website/ui/screens/home/providers/providers.dart';
+import 'package:personal_website/ui/widgets/underline_text.dart';
 
 class CustomNavigationBar extends HookConsumerWidget {
   const CustomNavigationBar({
@@ -78,84 +80,35 @@ class NavigationItem extends HookWidget {
   final bool isSelected;
   final void Function() onTap;
 
-  Size calculateTextSize(BuildContext context, TextStyle style) {
-    final textPainter = TextPainter(
-      text: TextSpan(text: label, style: style),
-      maxLines: 1,
-      locale: Localizations.localeOf(context),
-      textScaleFactor: MediaQuery.of(context).textScaleFactor,
-      textDirection: Directionality.of(context),
-    )..layout();
-    return textPainter.size;
-  }
-
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme.titleMedium!.copyWith(fontFamily: 'Vazir');
-    final textSize = calculateTextSize(context, textStyle);
-    final controller = useAnimationController(
-      duration: const Duration(milliseconds: 200),
-    );
+    final textStyle = Theme.of(context).textTheme.titleMedium!;
     final oldIsSelected = usePrevious(isSelected);
+    final isSelectedState = useState(isSelected);
     if (oldIsSelected != isSelected) {
-      if (isSelected) {
-        controller.forward();
-      } else {
-        controller.reverse();
-      }
+      isSelectedState.value = isSelected;
     }
-    final heightAnimation = useMemoized(
-      () => Tween(begin: 4.0, end: 2.0).animate(controller),
-    );
 
     return MouseRegion(
       onEnter: (_) {
-        controller.forward();
+        isSelectedState.value = true;
       },
       onExit: (_) {
-        if (!isSelected) controller.reverse();
+        if (!isSelected) isSelectedState.value = false;
       },
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
         onTap: onTap,
-        child: LayoutBuilder(builder: (context, constraints) {
-          return SizedBox(
-            height: constraints.maxHeight,
-            child: Center(
-              child: SizedBox(
-                height: constraints.maxHeight * 0.6,
-                child: HookBuilder(
-                  builder: (context) {
-                    useAnimation(controller);
-                    return Column(
-                      children: [
-                        Text(
-                          label,
-                          style: textStyle.copyWith(
-                            color: Color.lerp(
-                              unSelectedColor,
-                              selectedColor,
-                              controller.value,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 2),
-                        Container(
-                          width: controller.value * textSize.width,
-                          height: heightAnimation.value,
-                          decoration: BoxDecoration(
-                            color: selectedColor,
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                        ),
-                      ],
-                    );
-                  },
-                ),
-              ),
-            ),
-          );
-        }),
+        child: Center(
+          child: AnimatedUnderlineText(
+            duration: const Duration(milliseconds: 250),
+            label: label,
+            selectedColor: selectedColor,
+            textStyle: textStyle.copyWith(color: unSelectedColor),
+            selectedTextStyle: textStyle.copyWith(color: selectedColor),
+            isSelected: isSelectedState.value,
+          ),
+        ),
       ),
     );
   }

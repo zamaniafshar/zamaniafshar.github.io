@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:personal_website/core/responsive/screen.dart';
 
+import 'about_me.dart';
+
 class HomeSliverListContent extends StatelessWidget {
   const HomeSliverListContent({super.key});
 
@@ -10,7 +12,7 @@ class HomeSliverListContent extends StatelessWidget {
     return SliverList(
       delegate: SliverChildListDelegate.fixed(
         [
-          screen.verticalSpace(1),
+          AboutMe(),
         ],
       ),
     );
