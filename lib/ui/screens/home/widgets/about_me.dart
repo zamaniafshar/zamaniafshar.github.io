@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:personal_website/config/theme/text_theme.dart';
 import 'package:personal_website/core/responsive/screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:personal_website/ui/widgets/underline_text.dart';
@@ -13,7 +14,7 @@ class AboutMe extends StatelessWidget {
     final theme = Theme.of(context);
 
     return SizedBox(
-      height: screen.h(0.7),
+      height: screen.h(0.5),
       child: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: screen.fromMTD(30, screen.w(0.1), screen.w(0.25)),
@@ -24,11 +25,7 @@ class AboutMe extends StatelessWidget {
             AnimatedUnderlineText(
               label: localization.aboutMe.toUpperCase(),
               selectedColor: theme.primaryColor,
-              textStyle: theme.textTheme.headlineSmall!.copyWith(
-                fontWeight: FontWeight.bold,
-                wordSpacing: 2,
-                letterSpacing: 2,
-              ),
+              textStyle: theme.textTheme.headlineSmall!.merge(kMediumTitleTextStyle),
               isSelected: true,
             ),
             screen.verticalSpace(0.05),

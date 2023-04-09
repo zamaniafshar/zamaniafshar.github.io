@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:personal_website/config/theme/app_colors.dart';
 
+import 'text_theme.dart';
+
 ThemeData get getLightTheme {
   return ThemeData(
     fontFamily: 'Vazir',
@@ -9,43 +11,6 @@ ThemeData get getLightTheme {
       background: Colors.white,
       onBackground: Colors.black,
     ),
-    textTheme: const TextTheme(
-      headlineLarge: TextStyle(
-        color: Colors.black,
-      ),
-      headlineMedium: TextStyle(
-        color: Colors.black,
-      ),
-      headlineSmall: TextStyle(
-        color: Colors.black,
-      ),
-      bodySmall: TextStyle(
-        color: Colors.black54,
-      ),
-      bodyMedium: TextStyle(
-        color: Colors.black54,
-      ),
-      bodyLarge: TextStyle(
-        color: Colors.black54,
-      ),
-      labelSmall: TextStyle(
-        color: Colors.black87,
-      ),
-      labelMedium: TextStyle(
-        color: Colors.black87,
-      ),
-      labelLarge: TextStyle(
-        color: Colors.black87,
-      ),
-      titleSmall: TextStyle(
-        color: Colors.black,
-      ),
-      titleMedium: TextStyle(
-        color: Colors.black,
-      ),
-      titleLarge: TextStyle(
-        color: Colors.black,
-      ),
-    ),
+    textTheme: getLightTextTheme,
   );
 }
