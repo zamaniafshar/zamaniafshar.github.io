@@ -2,15 +2,6 @@ import 'package:flutter/material.dart';
 
 TextTheme get getLightTextTheme {
   return const TextTheme(
-    headlineLarge: TextStyle(
-      color: Colors.black,
-    ),
-    headlineMedium: TextStyle(
-      color: Colors.black,
-    ),
-    headlineSmall: TextStyle(
-      color: Colors.black,
-    ),
     bodySmall: TextStyle(
       color: Colors.black54,
     ),
@@ -38,18 +29,23 @@ TextTheme get getLightTextTheme {
     titleLarge: TextStyle(
       color: Colors.black,
     ),
+    headlineSmall: TextStyle(
+      color: Colors.black,
+    ),
+    headlineMedium: TextStyle(
+      color: Colors.black,
+    ),
+    headlineLarge: TextStyle(
+      color: Colors.black,
+    ),
+    displaySmall: TextStyle(
+      color: Colors.black,
+    ),
+    displayMedium: TextStyle(
+      color: Colors.black,
+    ),
+    displayLarge: TextStyle(
+      color: Colors.black,
+    ),
   );
 }
-
-const kMediumTitleTextStyle = TextStyle(
-  fontWeight: FontWeight.bold,
-  wordSpacing: 2,
-  letterSpacing: 2,
-);
-
-const kVeryLargeHeadLineTextStyle = TextStyle(
-  fontWeight: FontWeight.bold,
-  fontSize: 50,
-  wordSpacing: 2,
-  letterSpacing: 2,
-);

@@ -1,6 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:personal_website/config/theme/text_theme.dart';
 import 'package:personal_website/core/constants/assets_paths.dart';
 import 'package:personal_website/core/responsive/screen.dart';
 import 'package:personal_website/ui/screens/home/widgets/sliver_app_bar/home_sliver_title.dart';
@@ -66,11 +65,9 @@ class HomeSliverAppBar extends StatelessWidget {
                       animatedTexts: [
                         TypewriterAnimatedText(
                           localization.myName,
-                          textStyle: theme.textTheme.headlineLarge!
-                              .merge(kVeryLargeHeadLineTextStyle)
-                              .copyWith(
-                                color: Colors.white,
-                              ),
+                          textStyle: theme.textTheme.displayMedium!.copyWith(
+                            color: Colors.white,
+                          ),
                           speed: const Duration(milliseconds: 100),
                           cursor: '|',
                         ),

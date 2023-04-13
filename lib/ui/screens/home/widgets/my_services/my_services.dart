@@ -28,9 +28,9 @@ class MyServices extends StatelessWidget {
             ),
             child: Text(
               localization.services.toUpperCase(),
-              style: theme.textTheme.headlineSmall!.merge(kMediumTitleTextStyle).copyWith(
-                    color: Colors.white,
-                  ),
+              style: theme.textTheme.headlineSmall!.copyWith(
+                color: Colors.white,
+              ),
             ),
           ),
           Expanded(
