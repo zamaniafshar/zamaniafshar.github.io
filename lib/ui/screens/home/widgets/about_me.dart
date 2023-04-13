@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:personal_website/config/theme/text_theme.dart';
+import 'package:personal_website/core/constants/assets_paths.dart';
 import 'package:personal_website/core/responsive/screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:personal_website/ui/widgets/underline_text.dart';
 
 class AboutMe extends StatelessWidget {
   const AboutMe({super.key});
@@ -22,11 +22,29 @@ class AboutMe extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            AnimatedUnderlineText(
-              label: localization.aboutMe.toUpperCase(),
-              selectedColor: theme.primaryColor,
-              textStyle: theme.textTheme.headlineSmall!.merge(kMediumTitleTextStyle),
-              isSelected: true,
+            ConstrainedBox(
+              constraints: const BoxConstraints(
+                maxWidth: 250,
+                maxHeight: 250,
+                minWidth: 120,
+                minHeight: 120,
+              ),
+              child: CircleAvatar(
+                radius: screen.w(0.5) / 2,
+                backgroundColor: Colors.white12,
+                child: Container(
+                  padding: const EdgeInsets.all(8.0),
+                  height: double.infinity,
+                  width: double.infinity,
+                  child: const CircleAvatar(
+                    foregroundImage: AssetImage(kMyPictureImagePath),
+                  ),
+                ),
+              ),
+            ),
+            Text(
+              localization.aboutMe.toUpperCase(),
+              style: theme.textTheme.headlineSmall!.merge(kMediumTitleTextStyle),
             ),
             screen.verticalSpace(0.05),
             Text(

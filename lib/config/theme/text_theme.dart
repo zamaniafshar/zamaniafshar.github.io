@@ -46,3 +46,10 @@ const kMediumTitleTextStyle = TextStyle(
   wordSpacing: 2,
   letterSpacing: 2,
 );
+
+const kVeryLargeHeadLineTextStyle = TextStyle(
+  fontWeight: FontWeight.bold,
+  fontSize: 50,
+  wordSpacing: 2,
+  letterSpacing: 2,
+);

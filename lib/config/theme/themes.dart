@@ -6,7 +6,9 @@ import 'text_theme.dart';
 ThemeData get getLightTheme {
   return ThemeData(
     fontFamily: 'Vazir',
+    primaryColorLight: AppColors.greenLight,
     primaryColor: AppColors.green,
+    primaryColorDark: AppColors.greenDark,
     colorScheme: const ColorScheme.light(
       background: Colors.white,
       onBackground: Colors.black,

@@ -42,6 +42,7 @@ dependencies:
   flutter_hooks: ^0.18.6
   intl: any
   flutter_svg: ^2.0.2
+  animated_text_kit: ^4.2.2
 
 dev_dependencies:
   flutter_test:

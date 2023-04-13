@@ -50,11 +50,11 @@ class HomeSliverTitle extends HookConsumerWidget {
               color: Color.lerp(Colors.white, Colors.black, animation.value),
             ),
           ),
-          const Expanded(child: SizedBox()),
           Expanded(
             flex: 2,
             child: FractionallySizedBox(
-              widthFactor: screen.adaptive(defaultValue: 1, desktop: 0.8),
+              widthFactor: screen.adaptive(tablet: 0.85, desktop: 0.7),
+              alignment: Alignment.centerRight,
               child: Builder(
                 builder: (context) {
                   if (screen.width < kMinLargeTabletWidth) {

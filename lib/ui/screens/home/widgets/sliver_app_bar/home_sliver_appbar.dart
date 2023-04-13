@@ -1,4 +1,7 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:personal_website/config/theme/text_theme.dart';
+import 'package:personal_website/core/constants/assets_paths.dart';
 import 'package:personal_website/core/responsive/screen.dart';
 import 'package:personal_website/ui/screens/home/widgets/sliver_app_bar/home_sliver_title.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -28,46 +31,50 @@ class HomeSliverAppBar extends StatelessWidget {
           children: [
             Positioned.fill(
               child: Container(
-                color: Colors.black45,
-                child: Image.asset(
-                  'assets/images/background1_wblur.jpg',
-                  fit: BoxFit.cover,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(kHomeBackgroundImagePath),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                child: Container(
+                  color: Colors.black45,
                 ),
               ),
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ConstrainedBox(
-                  constraints: const BoxConstraints(
-                    maxWidth: 250,
-                    maxHeight: 250,
-                    minWidth: 120,
-                    minHeight: 120,
-                  ),
-                  child: CircleAvatar(
-                    radius: screen.w(0.5) / 2,
-                    backgroundColor: Colors.white12,
-                    child: Container(
-                      padding: const EdgeInsets.all(8.0),
-                      height: double.infinity,
-                      width: double.infinity,
-                      child: const CircleAvatar(
-                        foregroundImage: AssetImage('assets/images/my_picture2.jpg'),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: screen.fromMTD(screen.w(0.3), 0, 0)),
+                  child: FittedBox(
+                    child: Text(
+                      localization.homeWelcome,
+                      style: theme.textTheme.headlineMedium!.copyWith(
+                        color: Colors.white,
                       ),
                     ),
                   ),
                 ),
-                screen.verticalSpace(0.07),
+                screen.verticalSpace(0.02),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: screen.fromMTD(15, 10, 0)),
                   child: FittedBox(
-                    child: Text(
-                      localization.myName,
-                      style: theme.textTheme.headlineLarge!.copyWith(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w500,
-                      ),
+                    child: AnimatedTextKit(
+                      repeatForever: true,
+                      pause: const Duration(seconds: 2),
+                      animatedTexts: [
+                        TypewriterAnimatedText(
+                          localization.myName,
+                          textStyle: theme.textTheme.headlineLarge!
+                              .merge(kVeryLargeHeadLineTextStyle)
+                              .copyWith(
+                                color: Colors.white,
+                              ),
+                          speed: const Duration(milliseconds: 100),
+                          cursor: '|',
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -76,10 +83,32 @@ class HomeSliverAppBar extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: screen.fromMTD(screen.w(0.3), 0, 0)),
                   child: FittedBox(
                     child: Text(
-                      localization.jobTitle,
+                      localization.homeJobTitle,
                       style: theme.textTheme.headlineMedium!.copyWith(
                         color: Colors.white,
                       ),
+                    ),
+                  ),
+                ),
+                screen.verticalSpace(0.02),
+                ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: theme.primaryColorLight,
+                    backgroundColor: Colors.black12,
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(100),
+                      side: BorderSide(
+                        color: theme.primaryColor,
+                      ),
+                    ),
+                    padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
+                  ),
+                  child: Text(
+                    localization.hireMe,
+                    style: theme.textTheme.titleLarge!.copyWith(
+                      color: theme.primaryColorLight,
                     ),
                   ),
                 ),
