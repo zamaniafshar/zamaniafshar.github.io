@@ -13,6 +13,7 @@ class AboutMe extends StatelessWidget {
     final screen = Screen.of(context);
     final localization = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
+    final isSmallScreen = screen.width < kMinLargeTabletWidth;
     final myAvatar = ConstrainedBox(
       constraints: const BoxConstraints(
         maxWidth: 300,
@@ -34,9 +35,10 @@ class AboutMe extends StatelessWidget {
         ),
       ),
     );
-
+    final aboutMeTextAlign = isSmallScreen ? TextAlign.center : TextAlign.start;
     final aboutMe = Column(
       mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: isSmallScreen ? CrossAxisAlignment.center : CrossAxisAlignment.start,
       children: [
         Text(
           localization.aboutMe.toUpperCase(),
@@ -51,16 +53,17 @@ class AboutMe extends StatelessWidget {
           style: theme.textTheme.headlineMedium!.copyWith(
             fontWeight: FontWeight.bold,
           ),
-          textAlign: TextAlign.start,
+          textAlign: aboutMeTextAlign,
         ),
         const SizedBox(height: 10),
         Text(
           localization.aboutDescription,
           style: theme.textTheme.titleMedium,
-          textAlign: TextAlign.start,
+          textAlign: aboutMeTextAlign,
         ),
         const SizedBox(height: 10),
         Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
             ElevatedButton(
               onPressed: () {},
@@ -108,7 +111,7 @@ class AboutMe extends StatelessWidget {
     );
 
     final Widget child;
-    if (screen.width < kMinLargeTabletWidth) {
+    if (isSmallScreen) {
       child = Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
