@@ -1,13 +1,15 @@
 {
-    "myName": "Mohammad Amin Zamani afshar",
-    "hireMe": "Hire Me",
-    "homeWelcome": "Welcome I'm",
-    "homeJobTitle": "A Flutter Developer",
-    "jobTitle": "Flutter Developer",
-    "home": "Home",
-    "aboutMe": "About Me",
-    "aboutDescription": "Hello, I'm a fluent developer in dart language and flutter framework with more than two years of experience in this field. I'm interested in everything related to programming and the computer world and I always welcome new challenges.",
-    "skills": "Skills",
-    "services": "My Services",
-    "contact": "Contact"
+  "aboutDescription": "I'm a fluent developer in dart language and flutter framework with more than two years of experience in this field. I'm interested in everything related to programming and the computer world and I always welcome new challenges.",
+  "aboutMe": "About Me",
+  "aboutMeTitle": "Hello, I'm Mohammad Amin Zamani afshar",
+  "contact": "Contact",
+  "downloadResume": "Downalod Resume",
+  "hireMe": "Hire Me",
+  "home": "Home",
+  "homeJobTitle": "A Flutter Developer",
+  "homeWelcome": "Welcome I'm",
+  "jobTitle": "Flutter Developer",
+  "myName": "Mohammad Amin Zamani afshar",
+  "services": "My Services",
+  "skills": "Skills"
 }

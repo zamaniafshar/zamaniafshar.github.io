@@ -14,43 +14,116 @@ class AboutMe extends StatelessWidget {
     final theme = Theme.of(context);
 
     return SizedBox(
-      height: screen.h(0.5),
+      height: screen.h(1),
       child: Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: screen.fromMTD(30, screen.w(0.1), screen.w(0.25)),
+          horizontal: screen.fromMTD(30, screen.w(0.1), screen.w(0.15)),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            ConstrainedBox(
-              constraints: const BoxConstraints(
-                maxWidth: 250,
-                maxHeight: 250,
-                minWidth: 120,
-                minHeight: 120,
-              ),
-              child: CircleAvatar(
-                radius: screen.w(0.5) / 2,
-                backgroundColor: Colors.white12,
-                child: Container(
-                  padding: const EdgeInsets.all(8.0),
-                  height: double.infinity,
-                  width: double.infinity,
-                  child: const CircleAvatar(
-                    foregroundImage: AssetImage(kMyPictureImagePath),
+            screen.verticalSpace(0.05),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                ConstrainedBox(
+                  constraints: const BoxConstraints(
+                    maxWidth: 300,
+                    maxHeight: 300,
+                    minWidth: 120,
+                    minHeight: 120,
+                  ),
+                  child: PhysicalModel(
+                    shape: BoxShape.circle,
+                    color: Colors.white,
+                    elevation: 10,
+                    child: Container(
+                      padding: const EdgeInsets.all(8),
+                      height: screen.w(0.3),
+                      width: screen.w(0.3),
+                      child: const CircleAvatar(
+                        foregroundImage: AssetImage(kMyPictureImagePath),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
-            Text(
-              localization.aboutMe.toUpperCase(),
-              style: theme.textTheme.headlineSmall!.merge(kMediumTitleTextStyle),
-            ),
-            screen.verticalSpace(0.05),
-            Text(
-              localization.aboutDescription,
-              style: theme.textTheme.titleMedium,
-              textAlign: TextAlign.center,
+                const SizedBox(width: 20),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        localization.aboutMe.toUpperCase(),
+                        style: theme.textTheme.headlineMedium!.copyWith(
+                          color: Colors.black38,
+                          fontWeight: FontWeight.w900,
+                        ),
+                      ),
+                      const SizedBox(height: 5),
+                      Text(
+                        localization.aboutMeTitle,
+                        style: theme.textTheme.headlineMedium!.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.start,
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        localization.aboutDescription,
+                        style: theme.textTheme.titleMedium,
+                        textAlign: TextAlign.start,
+                      ),
+                      const SizedBox(height: 10),
+                      Row(
+                        children: [
+                          ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: theme.primaryColor,
+                              elevation: 5,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(100),
+                              ),
+                              padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                            ),
+                            child: Text(
+                              localization.downloadResume,
+                              style: theme.textTheme.titleMedium!.copyWith(
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 20),
+                          ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.white,
+                              foregroundColor: theme.primaryColor,
+                              surfaceTintColor: theme.primaryColor,
+                              elevation: 5,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(100),
+                                side: BorderSide(
+                                  color: theme.primaryColor,
+                                ),
+                              ),
+                              padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                            ),
+                            child: Text(
+                              localization.hireMe,
+                              style: theme.textTheme.titleMedium!.copyWith(
+                                color: theme.primaryColor,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ],
         ),
