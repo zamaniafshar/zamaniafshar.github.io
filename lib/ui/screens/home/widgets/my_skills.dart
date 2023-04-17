@@ -13,7 +13,7 @@ class MySkills extends StatelessWidget {
     final theme = Theme.of(context);
     final localization = AppLocalizations.of(context);
     final isSmallScreen = screen.width <= kMinLargeTabletWidth;
-    final softwareSkills = SkillsSection(
+    const softwareSkills = SkillsSection(
       title: 'Software Skills',
       children: [
         SkillLabel(label: 'TDD'),
@@ -27,7 +27,7 @@ class MySkills extends StatelessWidget {
         SkillLabel(label: 'DesignPatterns'),
       ],
     );
-    final flutterSkills = SkillsSection(
+    const flutterSkills = SkillsSection(
       title: 'Flutter Skills',
       children: [
         SkillLabel(label: 'FLutter'),
@@ -41,7 +41,7 @@ class MySkills extends StatelessWidget {
         SkillLabel(label: 'Http & Dio'),
       ],
     );
-    final softSkills = SkillsSection(
+    const softSkills = SkillsSection(
       title: 'Soft Skills',
       children: [
         SkillLabel(label: 'Time Management'),
@@ -54,7 +54,7 @@ class MySkills extends StatelessWidget {
     if (screen.type.isDesktop) {
       skills = Row(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+        children: const [
           Expanded(child: softwareSkills),
           Expanded(child: flutterSkills),
           Expanded(child: softSkills),
@@ -64,15 +64,15 @@ class MySkills extends StatelessWidget {
       skills = Column(
         children: [
           Row(
-            children: [
+            children: const [
               Expanded(child: softwareSkills),
               Expanded(child: flutterSkills),
             ],
           ),
           Row(
-            children: [
+            children: const [
               Expanded(child: softSkills),
-              const Spacer(),
+              Spacer(),
             ],
           ),
         ],
@@ -80,7 +80,7 @@ class MySkills extends StatelessWidget {
     } else {
       skills = Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+        children: const [
           softwareSkills,
           flutterSkills,
           softSkills,
