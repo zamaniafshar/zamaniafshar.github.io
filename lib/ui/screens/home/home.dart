@@ -19,7 +19,7 @@ class HomeScreen extends ConsumerWidget {
       body: CustomScrollView(
         controller: ref.read(scrollControllerProvider),
         slivers: const [
-          HomeSliverAppBar(),
+          // HomeSliverAppBar(),
           HomeSliverListContent(),
         ],
       ),
