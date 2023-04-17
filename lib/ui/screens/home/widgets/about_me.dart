@@ -13,7 +13,7 @@ class AboutMe extends StatelessWidget {
     final screen = Screen.of(context);
     final localization = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
-    final isSmallScreen = screen.width < kMinLargeTabletWidth;
+    final isSmallScreen = screen.width <= kMinLargeTabletWidth;
     final myAvatar = ConstrainedBox(
       constraints: const BoxConstraints(
         maxWidth: 300,
@@ -41,15 +41,14 @@ class AboutMe extends StatelessWidget {
       crossAxisAlignment: isSmallScreen ? CrossAxisAlignment.center : CrossAxisAlignment.start,
       children: [
         Text(
-          localization.aboutMe.toUpperCase(),
-          style: theme.textTheme.headlineMedium!.copyWith(
+          localization.jobTitle,
+          style: theme.textTheme.headlineSmall!.copyWith(
             color: Colors.black38,
-            fontWeight: FontWeight.w900,
           ),
         ),
         const SizedBox(height: 5),
         Text(
-          localization.aboutMeTitle,
+          localization.myName,
           style: theme.textTheme.headlineMedium!.copyWith(
             fontWeight: FontWeight.bold,
           ),
@@ -61,7 +60,7 @@ class AboutMe extends StatelessWidget {
           style: theme.textTheme.titleMedium,
           textAlign: aboutMeTextAlign,
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 15),
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -133,14 +132,15 @@ class AboutMe extends StatelessWidget {
       );
     }
 
-    return SizedBox(
-      height: screen.h(1),
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: screen.fromMTD(30, screen.w(0.1), screen.w(0.15)),
-        ),
-        child: child,
+    return Container(
+      margin: EdgeInsets.only(
+        top: screen.h(0.4),
+        bottom: screen.h(0.2),
       ),
+      padding: EdgeInsets.symmetric(
+        horizontal: screen.fromMTD(30, screen.w(0.05), screen.w(0.1)),
+      ),
+      child: child,
     );
   }
 }
