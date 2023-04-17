@@ -60,7 +60,7 @@ class AboutMe extends StatelessWidget {
           style: theme.textTheme.titleMedium,
           textAlign: aboutMeTextAlign,
         ),
-        const SizedBox(height: 15),
+        const SizedBox(height: 20),
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -126,7 +126,7 @@ class AboutMe extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           myAvatar,
-          const SizedBox(width: 20),
+          const SizedBox(width: 25),
           Expanded(child: aboutMe),
         ],
       );
