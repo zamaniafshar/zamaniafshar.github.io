@@ -132,11 +132,7 @@ class AboutMe extends StatelessWidget {
       );
     }
 
-    return Container(
-      margin: EdgeInsets.only(
-        top: screen.h(0.4),
-        bottom: screen.h(0.2),
-      ),
+    return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: screen.fromMTD(30, screen.w(0.05), screen.w(0.1)),
       ),
