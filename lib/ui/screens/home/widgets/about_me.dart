@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:personal_website/config/theme/text_theme.dart';
-import 'package:personal_website/core/constants/assets_paths.dart';
-import 'package:personal_website/core/responsive/constants.dart';
-import 'package:personal_website/core/responsive/screen.dart';
+import 'package:personal_website/common/constants/assets_paths.dart';
+import 'package:personal_website/common/responsive/constants.dart';
+import 'package:personal_website/common/responsive/screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AboutMe extends StatelessWidget {

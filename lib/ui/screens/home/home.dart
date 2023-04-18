@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:personal_website/core/responsive/constants.dart';
-import 'package:personal_website/core/responsive/screen.dart';
+import 'package:personal_website/common/responsive/constants.dart';
+import 'package:personal_website/common/responsive/screen.dart';
 import 'package:personal_website/ui/screens/home/providers/providers.dart';
 import 'package:personal_website/ui/screens/home/widgets/sliver_app_bar/home_sliver_appbar.dart';
 import 'package:personal_website/ui/screens/home/widgets/home_sliverlist_content.dart';

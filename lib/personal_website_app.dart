@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:personal_website/core/responsive/screen.dart';
+import 'package:personal_website/common/responsive/screen.dart';
 import 'package:personal_website/config/theme/themes.dart';
 import 'package:personal_website/ui/screens/home/home.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
