@@ -14,8 +14,11 @@ class HomeSliverListContent extends StatelessWidget {
     return SliverList(
       delegate: SliverChildListDelegate.fixed(
         [
+          screen.verticalSpace(0.3),
           const AboutMe(),
+          screen.verticalSpace(0.15),
           const MySkills(),
+          screen.verticalSpace(0.3),
           const MyServices(),
           screen.verticalSpace(1),
         ],
