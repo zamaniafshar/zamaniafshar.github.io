@@ -9,9 +9,11 @@ ThemeData get getLightTheme {
     primaryColorLight: AppColors.greenLight,
     primaryColor: AppColors.green,
     primaryColorDark: AppColors.greenDark,
-    colorScheme: const ColorScheme.light(
+    colorScheme: ColorScheme.light(
       background: Colors.white,
       onBackground: Colors.black,
+      secondary: Colors.blue,
+      secondaryContainer: Colors.blue.shade700,
     ),
     textTheme: getLightTextTheme,
   );

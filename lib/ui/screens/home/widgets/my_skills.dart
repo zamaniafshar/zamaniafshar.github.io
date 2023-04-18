@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:personal_website/core/responsive/constants.dart';
 
 import 'package:personal_website/core/responsive/screen.dart';
 
@@ -12,7 +11,6 @@ class MySkills extends StatelessWidget {
     final screen = Screen.of(context);
     final theme = Theme.of(context);
     final localization = AppLocalizations.of(context);
-    final isSmallScreen = screen.width <= kMinLargeTabletWidth;
     const softwareSkills = SkillsSection(
       title: 'Software Skills',
       children: [
@@ -118,10 +116,10 @@ class SkillsSection extends StatelessWidget {
           Container(
             padding: const EdgeInsets.only(bottom: 8),
             margin: const EdgeInsets.only(left: 10),
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               border: Border(
                 bottom: BorderSide(
-                  color: Colors.blue,
+                  color: theme.colorScheme.secondary,
                 ),
               ),
             ),
@@ -159,7 +157,7 @@ class SkillLabel extends StatelessWidget {
       constraints: const BoxConstraints(minWidth: 80),
       decoration: BoxDecoration(
         border: Border.all(
-          color: Colors.lightBlue,
+          color: theme.colorScheme.secondary,
         ),
         color: Colors.lightBlue.shade50,
         borderRadius: BorderRadius.circular(100),
@@ -168,7 +166,7 @@ class SkillLabel extends StatelessWidget {
         label,
         textAlign: TextAlign.center,
         style: theme.textTheme.labelLarge!.copyWith(
-          color: Colors.lightBlue.shade700,
+          color: theme.colorScheme.secondaryContainer,
         ),
       ),
     );
