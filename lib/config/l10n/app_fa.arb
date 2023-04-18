@@ -4,6 +4,7 @@
   "aboutMeTitle": "سلام من محمد امین زمانی افشار هستم",
   "contact": "ارتباط با من",
   "downloadResume": "دانلود رزومه",
+  "flutterSkills": "مهارت های فلاتر",
   "hireMe": "استخدام",
   "home": "خانه",
   "homeJobTitle": "یک توسعه دهنده فلاتر",
@@ -12,5 +13,7 @@
   "jobTitle": "توسعه دهنده فلاتر",
   "myName": "محمد امین زمانی افشار",
   "services": "خدمات من",
-  "skills": "مهارت ها"
+  "skills": "مهارت ها",
+  "softSkills": "مهارت های نرم",
+  "softwareSkills": "مهارت های نرم افزاری"
 }

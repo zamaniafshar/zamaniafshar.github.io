@@ -9,11 +9,10 @@ class MySkills extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screen = Screen.of(context);
-    final theme = Theme.of(context);
-    final localization = AppLocalizations.of(context);
-    const softwareSkills = SkillsSection(
-      title: 'Software Skills',
-      children: [
+    final localization = AppLocalizations.of(context)!;
+    final softwareSkills = SkillsSection(
+      title: localization.softwareSkills,
+      children: const [
         SkillLabel(label: 'TDD'),
         SkillLabel(label: 'SOLID'),
         SkillLabel(label: 'OOD'),
@@ -25,9 +24,9 @@ class MySkills extends StatelessWidget {
         SkillLabel(label: 'DesignPatterns'),
       ],
     );
-    const flutterSkills = SkillsSection(
-      title: 'Flutter Skills',
-      children: [
+    final flutterSkills = SkillsSection(
+      title: localization.flutterSkills,
+      children: const [
         SkillLabel(label: 'FLutter'),
         SkillLabel(label: 'Dart'),
         SkillLabel(label: 'Bloc'),
@@ -39,9 +38,9 @@ class MySkills extends StatelessWidget {
         SkillLabel(label: 'Http & Dio'),
       ],
     );
-    const softSkills = SkillsSection(
-      title: 'Soft Skills',
-      children: [
+    final softSkills = SkillsSection(
+      title: localization.softSkills,
+      children: const [
         SkillLabel(label: 'Time Management'),
         SkillLabel(label: 'Problem Solving'),
         SkillLabel(label: 'Adaptability'),
@@ -52,7 +51,7 @@ class MySkills extends StatelessWidget {
     if (screen.type.isDesktop) {
       skills = Row(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
+        children: [
           Expanded(child: softwareSkills),
           Expanded(child: flutterSkills),
           Expanded(child: softSkills),
@@ -62,15 +61,15 @@ class MySkills extends StatelessWidget {
       skills = Column(
         children: [
           Row(
-            children: const [
+            children: [
               Expanded(child: softwareSkills),
               Expanded(child: flutterSkills),
             ],
           ),
           Row(
-            children: const [
+            children: [
               Expanded(child: softSkills),
-              Spacer(),
+              const Spacer(),
             ],
           ),
         ],
@@ -78,7 +77,7 @@ class MySkills extends StatelessWidget {
     } else {
       skills = Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
+        children: [
           softwareSkills,
           flutterSkills,
           softSkills,

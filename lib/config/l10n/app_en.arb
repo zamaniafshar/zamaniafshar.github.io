@@ -3,7 +3,8 @@
   "aboutMe": "About Me",
   "aboutMeTitle": "Hello, I'm Mohammad Amin Zamani afshar",
   "contact": "Contact",
-  "downloadResume": "Downalod Resume",
+  "downloadResume": "Download Resume",
+  "flutterSkills": "Flutter Skills",
   "hireMe": "Hire Me",
   "home": "Home",
   "homeJobTitle": "A Flutter Developer",
@@ -11,5 +12,7 @@
   "jobTitle": "Flutter Developer",
   "myName": "Mohammad Amin Zamani afshar",
   "services": "My Services",
-  "skills": "Skills"
+  "skills": "Skills",
+  "softSkills": "Soft Skills",
+  "softwareSkills": "Software Skills"
 }
