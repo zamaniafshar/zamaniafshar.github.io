@@ -16,7 +16,7 @@ class HomeSliverListContent extends StatelessWidget {
         [
           const AboutMe(),
           const MySkills(),
-          // const MyServices(),
+          const MyServices(),
           screen.verticalSpace(1),
         ],
       ),
