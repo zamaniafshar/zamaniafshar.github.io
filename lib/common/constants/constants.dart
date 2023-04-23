@@ -1,1 +1,1 @@
-export 'assets_paths.dart';
+export 'src/assets_paths.dart';

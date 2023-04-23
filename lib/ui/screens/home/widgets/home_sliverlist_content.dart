@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:personal_website/common/responsive/screen.dart';
+import 'package:personal_website/common/responsive/responsive.dart';
 import 'package:personal_website/ui/screens/home/widgets/my_skills.dart';
 
 import 'about_me.dart';

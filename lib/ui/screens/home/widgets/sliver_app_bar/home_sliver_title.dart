@@ -2,8 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:personal_website/common/responsive/constants.dart';
-import 'package:personal_website/common/responsive/screen.dart';
+import 'package:personal_website/common/responsive/responsive.dart';
 import 'package:personal_website/ui/screens/home/providers/providers.dart';
 import 'package:personal_website/ui/screens/home/widgets/sliver_app_bar/custom_navigation_bar.dart';
 

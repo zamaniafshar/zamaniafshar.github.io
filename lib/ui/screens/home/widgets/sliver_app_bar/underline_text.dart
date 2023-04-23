@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:personal_website/common/extensions/extensions.dart';
 
 class AnimatedUnderlineText extends StatelessWidget {

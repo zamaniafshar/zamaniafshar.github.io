@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:personal_website/config/theme/text_theme.dart';
-import 'package:personal_website/common/constants/assets_paths.dart';
-import 'package:personal_website/common/responsive/screen.dart';
+import 'package:personal_website/common/constants/src/assets_paths.dart';
+import 'package:personal_website/common/responsive/responsive.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MyServices extends StatelessWidget {
@@ -20,7 +19,7 @@ class MyServices extends StatelessWidget {
           Container(
             width: 200,
             alignment: Alignment.center,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Color(0xff7a8aff),
               borderRadius: BorderRadius.vertical(
                 top: Radius.circular(15),
@@ -35,7 +34,7 @@ class MyServices extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-              color: Color(0xff7a8aff),
+              color: const Color(0xff7a8aff),
               child: Column(
                 children: [
                   Expanded(
@@ -54,7 +53,7 @@ class MyServices extends StatelessWidget {
                                     theme.textTheme.headlineMedium!.copyWith(color: Colors.white),
                               ),
                               screen.verticalSpace(0.05),
-                              Expanded(
+                              const Expanded(
                                 child: Text('Some description will add here'),
                               ),
                             ],
