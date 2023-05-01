@@ -85,9 +85,7 @@ class MySkills extends StatelessWidget {
     }
 
     return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: screen.fromMTD(screen.w(4), screen.w(5), screen.w(9)),
-      ),
+      padding: screen.contentPadding,
       child: skills,
     );
   }
@@ -107,33 +105,30 @@ class SkillsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final screen = Screen.of(context);
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: screen.h(4)),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            padding: EdgeInsets.only(bottom: screen.h(2)),
-            margin: EdgeInsets.only(left: screen.h(2)),
-            decoration: BoxDecoration(
-              border: Border(
-                bottom: BorderSide(
-                  color: theme.colorScheme.secondary,
-                ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          padding: const EdgeInsets.only(bottom: 10),
+          margin: const EdgeInsets.only(left: 10),
+          decoration: BoxDecoration(
+            border: Border(
+              bottom: BorderSide(
+                color: theme.colorScheme.secondary,
               ),
             ),
-            child: Text(
-              title,
-              style: theme.textTheme.titleLarge,
-            ),
           ),
-          const SizedBox(height: 20),
-          Wrap(
-            alignment: WrapAlignment.start,
-            children: children,
+          child: Text(
+            title,
+            style: theme.textTheme.titleLarge,
           ),
-        ],
-      ),
+        ),
+        screen.verticalSpace(3),
+        Wrap(
+          alignment: WrapAlignment.start,
+          children: children,
+        ),
+      ],
     );
   }
 }
@@ -149,8 +144,6 @@ class SkillLabel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final screen = Screen.of(context);
-
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),

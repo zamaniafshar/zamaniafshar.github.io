@@ -12,6 +12,10 @@ class AboutMe extends StatelessWidget {
     final localization = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
     final isSmallScreen = screen.width <= kMinLargeTabletWidth;
+    final buttonPadding = EdgeInsets.symmetric(
+      horizontal: screen.fromMTD(25, 25, 40),
+      vertical: screen.fromMTD(15, 15, 20),
+    );
     final myAvatar = ConstrainedBox(
       constraints: const BoxConstraints(
         maxWidth: 300,
@@ -70,7 +74,7 @@ class AboutMe extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(100),
                 ),
-                padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                padding: buttonPadding,
               ),
               child: Text(
                 localization.downloadResume,
@@ -93,7 +97,7 @@ class AboutMe extends StatelessWidget {
                     color: theme.primaryColor,
                   ),
                 ),
-                padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                padding: buttonPadding,
               ),
               child: Text(
                 localization.hireMe,
@@ -131,9 +135,7 @@ class AboutMe extends StatelessWidget {
     }
 
     return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: screen.adaptive(defaultValue: screen.w(5), desktop: screen.w(10))!,
-      ),
+      padding: screen.contentPadding,
       child: child,
     );
   }
