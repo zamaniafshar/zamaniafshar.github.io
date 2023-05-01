@@ -25,8 +25,8 @@ class AboutMe extends StatelessWidget {
         elevation: 10,
         child: Container(
           padding: const EdgeInsets.all(8),
-          height: screen.w(0.3),
-          width: screen.w(0.3),
+          height: screen.w(30),
+          width: screen.w(30),
           child: const CircleAvatar(
             foregroundImage: AssetImage(kMyPictureImagePath),
           ),
@@ -44,7 +44,7 @@ class AboutMe extends StatelessWidget {
             color: Colors.black38,
           ),
         ),
-        const SizedBox(height: 5),
+        screen.verticalSpace(2),
         Text(
           localization.myName,
           style: theme.textTheme.headlineMedium!.copyWith(
@@ -52,13 +52,13 @@ class AboutMe extends StatelessWidget {
           ),
           textAlign: aboutMeTextAlign,
         ),
-        const SizedBox(height: 10),
+        screen.verticalSpace(2),
         Text(
           localization.aboutDescription,
           style: theme.textTheme.titleMedium,
           textAlign: aboutMeTextAlign,
         ),
-        const SizedBox(height: 20),
+        screen.verticalSpace(2.5),
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -79,7 +79,7 @@ class AboutMe extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(width: 20),
+            screen.horizontalSpace(2.5),
             ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
@@ -114,7 +114,7 @@ class AboutMe extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           myAvatar,
-          const SizedBox(height: 20),
+          screen.verticalSpace(5),
           aboutMe,
         ],
       );
@@ -124,7 +124,7 @@ class AboutMe extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           myAvatar,
-          const SizedBox(width: 25),
+          screen.horizontalSpace(5),
           Expanded(child: aboutMe),
         ],
       );
@@ -132,7 +132,7 @@ class AboutMe extends StatelessWidget {
 
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: screen.fromMTD(30, screen.w(0.05), screen.w(0.1)),
+        horizontal: screen.adaptive(defaultValue: screen.w(5), desktop: screen.w(10))!,
       ),
       child: child,
     );

@@ -13,8 +13,8 @@ class ScreenData {
 
   double get width => size.width;
   double get height => size.height;
-  double h(double value) => value * height;
-  double w(double value) => value * width;
+  double h(double value) => value / 100 * height;
+  double w(double value) => value / 100 * width;
   Widget horizontalSpace(double value) => SizedBox(width: w(value));
   Widget verticalSpace(double value) => SizedBox(height: h(value));
 

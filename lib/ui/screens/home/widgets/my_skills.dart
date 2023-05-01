@@ -86,7 +86,7 @@ class MySkills extends StatelessWidget {
 
     return Container(
       padding: EdgeInsets.symmetric(
-        horizontal: screen.fromMTD(30, screen.w(0.05), screen.w(0.09)),
+        horizontal: screen.fromMTD(screen.w(4), screen.w(5), screen.w(9)),
       ),
       child: skills,
     );
@@ -106,14 +106,15 @@ class SkillsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final screen = Screen.of(context);
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 15),
+      padding: EdgeInsets.symmetric(vertical: screen.h(4)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: const EdgeInsets.only(bottom: 8),
-            margin: const EdgeInsets.only(left: 10),
+            padding: EdgeInsets.only(bottom: screen.h(2)),
+            margin: EdgeInsets.only(left: screen.h(2)),
             decoration: BoxDecoration(
               border: Border(
                 bottom: BorderSide(
@@ -148,6 +149,7 @@ class SkillLabel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final screen = Screen.of(context);
 
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),

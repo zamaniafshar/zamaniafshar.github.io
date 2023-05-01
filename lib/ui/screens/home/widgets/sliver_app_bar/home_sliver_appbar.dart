@@ -45,7 +45,9 @@ class HomeSliverAppBar extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: screen.fromMTD(screen.w(0.3), 0, 0)),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: screen.adaptive(mobile: screen.w(30), defaultValue: 0)!,
+                  ),
                   child: FittedBox(
                     child: Text(
                       localization.homeWelcome,
@@ -55,9 +57,10 @@ class HomeSliverAppBar extends StatelessWidget {
                     ),
                   ),
                 ),
-                screen.verticalSpace(0.02),
+                screen.verticalSpace(2),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: screen.fromMTD(15, 10, 0)),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: screen.fromMTD(screen.w(5), screen.w(10), 0)),
                   child: FittedBox(
                     child: AnimatedTextKit(
                       repeatForever: true,
@@ -75,9 +78,11 @@ class HomeSliverAppBar extends StatelessWidget {
                     ),
                   ),
                 ),
-                screen.verticalSpace(0.02),
+                screen.verticalSpace(2),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: screen.fromMTD(screen.w(0.3), 0, 0)),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: screen.adaptive(mobile: screen.w(30), defaultValue: 0)!,
+                  ),
                   child: FittedBox(
                     child: Text(
                       localization.homeJobTitle,
@@ -87,7 +92,7 @@ class HomeSliverAppBar extends StatelessWidget {
                     ),
                   ),
                 ),
-                screen.verticalSpace(0.02),
+                screen.verticalSpace(2),
                 ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(

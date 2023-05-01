@@ -35,7 +35,7 @@ class HomeSliverTitle extends HookConsumerWidget {
     return Container(
       height: kToolbarHeight,
       padding: EdgeInsets.symmetric(
-        horizontal: screen.fromMTD(15, 40, screen.w(0.1)),
+        horizontal: screen.adaptive(defaultValue: screen.w(5), desktop: screen.w(10))!,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

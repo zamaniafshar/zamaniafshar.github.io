@@ -14,13 +14,13 @@ class HomeSliverListContent extends StatelessWidget {
     return SliverList(
       delegate: SliverChildListDelegate.fixed(
         [
-          screen.verticalSpace(0.3),
+          screen.verticalSpace(30),
           const AboutMe(),
-          screen.verticalSpace(0.15),
+          screen.verticalSpace(15),
           const MySkills(),
-          screen.verticalSpace(0.3),
+          screen.verticalSpace(30),
           const MyServices(),
-          screen.verticalSpace(1),
+          screen.verticalSpace(100),
         ],
       ),
     );
