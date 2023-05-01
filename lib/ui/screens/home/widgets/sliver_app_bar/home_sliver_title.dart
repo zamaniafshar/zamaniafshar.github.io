@@ -7,7 +7,7 @@ import 'package:personal_website/ui/screens/home/providers/providers.dart';
 import 'package:personal_website/ui/screens/home/widgets/sliver_app_bar/custom_navigation_bar.dart';
 
 class HomeSliverTitle extends HookConsumerWidget {
-  const HomeSliverTitle({super.key});
+  const HomeSliverTitle({super.key})
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
