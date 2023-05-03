@@ -3,6 +3,8 @@
   "aboutMe": "About Me",
   "aboutMeTitle": "Hello, I'm Mohammad Amin Zamani afshar",
   "contact": "Contact",
+  "desktopDevelopment": "Desktop Development",
+  "desktopDevelopmentDescription": "As a desktop developer, I create feature-rich apps that run on various operating systems. Whether standalone or enterprise-level software, I design and build apps to meet your specific needs.",
   "downloadResume": "Download Resume",
   "flutterSkills": "Flutter Skills",
   "hireMe": "Hire Me",
@@ -10,9 +12,13 @@
   "homeJobTitle": "A Flutter Developer",
   "homeWelcome": "Welcome I'm",
   "jobTitle": "Flutter Developer",
+  "mobileDevelopment": "Mobile Development",
+  "mobileDevelopmentDescription": "With expertise in mobile development, I can create user-friendly apps for iOS and Android. Whether native or cross-platform, I build apps optimized for performance, security, and scalability.",
   "myName": "Mohammad Amin Zamani afshar",
   "services": "My Services",
   "skills": "Skills",
   "softSkills": "Soft Skills",
-  "softwareSkills": "Software Skills"
+  "softwareSkills": "Software Skills",
+  "webDevelopment": "Web Development",
+  "webDevelopmentDescription": "I specialize in creating dynamic web applications tailored to your needs. Whether it's a simple web app or a complex solution, I can design and develop an application that meets your goals and user requirements."
 }

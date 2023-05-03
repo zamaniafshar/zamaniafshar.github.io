@@ -1,7 +1,7 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:personal_website/common/constants/src/assets_paths.dart';
-import 'package:personal_website/common/responsive/responsive.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:personal_website/common/responsive/responsive.dart';
 
 class MyServices extends StatelessWidget {
   const MyServices({super.key});
@@ -11,63 +11,176 @@ class MyServices extends StatelessWidget {
     final screen = Screen.of(context);
     final localization = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
+    final webDevelopment = ServiceContainer(
+      icon: Icons.code,
+      title: localization.webDevelopment,
+      description: localization.webDevelopmentDescription,
+    );
+    final mobileDevelopment = ServiceContainer(
+      icon: Icons.phone_android,
+      title: localization.mobileDevelopment,
+      description: localization.mobileDevelopmentDescription,
+    );
 
-    return SizedBox(
-      height: screen.h(0.6),
+    final desktopDevelopment = ServiceContainer(
+      icon: Icons.desktop_windows_outlined,
+      title: localization.desktopDevelopment,
+      description: localization.desktopDevelopmentDescription,
+    );
+
+    Widget child;
+
+    if (screen.width <= kMinLargeTabletWidth) {
+      child = Column(
+        children: [
+          webDevelopment,
+          mobileDevelopment,
+          desktopDevelopment,
+        ],
+      );
+    } else if (screen.width <= kMinMediumDesktopWidth) {
+      child = Column(
+        children: [
+          Row(
+            children: [
+              Expanded(child: webDevelopment),
+              Expanded(child: mobileDevelopment),
+            ],
+          ),
+          Row(
+            children: [
+              const Spacer(),
+              Expanded(
+                flex: 4,
+                child: desktopDevelopment,
+              ),
+              const Spacer(),
+            ],
+          ),
+        ],
+      );
+    } else {
+      child = Row(
+        children: [
+          Expanded(child: webDevelopment),
+          Expanded(child: mobileDevelopment),
+          Expanded(child: desktopDevelopment),
+        ],
+      );
+    }
+
+    return Padding(
+      padding: screen.contentPadding,
       child: Column(
         children: [
           Container(
-            width: 200,
-            alignment: Alignment.center,
-            decoration: const BoxDecoration(
-              color: Color(0xff7a8aff),
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(15),
+            padding: const EdgeInsets.only(bottom: 8),
+            decoration: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(
+                  color: theme.primaryColor,
+                ),
               ),
             ),
             child: Text(
-              localization.services.toUpperCase(),
-              style: theme.textTheme.headlineSmall!.copyWith(
-                color: Colors.white,
-              ),
+              localization.services,
+              style: theme.textTheme.displaySmall,
             ),
           ),
-          Expanded(
-            child: Container(
-              color: const Color(0xff7a8aff),
-              child: Column(
-                children: [
-                  Expanded(
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Image.asset(kMobileDevelopmentBackgroundPath),
-                        ),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Mobile App Development',
-                                style:
-                                    theme.textTheme.headlineMedium!.copyWith(color: Colors.white),
-                              ),
-                              screen.verticalSpace(0.05),
-                              const Expanded(
-                                child: Text('Some description will add here'),
-                              ),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
+          screen.verticalSpace(5),
+          child,
         ],
       ),
     );
+  }
+}
+
+class ServiceContainer extends StatelessWidget {
+  const ServiceContainer({
+    Key? key,
+    required this.description,
+    required this.icon,
+    required this.title,
+  }) : super(key: key);
+
+  final String description;
+  final IconData icon;
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final screen = Screen.of(context);
+
+    return Container(
+      margin: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
+      color: Colors.white,
+      child: CustomPaint(
+        foregroundPainter: ServiceContainerBorderPainter(theme.primaryColor),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 32),
+          child: Column(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(30),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(color: theme.primaryColor),
+                ),
+                child: Icon(
+                  icon,
+                  color: theme.primaryColor,
+                  size: screen.fromMTD(30, 40, 50),
+                ),
+              ),
+              const SizedBox(height: 15),
+              Text(
+                title,
+                style: theme.textTheme.titleLarge,
+              ),
+              const SizedBox(height: 10),
+              AutoSizeText(
+                description,
+                style: theme.textTheme.titleMedium,
+                maxLines: 6,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ServiceContainerBorderPainter extends CustomPainter {
+  const ServiceContainerBorderPainter(this.color);
+
+  final Color color;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final area = size.height * 0.3;
+    final paint = Paint()
+      ..color = color
+      ..style = PaintingStyle.stroke;
+
+    final topLeftBorder = Path()
+      ..moveTo(0, area)
+      ..lineTo(0, 0)
+      ..lineTo(area, 0);
+
+    final bottomRightBorder = Path()
+      ..moveTo(size.width - area, size.height)
+      ..lineTo(size.width, size.height)
+      ..lineTo(size.width, size.height - area);
+
+    canvas.drawPath(topLeftBorder, paint);
+    canvas.drawPath(bottomRightBorder, paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant ServiceContainerBorderPainter oldDelegate) {
+    return color != oldDelegate.color;
   }
 }
