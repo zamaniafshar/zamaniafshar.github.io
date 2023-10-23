@@ -15,6 +15,6 @@ ThemeData get getLightTheme {
       secondary: Colors.blue,
       secondaryContainer: Colors.blue.shade700,
     ),
-    textTheme: getLightTextTheme,
+    textTheme: getBlackTextTheme,
   );
 }

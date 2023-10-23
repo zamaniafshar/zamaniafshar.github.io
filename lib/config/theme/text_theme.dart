@@ -1,34 +1,11 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-TextTheme get getLightTextTheme {
-  return const TextTheme(
-    bodySmall: TextStyle(
-      color: Colors.black54,
-    ),
-    bodyMedium: TextStyle(
-      color: Colors.black54,
-    ),
-    bodyLarge: TextStyle(
-      color: Colors.black54,
-    ),
-    labelSmall: TextStyle(
-      color: Colors.black87,
-    ),
-    labelMedium: TextStyle(
-      color: Colors.black87,
-    ),
-    labelLarge: TextStyle(
-      color: Colors.black87,
-    ),
-    titleSmall: TextStyle(
-      color: Colors.black,
-    ),
-    titleMedium: TextStyle(
-      color: Colors.black,
-    ),
-    titleLarge: TextStyle(
-      color: Colors.black,
-    ),
+TextTheme get getBlackTextTheme {
+  final baseTextTheme = Typography.material2021(
+    platform: defaultTargetPlatform,
+  ).black;
+  final textTheme = const TextTheme(
     headlineSmall: TextStyle(
       color: Colors.black,
     ),
@@ -48,4 +25,32 @@ TextTheme get getLightTextTheme {
       color: Colors.black,
     ),
   );
+  return baseTextTheme.merge(textTheme);
+}
+
+TextTheme get getWhiteTextTheme {
+  final baseTextTheme = Typography.material2021(
+    platform: defaultTargetPlatform,
+  ).white;
+  final textTheme = TextTheme(
+    headlineSmall: TextStyle(
+      color: Colors.white,
+    ),
+    headlineMedium: TextStyle(
+      color: Colors.white,
+    ),
+    headlineLarge: TextStyle(
+      color: Colors.white,
+    ),
+    displaySmall: TextStyle(
+      color: Colors.white,
+    ),
+    displayMedium: TextStyle(
+      color: Colors.white,
+    ),
+    displayLarge: TextStyle(
+      color: Colors.white,
+    ),
+  );
+  return baseTextTheme.merge(textTheme);
 }
