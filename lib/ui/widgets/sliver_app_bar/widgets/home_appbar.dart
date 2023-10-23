@@ -6,8 +6,8 @@ import 'package:personal_website/common/responsive/responsive.dart';
 import 'package:personal_website/providers/providers.dart';
 import 'package:personal_website/ui/widgets/sliver_app_bar/widgets/custom_navigation_bar.dart';
 
-class HomeSliverTitle extends HookConsumerWidget {
-  const HomeSliverTitle({super.key});
+class HomeAppBar extends HookConsumerWidget {
+  const HomeAppBar({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -15,16 +15,19 @@ class HomeSliverTitle extends HookConsumerWidget {
     final theme = Theme.of(context);
     final animation = useState(0.0);
     final maxArea = MediaQuery.of(context).size.height - kToolbarHeight;
-    final minArea = maxArea - kToolbarHeight * 2;
+    final minArea = maxArea - kToolbarHeight;
     useEffect(() {
       final controller = ref.read(scrollControllerProvider);
       controller.addListener(
         () {
-          animation.value = max(0.0, controller.offset - minArea) / (maxArea - minArea);
+          final offset = controller.offset.clamp(minArea, maxArea);
+          final minus = maxArea - offset;
+          final value = minus / kToolbarHeight;
+          animation.value = 1 - value;
         },
       );
       return null;
-    }, [0]);
+    }, const []);
 
     final color = Color.lerp(
       Colors.white,

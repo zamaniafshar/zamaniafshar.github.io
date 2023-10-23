@@ -8,6 +8,7 @@ class AnimatedUnderlineText extends StatelessWidget {
     this.textStyle,
     this.duration = const Duration(seconds: 1),
     this.animateText = true,
+    this.underlineMaxHeight = 4,
   }) : super(key: key);
 
   final String text;
@@ -16,13 +17,13 @@ class AnimatedUnderlineText extends StatelessWidget {
   final Duration duration;
 
   final bool animateText;
+  final double underlineMaxHeight;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final textStyle = this.textStyle ?? theme.textTheme.titleMedium!;
     final textSize = textStyle.calculateTextSize(context, text);
-    final underlineMaxHeight = 5.0;
 
     return SizedBox(
       height: textSize.height + underlineMaxHeight,
@@ -38,7 +39,7 @@ class AnimatedUnderlineText extends StatelessWidget {
           AnimatedContainer(
             duration: duration,
             width: isSelected ? textSize.width : 0.0,
-            height: isSelected ? 3 : underlineMaxHeight,
+            height: isSelected ? underlineMaxHeight * 0.7 : underlineMaxHeight,
             decoration: BoxDecoration(
               color: theme.primaryColor,
               borderRadius: BorderRadius.circular(100),

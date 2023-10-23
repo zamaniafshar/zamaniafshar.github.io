@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:personal_website/ui/widgets/animated_underline_text.dart';
 
-class AnimatedTitleText extends StatefulWidget {
+class AnimatedTitleText extends HookWidget {
   const AnimatedTitleText({
     super.key,
     required this.title,
@@ -10,27 +11,19 @@ class AnimatedTitleText extends StatefulWidget {
   final String title;
 
   @override
-  State<AnimatedTitleText> createState() => _AnimatedTitleTextState();
-}
-
-class _AnimatedTitleTextState extends State<AnimatedTitleText> {
-  bool isSelected = false;
-  @override
-  void initState() {
-    Future.delayed(const Duration(seconds: 1), () {
-      isSelected = true;
-      setState(() {});
-    });
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-
+    final isSelected = useState(false);
+    useEffect(() {
+      Future.delayed(const Duration(seconds: 1), () {
+        if (!context.mounted) return;
+        isSelected.value = true;
+      });
+      return null;
+    }, const []);
     return AnimatedUnderlineText(
-      text: widget.title,
-      isSelected: isSelected,
+      text: title,
+      isSelected: isSelected.value,
       animateText: false,
       textStyle: theme.textTheme.displaySmall,
       duration: const Duration(milliseconds: 500),

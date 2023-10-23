@@ -4,7 +4,7 @@ import 'package:personal_website/common/constants/assets_paths.dart';
 import 'package:personal_website/common/constants/constants.dart';
 import 'package:personal_website/common/responsive/responsive.dart';
 import 'package:personal_website/config/theme/text_theme.dart';
-import 'package:personal_website/ui/widgets/sliver_app_bar/widgets/home_sliver_title.dart';
+import 'package:personal_website/ui/widgets/sliver_app_bar/widgets/home_appbar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeSliverAppBar extends StatelessWidget {
@@ -24,7 +24,7 @@ class HomeSliverAppBar extends StatelessWidget {
       actions: const [SizedBox()],
       title: const Directionality(
         textDirection: TextDirection.ltr,
-        child: HomeSliverTitle(),
+        child: HomeAppBar(),
       ),
       flexibleSpace: WelcomeWidget(),
     );
@@ -62,74 +62,76 @@ class WelcomeWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: screen.adaptive(mobile: screen.w(30), defaultValue: 0)!,
-                    ),
-                    child: FittedBox(
-                      child: Text(
-                        localization.homeWelcome,
-                        style: theme.textTheme.headlineMedium,
+              Positioned.fill(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: screen.adaptive(mobile: screen.w(30), defaultValue: 0)!,
                       ),
-                    ),
-                  ),
-                  screen.verticalSpace(2),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: screen.fromMTD(screen.w(5), screen.w(10), 0)),
-                    child: FittedBox(
-                      child: AnimatedTextKit(
-                        repeatForever: true,
-                        pause: const Duration(seconds: 2),
-                        animatedTexts: [
-                          TypewriterAnimatedText(
-                            localization.myName,
-                            textStyle: theme.textTheme.displayMedium,
-                            speed: const Duration(milliseconds: 100),
-                            cursor: '|',
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  screen.verticalSpace(2),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: screen.adaptive(mobile: screen.w(30), defaultValue: 0)!,
-                    ),
-                    child: FittedBox(
-                      child: Text(
-                        localization.homeJobTitle,
-                        style: theme.textTheme.headlineMedium,
-                      ),
-                    ),
-                  ),
-                  screen.verticalSpace(2),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: theme.primaryColorLight,
-                      backgroundColor: Colors.black12,
-                      elevation: 0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(100),
-                        side: BorderSide(
-                          color: theme.primaryColor,
+                      child: FittedBox(
+                        child: Text(
+                          localization.homeWelcome,
+                          style: theme.textTheme.headlineMedium,
                         ),
                       ),
-                      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
                     ),
-                    child: Text(
-                      localization.hireMe,
-                      style: theme.textTheme.titleLarge!.copyWith(
-                        color: theme.primaryColorLight,
+                    screen.verticalSpace(2),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: screen.fromMTD(screen.w(5), screen.w(10), 0)),
+                      child: FittedBox(
+                        child: AnimatedTextKit(
+                          repeatForever: true,
+                          pause: const Duration(seconds: 2),
+                          animatedTexts: [
+                            TypewriterAnimatedText(
+                              localization.myName,
+                              textStyle: theme.textTheme.displayMedium,
+                              speed: const Duration(milliseconds: 100),
+                              cursor: '|',
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                    screen.verticalSpace(2),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: screen.adaptive(mobile: screen.w(30), defaultValue: 0)!,
+                      ),
+                      child: FittedBox(
+                        child: Text(
+                          localization.homeJobTitle,
+                          style: theme.textTheme.headlineMedium,
+                        ),
+                      ),
+                    ),
+                    screen.verticalSpace(2),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: theme.primaryColorLight,
+                        backgroundColor: Colors.black12,
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(100),
+                          side: BorderSide(
+                            color: theme.primaryColor,
+                          ),
+                        ),
+                        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
+                      ),
+                      child: Text(
+                        localization.hireMe,
+                        style: theme.textTheme.titleLarge!.copyWith(
+                          color: theme.primaryColorLight,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
