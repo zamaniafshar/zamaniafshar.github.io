@@ -10,13 +10,34 @@ extension HelperExtension on ScreenData {
   Widget verticalSpace(double value) => SizedBox(height: h(value));
 
   EdgeInsets get contentPadding => EdgeInsets.symmetric(
-        horizontal: fromMTD(w(5), w(5), w(10)),
+        horizontal: fromMTD(
+          20,
+          50,
+          fromDesktop(w(5), w(10), w(15)),
+        ),
       );
 
   T fromMTD<T>(T mobile, T tablet, T desktop) {
     if (type.isMobile) return mobile;
     if (type.isTablet) return tablet;
     return desktop;
+  }
+
+  T fromDesktop<T>(T small, T medium, T large) {
+    if (type.isSmallDesktop) return small;
+    if (type.isMediumDesktop) return medium;
+    return large;
+  }
+
+  T fromMobile<T>(T small, T medium, T large) {
+    if (type.isSmallMobile) return small;
+    if (type.isMediumMobile) return medium;
+    return large;
+  }
+
+  T fromTablet<T>(T small, T large) {
+    if (type.isSmallTablet) return small;
+    return large;
   }
 
   T? adaptive<T>({

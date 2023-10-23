@@ -57,9 +57,9 @@ class HomeAppBar extends HookConsumerWidget {
               ),
             ),
             Expanded(
-              flex: 2,
+              flex: 1,
               child: FractionallySizedBox(
-                widthFactor: screen.adaptive(tablet: 0.85, desktop: 0.7),
+                widthFactor: screen.adaptive(tablet: 0.9, desktop: 0.7),
                 alignment: Alignment.centerRight,
                 child: Builder(
                   builder: (context) {

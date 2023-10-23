@@ -18,8 +18,8 @@ class ContactMe extends StatelessWidget {
       contactBody = ConstrainedBox(
         constraints: BoxConstraints(
           maxWidth: 1100,
-          minHeight: screen.type.isDesktop ? 550 : double.infinity,
-          maxHeight: screen.type.isDesktop ? 550 : double.infinity,
+          minHeight: screen.type.isDesktop ? 560 : double.infinity,
+          maxHeight: screen.type.isDesktop ? 560 : double.infinity,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -47,7 +47,11 @@ class ContactMe extends StatelessWidget {
     }
 
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 100, horizontal: 30),
+      padding: screen.contentPadding.add(
+        EdgeInsets.symmetric(
+          vertical: 100,
+        ),
+      ),
       child: Column(
         children: [
           ContactMeTitle(),

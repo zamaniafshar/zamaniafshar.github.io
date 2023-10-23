@@ -66,21 +66,17 @@ class WelcomeWidget extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: screen.adaptive(mobile: screen.w(30), defaultValue: 0)!,
-                      ),
-                      child: FittedBox(
-                        child: Text(
-                          localization.homeWelcome,
-                          style: theme.textTheme.headlineMedium,
-                        ),
+                    Text(
+                      localization.homeWelcome,
+                      style: screen.fromMTD(
+                        theme.textTheme.titleLarge,
+                        theme.textTheme.headlineSmall,
+                        theme.textTheme.headlineMedium,
                       ),
                     ),
-                    screen.verticalSpace(2),
+                    SizedBox(height: 20),
                     Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: screen.fromMTD(screen.w(5), screen.w(10), 0)),
+                      padding: EdgeInsets.symmetric(horizontal: 20),
                       child: FittedBox(
                         child: AnimatedTextKit(
                           repeatForever: true,
@@ -88,7 +84,11 @@ class WelcomeWidget extends StatelessWidget {
                           animatedTexts: [
                             TypewriterAnimatedText(
                               localization.myName,
-                              textStyle: theme.textTheme.displayMedium,
+                              textStyle: screen.fromMTD(
+                                theme.textTheme.headlineMedium,
+                                theme.textTheme.displaySmall,
+                                theme.textTheme.displayMedium,
+                              ),
                               speed: const Duration(milliseconds: 100),
                               cursor: '|',
                             ),
@@ -96,19 +96,16 @@ class WelcomeWidget extends StatelessWidget {
                         ),
                       ),
                     ),
-                    screen.verticalSpace(2),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: screen.adaptive(mobile: screen.w(30), defaultValue: 0)!,
-                      ),
-                      child: FittedBox(
-                        child: Text(
-                          localization.homeJobTitle,
-                          style: theme.textTheme.headlineMedium,
-                        ),
+                    SizedBox(height: 20),
+                    Text(
+                      localization.homeJobTitle,
+                      style: screen.fromMTD(
+                        theme.textTheme.titleLarge,
+                        theme.textTheme.headlineSmall,
+                        theme.textTheme.headlineMedium,
                       ),
                     ),
-                    screen.verticalSpace(2),
+                    SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(

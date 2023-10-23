@@ -12,16 +12,16 @@ enum ScreenType {
   mediumDesktop,
   largeDesktop;
 
-  bool get isSmallHandset => this == smallHandset;
-  bool get isMediumHandset => this == mediumHandset;
-  bool get isLargeHandset => this == largeHandset;
+  bool get isSmallMobile => this == smallHandset;
+  bool get isMediumMobile => this == mediumHandset;
+  bool get isLargeMobile => this == largeHandset;
   bool get isSmallTablet => this == smallTablet;
   bool get isLargeTablet => this == largeTablet;
   bool get isSmallDesktop => this == smallDesktop;
   bool get isMediumDesktop => this == mediumDesktop;
   bool get isLargeDesktop => this == largeDesktop;
 
-  bool get isMobile => isMediumHandset || isLargeHandset;
+  bool get isMobile => isSmallMobile || isMediumMobile || isLargeMobile;
   bool get isTablet => isSmallTablet || isLargeTablet;
   bool get isDesktop => isSmallDesktop || isMediumDesktop || isLargeDesktop;
 }
