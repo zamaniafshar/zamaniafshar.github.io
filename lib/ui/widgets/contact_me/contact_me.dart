@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:personal_website/common/responsive/responsive.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:personal_website/ui/screens/home/widgets/contact_me/widgets/contact_information.dart';
-import 'package:personal_website/ui/screens/home/widgets/contact_me/widgets/send_email.dart';
+import 'package:personal_website/ui/widgets/animated_title_text.dart';
+import 'package:personal_website/ui/widgets/animated_underline_text.dart';
+import 'package:personal_website/ui/widgets/contact_me/widgets/contact_information.dart';
+import 'package:personal_website/ui/widgets/contact_me/widgets/send_email.dart';
 
 class ContactMe extends StatelessWidget {
   const ContactMe({super.key});
@@ -16,8 +18,8 @@ class ContactMe extends StatelessWidget {
       contactBody = ConstrainedBox(
         constraints: BoxConstraints(
           maxWidth: 1100,
-          minHeight: screen.type.isDesktop ? 530 : double.infinity,
-          maxHeight: screen.type.isDesktop ? 530 : double.infinity,
+          minHeight: screen.type.isDesktop ? 550 : double.infinity,
+          maxHeight: screen.type.isDesktop ? 550 : double.infinity,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -66,19 +68,8 @@ class ContactMeTitle extends StatelessWidget {
     final theme = Theme.of(context);
     return Column(
       children: [
-        Container(
-          padding: const EdgeInsets.only(bottom: 8),
-          decoration: BoxDecoration(
-            border: Border(
-              bottom: BorderSide(
-                color: theme.primaryColor,
-              ),
-            ),
-          ),
-          child: Text(
-            localization.contactTitle,
-            style: theme.textTheme.displaySmall,
-          ),
+        AnimatedTitleText(
+          title: localization.contactTitle,
         ),
         SizedBox(height: 40),
         ConstrainedBox(

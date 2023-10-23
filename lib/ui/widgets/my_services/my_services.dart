@@ -2,6 +2,8 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:personal_website/common/responsive/responsive.dart';
+import 'package:personal_website/ui/widgets/animated_title_text.dart';
+import 'package:personal_website/ui/widgets/animated_underline_text.dart';
 
 class MyServices extends StatelessWidget {
   const MyServices({super.key});
@@ -73,19 +75,8 @@ class MyServices extends StatelessWidget {
       padding: screen.contentPadding,
       child: Column(
         children: [
-          Container(
-            padding: const EdgeInsets.only(bottom: 8),
-            decoration: BoxDecoration(
-              border: Border(
-                bottom: BorderSide(
-                  color: theme.primaryColor,
-                ),
-              ),
-            ),
-            child: Text(
-              localization.services,
-              style: theme.textTheme.displaySmall,
-            ),
+          AnimatedTitleText(
+            title: localization.services,
           ),
           screen.verticalSpace(5),
           child,

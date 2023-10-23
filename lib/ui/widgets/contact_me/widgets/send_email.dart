@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:personal_website/common/responsive/src/screen.dart';
-import 'package:personal_website/ui/screens/home/widgets/custom_elevated_button.dart';
+import 'package:personal_website/common/responsive/responsive.dart';
+import 'package:personal_website/ui/widgets/custom_elevated_button.dart';
 
 class SendEmail extends StatelessWidget {
   const SendEmail({super.key});
@@ -63,7 +63,7 @@ class SendEmail extends StatelessWidget {
     }
     return ConstrainedBox(
       constraints: BoxConstraints.tightFor(
-        height: screen.type.isMobile ? null : 530,
+        height: screen.type.isMobile ? null : 550,
         width: double.infinity,
       ),
       child: Card(
