@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:personal_website/common/constants/constants.dart';
-import 'package:personal_website/common/responsive/responsive.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ContactInformation extends StatelessWidget {
@@ -8,16 +7,16 @@ class ContactInformation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screen = Screen.of(context);
     final localization = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
+
     return Card(
       elevation: 5,
       child: Padding(
-        padding: EdgeInsets.all(30),
+        padding: const EdgeInsets.all(30),
         child: ListTileTheme(
           data: ListTileThemeData(
-            contentPadding: EdgeInsets.symmetric(vertical: 0),
+            contentPadding: const EdgeInsets.symmetric(vertical: 0),
             titleTextStyle: theme.textTheme.titleLarge,
             iconColor: theme.primaryColor,
           ),
@@ -28,7 +27,7 @@ class ContactInformation extends StatelessWidget {
                 localization.contactInfoTitle,
                 style: theme.textTheme.headlineMedium,
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               Text(
                 localization.contactInfoDescription,
                 style: theme.textTheme.titleMedium!.copyWith(
@@ -37,16 +36,16 @@ class ContactInformation extends StatelessWidget {
                   height: 1.5,
                 ),
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               ListTile(
-                leading: Icon(Icons.location_on),
+                leading: const Icon(Icons.location_on),
                 title: Text(localization.contactAddress),
               ),
-              ListTile(
+              const ListTile(
                 leading: Icon(Icons.email_rounded),
                 title: Text(kEmailAddress),
               ),
-              ListTile(
+              const ListTile(
                 leading: Icon(Icons.phone),
                 title: Text(kPhoneNumber),
               ),

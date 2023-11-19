@@ -48,7 +48,7 @@ class SendEmail extends StatelessWidget {
                 children: textFields,
               ),
             ),
-            SizedBox(width: 30),
+            const SizedBox(width: 30),
             Expanded(
               child: CustomTextField(
                 title: localization.contactComment,
@@ -69,7 +69,7 @@ class SendEmail extends StatelessWidget {
       child: Card(
         elevation: 5,
         child: Padding(
-          padding: EdgeInsets.all(30),
+          padding: const EdgeInsets.all(30),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -79,9 +79,9 @@ class SendEmail extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               body,
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               CustomElevatedButton(
                 width: double.infinity,
                 gradientBackground: LinearGradient(
@@ -123,7 +123,7 @@ class CustomTextField extends StatelessWidget {
       maxLines: maxLines,
       decoration: InputDecoration(
         hintText: hint,
-        border: OutlineInputBorder(),
+        border: const OutlineInputBorder(),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
             color: theme.primaryColor,
@@ -135,7 +135,7 @@ class CustomTextField extends StatelessWidget {
       textFiled = Expanded(child: textFiled);
     }
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 5),
+      padding: const EdgeInsets.symmetric(vertical: 5),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -145,7 +145,7 @@ class CustomTextField extends StatelessWidget {
               color: theme.colorScheme.onSurface.withOpacity(0.6),
             ),
           ),
-          SizedBox(height: 15),
+          const SizedBox(height: 15),
           textFiled,
         ],
       ),

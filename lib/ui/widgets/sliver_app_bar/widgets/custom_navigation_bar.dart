@@ -19,7 +19,6 @@ class CustomNavigationBar extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedIndex = ref.watch(navigationBarSelectedIndex);
     final localization = AppLocalizations.of(context)!;
-    final theme = Theme.of(context);
 
     final List<String> items = [
       localization.home,

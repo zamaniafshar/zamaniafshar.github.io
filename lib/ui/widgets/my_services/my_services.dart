@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:personal_website/common/responsive/responsive.dart';
 import 'package:personal_website/ui/widgets/animated_title_text.dart';
-import 'package:personal_website/ui/widgets/animated_underline_text.dart';
 
 class MyServices extends StatelessWidget {
   const MyServices({super.key});
@@ -12,7 +11,7 @@ class MyServices extends StatelessWidget {
   Widget build(BuildContext context) {
     final screen = Screen.of(context);
     final localization = AppLocalizations.of(context)!;
-    final theme = Theme.of(context);
+
     final webDevelopment = ServiceContainer(
       icon: Icons.code,
       title: localization.webDevelopment,

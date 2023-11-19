@@ -1,7 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:personal_website/common/constants/assets_paths.dart';
-import 'package:personal_website/common/constants/constants.dart';
 import 'package:personal_website/common/responsive/responsive.dart';
 import 'package:personal_website/config/theme/text_theme.dart';
 import 'package:personal_website/ui/widgets/custom_elevated_button.dart';
@@ -15,7 +14,6 @@ class HomeSliverAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final screen = Screen.of(context);
-    final localization = AppLocalizations.of(context)!;
 
     return SliverAppBar(
       expandedHeight: screen.height,
@@ -28,7 +26,7 @@ class HomeSliverAppBar extends StatelessWidget {
         textDirection: TextDirection.ltr,
         child: HomeAppBar(),
       ),
-      flexibleSpace: WelcomeWidget(),
+      flexibleSpace: const WelcomeWidget(),
     );
   }
 }
@@ -60,7 +58,7 @@ class WelcomeWidget extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                   ),
-                  child: ColoredBox(
+                  child: const ColoredBox(
                     color: Colors.black45,
                   ),
                 ),
@@ -77,9 +75,9 @@ class WelcomeWidget extends StatelessWidget {
                         theme.textTheme.headlineMedium,
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: FittedBox(
                         child: AnimatedTextKit(
                           repeatForever: true,
@@ -99,7 +97,7 @@ class WelcomeWidget extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Text(
                       localization.homeJobTitle,
                       style: screen.fromMTD(
@@ -108,7 +106,7 @@ class WelcomeWidget extends StatelessWidget {
                         theme.textTheme.headlineMedium,
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     CustomElevatedButton(
                       onPressed: () {},
                       borderRadius: BorderRadius.circular(100),

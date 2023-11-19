@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:personal_website/common/responsive/responsive.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:personal_website/ui/widgets/animated_title_text.dart';
-import 'package:personal_website/ui/widgets/animated_underline_text.dart';
 import 'package:personal_website/ui/widgets/contact_me/widgets/contact_information.dart';
 import 'package:personal_website/ui/widgets/contact_me/widgets/send_email.dart';
 
@@ -21,7 +20,7 @@ class ContactMe extends StatelessWidget {
           minHeight: screen.type.isDesktop ? 560 : double.infinity,
           maxHeight: screen.type.isDesktop ? 560 : double.infinity,
         ),
-        child: Row(
+        child: const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Expanded(
@@ -37,7 +36,7 @@ class ContactMe extends StatelessWidget {
         ),
       );
     } else {
-      contactBody = Column(
+      contactBody = const Column(
         children: [
           SendEmail(),
           SizedBox(height: 50),
@@ -48,14 +47,14 @@ class ContactMe extends StatelessWidget {
 
     return Container(
       padding: screen.contentPadding.add(
-        EdgeInsets.symmetric(
+        const EdgeInsets.symmetric(
           vertical: 100,
         ),
       ),
       child: Column(
         children: [
-          ContactMeTitle(),
-          SizedBox(height: 80),
+          const ContactMeTitle(),
+          const SizedBox(height: 80),
           contactBody,
         ],
       ),
@@ -75,9 +74,9 @@ class ContactMeTitle extends StatelessWidget {
         AnimatedTitleText(
           title: localization.contactTitle,
         ),
-        SizedBox(height: 40),
+        const SizedBox(height: 40),
         ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: 700),
+          constraints: const BoxConstraints(maxWidth: 700),
           child: Text(
             localization.contactDescription,
             textAlign: TextAlign.center,
