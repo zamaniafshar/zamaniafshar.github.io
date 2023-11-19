@@ -82,12 +82,16 @@ class SendEmail extends StatelessWidget {
               SizedBox(height: 15),
               body,
               SizedBox(height: 30),
-              SizedBox(
+              CustomElevatedButton(
                 width: double.infinity,
-                child: CustomElevatedButton(
-                  onPressed: () {},
-                  child: Text(localization.contactMeButton),
+                gradientBackground: LinearGradient(
+                  colors: [
+                    theme.primaryColorLight,
+                    theme.primaryColorDark,
+                  ],
                 ),
+                onPressed: () {},
+                child: Text(localization.contactMeButton),
               ),
             ],
           ),

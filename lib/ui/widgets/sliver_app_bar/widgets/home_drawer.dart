@@ -8,9 +8,10 @@ class HomeDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screen = Screen.of(context);
+
     return Drawer(
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: screen.h(20)),
+        padding: EdgeInsets.symmetric(vertical: 150),
         child: const CustomNavigationBar(
           axis: Axis.vertical,
         ),

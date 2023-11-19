@@ -13,9 +13,11 @@ class HomeAppBar extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final screen = Screen.of(context);
     final theme = Theme.of(context);
+
     final animation = useState(0.0);
     final maxArea = MediaQuery.of(context).size.height - kToolbarHeight;
     final minArea = maxArea - kToolbarHeight;
+
     useEffect(() {
       final controller = ref.read(scrollControllerProvider);
       controller.addListener(
@@ -57,7 +59,6 @@ class HomeAppBar extends HookConsumerWidget {
               ),
             ),
             Expanded(
-              flex: 1,
               child: FractionallySizedBox(
                 widthFactor: screen.adaptive(tablet: 0.9, desktop: 0.7),
                 alignment: Alignment.centerRight,

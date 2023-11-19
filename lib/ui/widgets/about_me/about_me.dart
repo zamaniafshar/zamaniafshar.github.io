@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:personal_website/common/constants/assets_paths.dart';
 import 'package:personal_website/common/constants/constants.dart';
 import 'package:personal_website/common/responsive/responsive.dart';
+import 'package:personal_website/ui/widgets/custom_elevated_button.dart';
 
 class AboutMe extends StatelessWidget {
   const AboutMe({super.key});
@@ -12,17 +13,19 @@ class AboutMe extends StatelessWidget {
     final screen = Screen.of(context);
     final localization = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
+
     final isSmallScreen = screen.width <= kMinLargeTabletWidth;
     final buttonPadding = EdgeInsets.symmetric(
-      horizontal: screen.fromMTD(25, 25, 40),
-      vertical: screen.fromMTD(15, 15, 20),
+      horizontal: screen.fromMTD(20, 25, 40),
+      vertical: screen.fromMTD(10, 15, 15),
     );
+
     final myAvatar = ConstrainedBox(
       constraints: const BoxConstraints(
         maxWidth: 300,
         maxHeight: 300,
-        minWidth: 120,
-        minHeight: 120,
+        minWidth: 150,
+        minHeight: 150,
       ),
       child: PhysicalModel(
         shape: BoxShape.circle,
@@ -38,8 +41,10 @@ class AboutMe extends StatelessWidget {
         ),
       ),
     );
+
     final aboutMeTextAlign = isSmallScreen ? TextAlign.center : TextAlign.start;
-    final aboutMe = Column(
+
+    Widget aboutMe = Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: isSmallScreen ? CrossAxisAlignment.center : CrossAxisAlignment.start,
       children: [
@@ -67,77 +72,52 @@ class AboutMe extends StatelessWidget {
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            ElevatedButton(
+            CustomElevatedButton(
               onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                backgroundColor: theme.primaryColor,
-                elevation: 5,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(100),
-                ),
-                padding: buttonPadding,
+              padding: buttonPadding,
+              gradientBackground: LinearGradient(
+                colors: [
+                  theme.primaryColorLight,
+                  theme.primaryColorDark,
+                ],
               ),
-              child: Text(
-                localization.downloadResume,
-                style: theme.textTheme.titleMedium!.copyWith(
-                  color: Colors.white,
-                ),
-              ),
+              borderRadius: BorderRadius.circular(100),
+              child: Text(localization.downloadResume),
             ),
             screen.horizontalSpace(2.5),
-            ElevatedButton(
+            CustomElevatedButton(
               onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.white,
-                foregroundColor: theme.primaryColor,
-                surfaceTintColor: theme.primaryColor,
-                elevation: 5,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(100),
-                  side: BorderSide(
-                    color: theme.primaryColor,
-                  ),
-                ),
-                padding: buttonPadding,
+              backgroundColor: Colors.white,
+              foregroundColor: theme.primaryColor,
+              borderSide: BorderSide(
+                color: theme.primaryColor,
               ),
-              child: Text(
-                localization.hireMe,
-                style: theme.textTheme.titleMedium!.copyWith(
-                  color: theme.primaryColor,
-                ),
-              ),
+              borderRadius: BorderRadius.circular(100),
+              child: Text(localization.hireMe),
             ),
           ],
         ),
       ],
     );
 
-    final Widget child;
-    if (isSmallScreen) {
-      child = Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          myAvatar,
-          screen.verticalSpace(5),
-          aboutMe,
-        ],
-      );
-    } else {
-      child = Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          myAvatar,
-          screen.horizontalSpace(5),
-          Expanded(child: aboutMe),
-        ],
-      );
+    if (!isSmallScreen) {
+      aboutMe = Expanded(child: aboutMe);
     }
+
+    final space = isSmallScreen ? SizedBox(height: 25) : SizedBox(width: 40);
 
     return Padding(
       padding: screen.contentPadding,
-      child: child,
+      child: Flex(
+        direction: isSmallScreen ? Axis.vertical : Axis.horizontal,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          myAvatar,
+          space,
+          aboutMe,
+        ],
+      ),
     );
   }
 }

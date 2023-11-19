@@ -14,6 +14,7 @@ class AnimatedTitleText extends HookWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final isSelected = useState(false);
+
     useEffect(() {
       Future.delayed(const Duration(seconds: 1), () {
         if (!context.mounted) return;
@@ -21,10 +22,11 @@ class AnimatedTitleText extends HookWidget {
       });
       return null;
     }, const []);
+
     return AnimatedUnderlineText(
       text: title,
       isSelected: isSelected.value,
-      animateText: false,
+      selectedTextColor: theme.colorScheme.onSurface,
       textStyle: theme.textTheme.displaySmall,
       duration: const Duration(milliseconds: 500),
     );

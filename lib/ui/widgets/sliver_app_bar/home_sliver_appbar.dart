@@ -4,6 +4,7 @@ import 'package:personal_website/common/constants/assets_paths.dart';
 import 'package:personal_website/common/constants/constants.dart';
 import 'package:personal_website/common/responsive/responsive.dart';
 import 'package:personal_website/config/theme/text_theme.dart';
+import 'package:personal_website/ui/widgets/custom_elevated_button.dart';
 import 'package:personal_website/ui/widgets/sliver_app_bar/widgets/home_appbar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -15,6 +16,7 @@ class HomeSliverAppBar extends StatelessWidget {
     final theme = Theme.of(context);
     final screen = Screen.of(context);
     final localization = AppLocalizations.of(context)!;
+
     return SliverAppBar(
       expandedHeight: screen.height,
       backgroundColor: theme.colorScheme.background,
@@ -37,6 +39,7 @@ class WelcomeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
     return Theme(
       data: theme.copyWith(
         textTheme: theme.textTheme.merge(getWhiteTextTheme),
@@ -106,26 +109,16 @@ class WelcomeWidget extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 20),
-                    ElevatedButton(
+                    CustomElevatedButton(
                       onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        foregroundColor: theme.primaryColorLight,
-                        backgroundColor: Colors.black12,
-                        elevation: 0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(100),
-                          side: BorderSide(
-                            color: theme.primaryColor,
-                          ),
-                        ),
-                        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
+                      borderRadius: BorderRadius.circular(100),
+                      borderSide: BorderSide(
+                        color: theme.primaryColor,
                       ),
-                      child: Text(
-                        localization.hireMe,
-                        style: theme.textTheme.titleLarge!.copyWith(
-                          color: theme.primaryColorLight,
-                        ),
-                      ),
+                      foregroundColor: theme.primaryColorLight,
+                      backgroundColor: Colors.black12,
+                      elevation: 0,
+                      child: Text(localization.hireMe),
                     ),
                   ],
                 ),

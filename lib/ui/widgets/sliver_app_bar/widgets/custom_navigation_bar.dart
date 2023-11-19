@@ -20,6 +20,7 @@ class CustomNavigationBar extends HookConsumerWidget {
     final selectedIndex = ref.watch(navigationBarSelectedIndex);
     final localization = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
+
     final List<String> items = [
       localization.home,
       localization.aboutMe,
@@ -76,6 +77,7 @@ class NavigationItem extends HookWidget {
   Widget build(BuildContext context) {
     final oldIsSelected = usePrevious(isSelected);
     final isSelectedState = useState(isSelected);
+
     if (oldIsSelected != isSelected) {
       isSelectedState.value = isSelected;
     }

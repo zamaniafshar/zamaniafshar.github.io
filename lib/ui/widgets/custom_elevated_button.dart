@@ -1,49 +1,76 @@
 import 'package:flutter/material.dart';
+import 'package:personal_website/common/responsive/responsive.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton({
     super.key,
     this.onPressed,
+    this.backgroundColor,
+    this.borderRadius,
+    this.borderSide,
+    this.foregroundColor,
+    this.gradientBackground,
+    this.padding,
+    this.height,
+    this.width,
+    this.elevation = 5,
     required this.child,
   });
 
   final void Function()? onPressed;
+  final Color? backgroundColor;
+  final Color? foregroundColor;
+  final Gradient? gradientBackground;
+  final BorderSide? borderSide;
+  final EdgeInsets? padding;
+  final BorderRadius? borderRadius;
+  final double elevation;
+  final double? width;
+  final double? height;
   final Widget child;
 
   @override
   Widget build(BuildContext context) {
+    final screen = Screen.of(context);
     final theme = Theme.of(context);
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        gradient: LinearGradient(
-          colors: [
-            theme.primaryColorLight,
-            theme.primaryColorDark,
-          ],
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: theme.colorScheme.shadow.withOpacity(0.2),
-            blurRadius: 5,
-            offset: Offset(0, 4),
-            spreadRadius: 2,
-          )
-        ],
+
+    final borderRadius = this.borderRadius ?? BorderRadius.circular(10);
+    final padding = this.padding ??
+        EdgeInsets.symmetric(
+          horizontal: screen.fromMTD(20, 25, 40),
+          vertical: screen.fromMTD(10, 15, 15),
+        );
+    final foregroundColor = this.foregroundColor ?? theme.colorScheme.surface;
+    Color? backgroundColor;
+    if (gradientBackground == null) {
+      backgroundColor = this.backgroundColor ?? theme.primaryColor;
+    }
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: ElevatedButton.styleFrom(
+        foregroundColor: foregroundColor,
+        backgroundColor: Colors.transparent,
+        shape: RoundedRectangleBorder(borderRadius: borderRadius),
+        elevation: elevation,
+        padding: EdgeInsets.zero,
+        side: borderSide,
+        textStyle: TextStyle(fontSize: screen.fromMTD(14, 16, 18)),
       ),
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.transparent,
-          shadowColor: Colors.transparent,
-          foregroundColor: Colors.white,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-          padding: EdgeInsets.symmetric(
-            vertical: 20,
-            horizontal: 40,
+      child: SizedBox(
+        height: height,
+        width: width,
+        child: Ink(
+          decoration: BoxDecoration(
+            borderRadius: borderRadius,
+            color: backgroundColor,
+            gradient: gradientBackground,
+          ),
+          child: Container(
+            alignment: width != null || height != null ? Alignment.center : null,
+            padding: padding,
+            child: child,
           ),
         ),
-        onPressed: onPressed,
-        child: child,
       ),
     );
   }

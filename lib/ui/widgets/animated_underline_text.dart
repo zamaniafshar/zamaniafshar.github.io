@@ -4,19 +4,20 @@ class AnimatedUnderlineText extends StatelessWidget {
   const AnimatedUnderlineText({
     Key? key,
     required this.text,
-    this.isSelected = false,
     this.textStyle,
+    this.selectedTextColor,
+    this.unselectedTextColor,
+    this.isSelected = false,
     this.duration = const Duration(seconds: 1),
-    this.animateText = true,
     this.underlineMaxHeight = 4,
   }) : super(key: key);
 
   final String text;
-  final TextStyle? textStyle;
   final bool isSelected;
   final Duration duration;
-
-  final bool animateText;
+  final TextStyle? textStyle;
+  final Color? selectedTextColor;
+  final Color? unselectedTextColor;
   final double underlineMaxHeight;
 
   @override
@@ -24,6 +25,8 @@ class AnimatedUnderlineText extends StatelessWidget {
     final theme = Theme.of(context);
     final textStyle = this.textStyle ?? theme.textTheme.titleMedium!;
     final textSize = textStyle.calculateTextSize(context, text);
+    final selectedTextColor = this.selectedTextColor ?? theme.primaryColor;
+    final unselectedTextColor = this.unselectedTextColor ?? theme.colorScheme.onSurface;
 
     return SizedBox(
       height: textSize.height + underlineMaxHeight,
@@ -32,7 +35,7 @@ class AnimatedUnderlineText extends StatelessWidget {
           AnimatedDefaultTextStyle(
             duration: duration,
             style: textStyle.copyWith(
-              color: isSelected && animateText ? theme.primaryColor : theme.colorScheme.onSurface,
+              color: isSelected ? selectedTextColor : unselectedTextColor,
             ),
             child: Text(text),
           ),
