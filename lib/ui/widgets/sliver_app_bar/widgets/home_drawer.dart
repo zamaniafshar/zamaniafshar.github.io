@@ -13,7 +13,7 @@ class HomeDrawer extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: screen.h(20)),
         child: const CustomNavigationBar(
-          axis: Axis.vertical,
+          direction: Axis.vertical,
         ),
       ),
     );

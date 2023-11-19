@@ -63,7 +63,9 @@ class HomeAppBar extends HookConsumerWidget {
                 alignment: Alignment.centerRight,
                 child: Builder(
                   builder: (context) {
-                    if (screen.width < kMinLargeTabletWidth) {
+                    final isSmallScreen = screen.width < kMinLargeTabletWidth;
+
+                    if (isSmallScreen) {
                       return Align(
                         alignment: Alignment.centerRight,
                         child: IconButton(

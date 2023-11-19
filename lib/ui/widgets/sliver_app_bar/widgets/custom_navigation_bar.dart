@@ -9,11 +9,11 @@ class CustomNavigationBar extends HookConsumerWidget {
   const CustomNavigationBar({
     super.key,
     this.onChange,
-    this.axis = Axis.horizontal,
+    this.direction = Axis.horizontal,
   });
 
   final void Function(int index)? onChange;
-  final Axis axis;
+  final Axis direction;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -44,15 +44,8 @@ class CustomNavigationBar extends HookConsumerWidget {
       ];
     }
 
-    if (axis == Axis.vertical) {
-      return Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: buildItems(),
-      );
-    }
-
-    return Row(
+    return Flex(
+      direction: direction,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: buildItems(),
