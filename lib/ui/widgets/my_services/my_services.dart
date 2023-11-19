@@ -1,8 +1,8 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:personal_website/common/responsive/responsive.dart';
 import 'package:personal_website/ui/widgets/animated_title_text.dart';
+import 'package:personal_website/ui/widgets/my_services/service_container.dart';
 
 class MyServices extends StatelessWidget {
   const MyServices({super.key});
@@ -12,62 +12,16 @@ class MyServices extends StatelessWidget {
     final screen = Screen.of(context);
     final localization = AppLocalizations.of(context)!;
 
-    final webDevelopment = ServiceContainer(
-      icon: Icons.code,
-      title: localization.webDevelopment,
-      description: localization.webDevelopmentDescription,
-    );
-    final mobileDevelopment = ServiceContainer(
-      icon: Icons.phone_android,
-      title: localization.mobileDevelopment,
-      description: localization.mobileDevelopmentDescription,
-    );
+    final isSmallScreen = screen.width <= kMinLargeTabletWidth;
+    final isMediumScreen = screen.width <= kMinMediumDesktopWidth;
+    Widget layout;
 
-    final desktopDevelopment = ServiceContainer(
-      icon: Icons.desktop_windows_outlined,
-      title: localization.desktopDevelopment,
-      description: localization.desktopDevelopmentDescription,
-    );
-
-    Widget child;
-
-    if (screen.width <= kMinLargeTabletWidth) {
-      child = Column(
-        children: [
-          webDevelopment,
-          mobileDevelopment,
-          desktopDevelopment,
-        ],
-      );
-    } else if (screen.width <= kMinMediumDesktopWidth) {
-      child = Column(
-        children: [
-          Row(
-            children: [
-              Expanded(child: webDevelopment),
-              Expanded(child: mobileDevelopment),
-            ],
-          ),
-          Row(
-            children: [
-              const Spacer(),
-              Expanded(
-                flex: 4,
-                child: desktopDevelopment,
-              ),
-              const Spacer(),
-            ],
-          ),
-        ],
-      );
+    if (isSmallScreen) {
+      layout = const SmallScreenLayout();
+    } else if (isMediumScreen) {
+      layout = const MediumScreenLayout();
     } else {
-      child = Row(
-        children: [
-          Expanded(child: webDevelopment),
-          Expanded(child: mobileDevelopment),
-          Expanded(child: desktopDevelopment),
-        ],
-      );
+      layout = const LargeScreenLayout();
     }
 
     return Padding(
@@ -77,100 +31,135 @@ class MyServices extends StatelessWidget {
           AnimatedTitleText(
             title: localization.services,
           ),
-          screen.verticalSpace(5),
-          child,
+          const SizedBox(height: 30),
+          layout,
         ],
       ),
     );
   }
 }
 
-class ServiceContainer extends StatelessWidget {
-  const ServiceContainer({
-    Key? key,
-    required this.description,
-    required this.icon,
-    required this.title,
-  }) : super(key: key);
-
-  final String description;
-  final IconData icon;
-  final String title;
+class LargeScreenLayout extends StatelessWidget {
+  const LargeScreenLayout({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final screen = Screen.of(context);
-
-    return Container(
-      margin: const EdgeInsets.all(16),
-      padding: const EdgeInsets.all(16),
-      color: Colors.white,
-      child: CustomPaint(
-        foregroundPainter: ServiceContainerBorderPainter(theme.primaryColor),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 32),
-          child: Column(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(30),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(color: theme.primaryColor),
-                ),
-                child: Icon(
-                  icon,
-                  color: theme.primaryColor,
-                  size: screen.fromMTD(30, 40, 50),
-                ),
-              ),
-              const SizedBox(height: 15),
-              Text(
-                title,
-                style: theme.textTheme.titleLarge,
-              ),
-              const SizedBox(height: 10),
-              AutoSizeText(
-                description,
-                style: theme.textTheme.titleMedium,
-                maxLines: 6,
-              ),
-            ],
-          ),
+    return const Row(
+      children: [
+        Expanded(
+          child: WebDevelopment(),
         ),
-      ),
+        Expanded(
+          child: MobileDevelopment(),
+        ),
+        Expanded(
+          child: DesktopDevelopment(),
+        ),
+      ],
     );
   }
 }
 
-class ServiceContainerBorderPainter extends CustomPainter {
-  const ServiceContainerBorderPainter(this.color);
-
-  final Color color;
+class MediumScreenLayout extends StatelessWidget {
+  const MediumScreenLayout({
+    super.key,
+  });
 
   @override
-  void paint(Canvas canvas, Size size) {
-    final area = size.height * 0.3;
-    final paint = Paint()
-      ..color = color
-      ..style = PaintingStyle.stroke;
-
-    final topLeftBorder = Path()
-      ..moveTo(0, area)
-      ..lineTo(0, 0)
-      ..lineTo(area, 0);
-
-    final bottomRightBorder = Path()
-      ..moveTo(size.width - area, size.height)
-      ..lineTo(size.width, size.height)
-      ..lineTo(size.width, size.height - area);
-
-    canvas.drawPath(topLeftBorder, paint);
-    canvas.drawPath(bottomRightBorder, paint);
+  Widget build(BuildContext context) {
+    return const Column(
+      children: [
+        Row(
+          children: [
+            Expanded(
+              child: WebDevelopment(),
+            ),
+            Expanded(
+              child: MobileDevelopment(),
+            ),
+          ],
+        ),
+        Row(
+          children: [
+            Spacer(),
+            Expanded(
+              flex: 3,
+              child: DesktopDevelopment(),
+            ),
+            Spacer(),
+          ],
+        ),
+      ],
+    );
   }
+}
+
+class SmallScreenLayout extends StatelessWidget {
+  const SmallScreenLayout({
+    super.key,
+  });
 
   @override
-  bool shouldRepaint(covariant ServiceContainerBorderPainter oldDelegate) {
-    return color != oldDelegate.color;
+  Widget build(BuildContext context) {
+    return const Column(
+      children: [
+        WebDevelopment(),
+        MobileDevelopment(),
+        DesktopDevelopment(),
+      ],
+    );
+  }
+}
+
+class DesktopDevelopment extends StatelessWidget {
+  const DesktopDevelopment({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final localization = AppLocalizations.of(context)!;
+
+    return ServiceContainer(
+      icon: Icons.desktop_windows_outlined,
+      title: localization.desktopDevelopment,
+      description: localization.desktopDevelopmentDescription,
+    );
+  }
+}
+
+class MobileDevelopment extends StatelessWidget {
+  const MobileDevelopment({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final localization = AppLocalizations.of(context)!;
+
+    return ServiceContainer(
+      icon: Icons.phone_android,
+      title: localization.mobileDevelopment,
+      description: localization.mobileDevelopmentDescription,
+    );
+  }
+}
+
+class WebDevelopment extends StatelessWidget {
+  const WebDevelopment({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final localization = AppLocalizations.of(context)!;
+
+    return ServiceContainer(
+      icon: Icons.code,
+      title: localization.webDevelopment,
+      description: localization.webDevelopmentDescription,
+    );
   }
 }
