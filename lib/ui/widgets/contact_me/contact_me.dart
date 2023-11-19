@@ -12,8 +12,18 @@ class ContactMe extends StatelessWidget {
   Widget build(BuildContext context) {
     final screen = Screen.of(context);
 
+    final isSmallScreen = screen.type.isMobile;
+
     Widget contactBody;
-    if (screen.type.isDesktop) {
+    if (isSmallScreen) {
+      contactBody = const Column(
+        children: [
+          SendEmail(),
+          SizedBox(height: 50),
+          ContactInformation(),
+        ],
+      );
+    } else {
       contactBody = ConstrainedBox(
         constraints: BoxConstraints(
           maxWidth: 1100,
@@ -34,14 +44,6 @@ class ContactMe extends StatelessWidget {
             ),
           ],
         ),
-      );
-    } else {
-      contactBody = const Column(
-        children: [
-          SendEmail(),
-          SizedBox(height: 50),
-          ContactInformation(),
-        ],
       );
     }
 
@@ -69,6 +71,7 @@ class ContactMeTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     final localization = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
+
     return Column(
       children: [
         AnimatedTitleText(
