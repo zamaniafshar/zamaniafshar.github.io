@@ -40,11 +40,13 @@ class CustomElevatedButton extends StatelessWidget {
           horizontal: screen.fromMTD(20, 25, 40),
           vertical: screen.fromMTD(10, 15, 15),
         );
+
     final foregroundColor = this.foregroundColor ?? theme.colorScheme.surface;
     Color? backgroundColor;
     if (gradientBackground == null) {
       backgroundColor = this.backgroundColor ?? theme.primaryColor;
     }
+
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
