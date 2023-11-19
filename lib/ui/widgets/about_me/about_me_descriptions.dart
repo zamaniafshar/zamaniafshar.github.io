@@ -14,16 +14,16 @@ class AboutMeDescriptions extends StatelessWidget {
     final localization = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
 
-    final isLargeScreen = screen.type.isDesktop;
+    final isSmallScreen = screen.type.isMobile;
     final buttonPadding = EdgeInsets.symmetric(
       horizontal: screen.fromMTD(20, 25, 40),
       vertical: screen.fromMTD(10, 15, 15),
     );
-    final aboutMeTextAlign = isLargeScreen ? TextAlign.start : TextAlign.center;
+    final aboutMeTextAlign = isSmallScreen ? TextAlign.center : TextAlign.start;
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: isLargeScreen ? CrossAxisAlignment.start : CrossAxisAlignment.center,
+      crossAxisAlignment: isSmallScreen ? CrossAxisAlignment.center : CrossAxisAlignment.start,
       children: [
         Text(
           localization.jobTitle,

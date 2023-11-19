@@ -10,23 +10,23 @@ class AboutMe extends StatelessWidget {
   Widget build(BuildContext context) {
     final screen = Screen.of(context);
 
-    final isLargeScreen = screen.type.isDesktop;
+    final isSmallScreen = screen.type.isMobile;
 
     Widget aboutMe = const AboutMeDescriptions();
     Widget space;
-    if (isLargeScreen) {
+    if (isSmallScreen) {
+      space = const SizedBox(height: 25);
+    } else {
       aboutMe = Expanded(
         child: aboutMe,
       );
       space = const SizedBox(width: 40);
-    } else {
-      space = const SizedBox(height: 25);
     }
 
     return Padding(
       padding: screen.contentPadding,
       child: Flex(
-        direction: isLargeScreen ? Axis.horizontal : Axis.vertical,
+        direction: isSmallScreen ? Axis.vertical : Axis.horizontal,
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
