@@ -42,10 +42,11 @@ class HomeSliverListContent extends StatelessWidget {
           const AboutMe(),
           screen.verticalSpace(15),
           const MySkills(),
-          screen.verticalSpace(30),
+          screen.verticalSpace(20),
           const MyServices(),
-          screen.verticalSpace(30),
+          screen.verticalSpace(20),
           const ContactMe(),
+          screen.verticalSpace(5),
         ],
       ),
     );

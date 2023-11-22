@@ -48,11 +48,7 @@ class ContactMe extends StatelessWidget {
     }
 
     return Container(
-      padding: screen.contentPadding.add(
-        const EdgeInsets.symmetric(
-          vertical: 100,
-        ),
-      ),
+      padding: screen.contentPadding,
       child: Column(
         children: [
           const ContactMeTitle(),
