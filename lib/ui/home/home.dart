@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:personal_website/common/responsive/responsive.dart';
 import 'package:personal_website/providers/providers.dart';
-import 'package:personal_website/ui/widgets/about_me/about_me.dart';
-import 'package:personal_website/ui/widgets/contact_me/contact_me.dart';
-import 'package:personal_website/ui/widgets/my_services/my_services.dart';
-import 'package:personal_website/ui/widgets/my_skills/my_skills.dart';
-import 'package:personal_website/ui/widgets/sliver_app_bar/home_sliver_appbar.dart';
+import 'package:personal_website/ui/home/widgets/about_me/about_me.dart';
+import 'package:personal_website/ui/home/widgets/contact_me/contact_me.dart';
+import 'package:personal_website/ui/home/widgets/my_services/my_services.dart';
+import 'package:personal_website/ui/home/widgets/my_skills/my_skills.dart';
+import 'package:personal_website/ui/home/widgets/sliver_app_bar/home_sliver_appbar.dart';
 
 import 'widgets/sliver_app_bar/widgets/home_drawer.dart';
 
@@ -16,8 +16,11 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final screen = Screen.of(context);
+
+    final isSmallScreen = screen.width < kMinLargeTabletWidth;
+
     return Scaffold(
-      endDrawer: screen.width < kMinLargeTabletWidth ? const HomeDrawer() : null,
+      endDrawer: isSmallScreen ? const HomeDrawer() : null,
       body: CustomScrollView(
         controller: ref.read(scrollControllerProvider),
         slivers: const [

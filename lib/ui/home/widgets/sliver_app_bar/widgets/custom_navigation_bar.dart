@@ -3,7 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:personal_website/providers/providers.dart';
-import '../../animated_underline_text.dart';
+import '../../../../widgets/animated_underline_text.dart';
 
 class CustomNavigationBar extends HookConsumerWidget {
   const CustomNavigationBar({

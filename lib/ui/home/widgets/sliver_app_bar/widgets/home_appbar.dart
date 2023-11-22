@@ -3,7 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:personal_website/common/responsive/responsive.dart';
 import 'package:personal_website/providers/providers.dart';
-import 'package:personal_website/ui/widgets/sliver_app_bar/widgets/custom_navigation_bar.dart';
+import 'package:personal_website/ui/home/widgets/sliver_app_bar/widgets/custom_navigation_bar.dart';
 
 class HomeAppBar extends HookConsumerWidget {
   const HomeAppBar({super.key});

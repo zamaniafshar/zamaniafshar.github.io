@@ -4,7 +4,7 @@ import 'package:personal_website/common/constants/assets_paths.dart';
 import 'package:personal_website/common/responsive/responsive.dart';
 import 'package:personal_website/config/theme/text_theme.dart';
 import 'package:personal_website/ui/widgets/custom_elevated_button.dart';
-import 'package:personal_website/ui/widgets/sliver_app_bar/widgets/home_appbar.dart';
+import 'package:personal_website/ui/home/widgets/sliver_app_bar/widgets/home_appbar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeSliverAppBar extends StatelessWidget {

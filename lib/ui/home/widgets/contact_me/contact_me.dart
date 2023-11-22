@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:personal_website/common/responsive/responsive.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:personal_website/ui/widgets/animated_title_text.dart';
-import 'package:personal_website/ui/widgets/contact_me/widgets/contact_information.dart';
-import 'package:personal_website/ui/widgets/contact_me/widgets/send_email.dart';
+import 'package:personal_website/ui/home/widgets/contact_me/widgets/contact_information.dart';
+import 'package:personal_website/ui/home/widgets/contact_me/widgets/send_email.dart';
 
 class ContactMe extends StatelessWidget {
   const ContactMe({super.key});

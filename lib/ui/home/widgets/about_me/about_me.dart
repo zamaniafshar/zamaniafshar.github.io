@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:personal_website/common/responsive/responsive.dart';
-import 'package:personal_website/ui/widgets/about_me/widgets/about_me_descriptions.dart';
-import 'package:personal_website/ui/widgets/about_me/widgets/my_avatar.dart';
+import 'package:personal_website/ui/home/widgets/about_me/widgets/about_me_descriptions.dart';
+import 'package:personal_website/ui/home/widgets/about_me/widgets/my_avatar.dart';
 
 class AboutMe extends StatelessWidget {
   const AboutMe({super.key});
