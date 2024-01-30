@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:personal_website/providers/providers.dart';
+import 'package:personal_website/providers/indexed_list_povider.dart';
 import '../../../../widgets/animated_underline_text.dart';
 
 class CustomNavigationBar extends HookConsumerWidget {
@@ -17,7 +17,7 @@ class CustomNavigationBar extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedIndex = ref.watch(navigationBarSelectedIndex);
+    final selectedIndex = ref.watch(indexedListNotifierProvider);
     final localization = AppLocalizations.of(context)!;
 
     final List<String> items = [
@@ -36,7 +36,7 @@ class CustomNavigationBar extends HookConsumerWidget {
               text: items[i],
               isSelected: selectedIndex == i,
               onTap: () {
-                ref.watch(navigationBarSelectedIndex.notifier).state = i;
+                ref.watch(indexedListNotifierProvider.notifier).animateToIndex(i);
                 onChange?.call(i);
               },
             ),

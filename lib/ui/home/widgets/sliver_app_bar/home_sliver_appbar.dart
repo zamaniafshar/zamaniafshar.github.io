@@ -42,89 +42,92 @@ class WelcomeWidget extends StatelessWidget {
       data: theme.copyWith(
         textTheme: theme.textTheme.merge(getWhiteTextTheme),
       ),
-      child: Builder(builder: (context) {
-        final theme = Theme.of(context);
-        final screen = Screen.of(context);
-        final localization = AppLocalizations.of(context)!;
-        return FlexibleSpaceBar(
-          background: Stack(
-            alignment: Alignment.center,
-            children: [
-              Positioned.fill(
-                child: Container(
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(kHomeBackgroundImagePath),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  child: const ColoredBox(
-                    color: Colors.black45,
-                  ),
-                ),
-              ),
-              Positioned.fill(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      localization.homeWelcome,
-                      style: screen.fromMTD(
-                        theme.textTheme.titleLarge,
-                        theme.textTheme.headlineSmall,
-                        theme.textTheme.headlineMedium,
+      child: Builder(
+        builder: (context) {
+          final theme = Theme.of(context);
+          final screen = Screen.of(context);
+          final localization = AppLocalizations.of(context)!;
+
+          return FlexibleSpaceBar(
+            background: Stack(
+              alignment: Alignment.center,
+              children: [
+                Positioned.fill(
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(kHomeBackgroundImagePath),
+                        fit: BoxFit.cover,
                       ),
                     ),
-                    const SizedBox(height: 20),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: FittedBox(
-                        child: AnimatedTextKit(
-                          repeatForever: true,
-                          pause: const Duration(seconds: 2),
-                          animatedTexts: [
-                            TypewriterAnimatedText(
-                              localization.myName,
-                              textStyle: screen.fromMTD(
-                                theme.textTheme.headlineMedium,
-                                theme.textTheme.displaySmall,
-                                theme.textTheme.displayMedium,
-                              ),
-                              speed: const Duration(milliseconds: 100),
-                              cursor: '|',
-                            ),
-                          ],
+                    child: const ColoredBox(
+                      color: Colors.black45,
+                    ),
+                  ),
+                ),
+                Positioned.fill(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        localization.homeWelcome,
+                        style: screen.fromMTD(
+                          theme.textTheme.titleLarge,
+                          theme.textTheme.headlineSmall,
+                          theme.textTheme.headlineMedium,
                         ),
                       ),
-                    ),
-                    const SizedBox(height: 20),
-                    Text(
-                      localization.homeJobTitle,
-                      style: screen.fromMTD(
-                        theme.textTheme.titleLarge,
-                        theme.textTheme.headlineSmall,
-                        theme.textTheme.headlineMedium,
+                      const SizedBox(height: 20),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: FittedBox(
+                          child: AnimatedTextKit(
+                            repeatForever: true,
+                            pause: const Duration(seconds: 2),
+                            animatedTexts: [
+                              TypewriterAnimatedText(
+                                localization.myName,
+                                textStyle: screen.fromMTD(
+                                  theme.textTheme.headlineMedium,
+                                  theme.textTheme.displaySmall,
+                                  theme.textTheme.displayMedium,
+                                ),
+                                speed: const Duration(milliseconds: 100),
+                                cursor: '|',
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 20),
-                    CustomElevatedButton(
-                      onPressed: () {},
-                      borderRadius: BorderRadius.circular(100),
-                      borderSide: BorderSide(
-                        color: theme.primaryColor,
+                      const SizedBox(height: 20),
+                      Text(
+                        localization.homeJobTitle,
+                        style: screen.fromMTD(
+                          theme.textTheme.titleLarge,
+                          theme.textTheme.headlineSmall,
+                          theme.textTheme.headlineMedium,
+                        ),
                       ),
-                      foregroundColor: theme.primaryColorLight,
-                      backgroundColor: Colors.black12,
-                      elevation: 0,
-                      child: Text(localization.hireMe),
-                    ),
-                  ],
+                      const SizedBox(height: 20),
+                      CustomElevatedButton(
+                        onPressed: () {},
+                        borderRadius: BorderRadius.circular(100),
+                        borderSide: BorderSide(
+                          color: theme.primaryColor,
+                        ),
+                        foregroundColor: theme.primaryColorLight,
+                        backgroundColor: Colors.black12,
+                        elevation: 0,
+                        child: Text(localization.hireMe),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          ),
-        );
-      }),
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }
