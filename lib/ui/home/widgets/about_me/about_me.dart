@@ -10,7 +10,7 @@ class AboutMe extends StatelessWidget {
   Widget build(BuildContext context) {
     final screen = Screen.of(context);
 
-    final isSmallScreen = screen.type.isMobile;
+    final isSmallScreen = screen.type.isMobile || screen.type.isSmallTablet;
 
     Widget aboutMe = const AboutMeDescriptions();
     Widget space;

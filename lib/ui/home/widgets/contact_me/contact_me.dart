@@ -12,7 +12,7 @@ class ContactMe extends StatelessWidget {
   Widget build(BuildContext context) {
     final screen = Screen.of(context);
 
-    final isSmallScreen = screen.type.isMobile;
+    final isSmallScreen = screen.type.isMobile || screen.type.isTablet;
 
     Widget contactBody;
     if (isSmallScreen) {
@@ -27,7 +27,7 @@ class ContactMe extends StatelessWidget {
       contactBody = ConstrainedBox(
         constraints: BoxConstraints(
           maxWidth: 1100,
-          minHeight: screen.type.isDesktop ? 560 : double.infinity,
+          minHeight: screen.type.isDesktop ? 560 : 0.0,
           maxHeight: screen.type.isDesktop ? 560 : double.infinity,
         ),
         child: const Row(
