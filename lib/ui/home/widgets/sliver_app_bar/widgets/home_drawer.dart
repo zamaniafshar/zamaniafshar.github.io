@@ -12,8 +12,11 @@ class HomeDrawer extends StatelessWidget {
     return Drawer(
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: screen.h(20)),
-        child: const CustomNavigationBar(
+        child: CustomNavigationBar(
           direction: Axis.vertical,
+          onChange: (_) {
+            Scaffold.of(context).closeEndDrawer();
+          },
         ),
       ),
     );
