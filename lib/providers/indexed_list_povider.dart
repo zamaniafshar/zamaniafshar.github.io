@@ -48,6 +48,10 @@ final class IndexedListNotifier extends Notifier<CurrentIndex> {
     );
   }
 
+  Future<void> animateToLast() {
+    return animateToIndex(_itemsHeights.length - 1);
+  }
+
   double _calculateAnimateToIndexOffset(int index) {
     if (index == 0) return 0.0;
     return _calculateOffsetOf(index) - _appBarHeight;

@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:personal_website/common/responsive/responsive.dart';
+import 'package:personal_website/providers/indexed_list_povider.dart';
 import 'package:personal_website/ui/widgets/custom_elevated_button.dart';
 
-class AboutMeDescriptions extends StatelessWidget {
+class AboutMeDescriptions extends ConsumerWidget {
   const AboutMeDescriptions({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final screen = Screen.of(context);
     final localization = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
@@ -63,7 +65,8 @@ class AboutMeDescriptions extends StatelessWidget {
             ),
             const SizedBox(width: 15),
             CustomElevatedButton(
-              onPressed: () {},
+              // scroll to contact me
+              onPressed: () => ref.read(indexedListNotifierProvider.notifier).animateToLast(),
               backgroundColor: Colors.white,
               foregroundColor: theme.primaryColor,
               borderSide: BorderSide(

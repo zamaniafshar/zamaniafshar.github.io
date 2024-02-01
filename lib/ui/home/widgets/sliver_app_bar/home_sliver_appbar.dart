@@ -1,8 +1,10 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:personal_website/common/constants/assets_paths.dart';
 import 'package:personal_website/common/responsive/responsive.dart';
 import 'package:personal_website/config/theme/text_theme.dart';
+import 'package:personal_website/providers/indexed_list_povider.dart';
 import 'package:personal_website/ui/widgets/custom_elevated_button.dart';
 import 'package:personal_website/ui/home/widgets/sliver_app_bar/widgets/home_appbar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -31,11 +33,11 @@ class HomeSliverAppBar extends StatelessWidget {
   }
 }
 
-class WelcomeWidget extends StatelessWidget {
+class WelcomeWidget extends ConsumerWidget {
   const WelcomeWidget({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
 
     return Theme(
@@ -110,7 +112,8 @@ class WelcomeWidget extends StatelessWidget {
                       ),
                       const SizedBox(height: 20),
                       CustomElevatedButton(
-                        onPressed: () {},
+                        onPressed: () =>
+                            ref.read(indexedListNotifierProvider.notifier).animateToLast(),
                         borderRadius: BorderRadius.circular(100),
                         borderSide: BorderSide(
                           color: theme.primaryColor,
