@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:personal_website/common/constants/assets_paths.dart';
+import 'package:personal_website/common/constants/constants.dart';
 import 'package:personal_website/common/responsive/responsive.dart';
 
 class MyAvatar extends StatelessWidget {
@@ -20,7 +21,7 @@ class MyAvatar extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.all(8),
           child: CircleAvatar(
-            foregroundImage: AssetImage(kMyPictureImagePath),
+            foregroundImage: NetworkImage(kProfileImageUrl),
           ),
         ),
       ),
