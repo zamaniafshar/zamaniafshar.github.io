@@ -38,7 +38,7 @@ dependencies:
   flutter_hooks: ^0.20.3
   flutter_svg: ^2.0.9
   hooks_riverpod: ^2.4.6
-  intl: ^0.18.1
+  url_launcher: ^6.2.4
 
 dev_dependencies:
 
