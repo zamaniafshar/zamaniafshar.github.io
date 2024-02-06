@@ -32,12 +32,16 @@ class AnimatedUnderlineText extends StatelessWidget {
       height: textSize.height + underlineMaxHeight,
       child: Column(
         children: [
-          AnimatedDefaultTextStyle(
-            duration: duration,
-            style: textStyle.copyWith(
-              color: isSelected ? selectedTextColor : unselectedTextColor,
+          Expanded(
+            child: FittedBox(
+              child: AnimatedDefaultTextStyle(
+                duration: duration,
+                style: textStyle.copyWith(
+                  color: isSelected ? selectedTextColor : unselectedTextColor,
+                ),
+                child: Text(text),
+              ),
             ),
-            child: Text(text),
           ),
           AnimatedContainer(
             duration: duration,
