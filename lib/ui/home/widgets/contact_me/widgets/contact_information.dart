@@ -11,7 +11,6 @@ class ContactInformation extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Card(
-      elevation: 5,
       child: Padding(
         padding: const EdgeInsets.all(30),
         child: ListTileTheme(

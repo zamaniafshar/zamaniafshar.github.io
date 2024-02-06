@@ -15,6 +15,9 @@ ThemeData get getLightTheme {
       secondary: Colors.blue,
       secondaryContainer: Colors.blue.shade700,
     ),
+    cardTheme: const CardTheme(
+      elevation: 5,
+    ),
     textTheme: getBlackTextTheme,
   );
 }

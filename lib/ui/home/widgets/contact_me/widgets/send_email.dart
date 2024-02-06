@@ -72,7 +72,6 @@ class SendEmail extends StatelessWidget {
         width: double.infinity,
       ),
       child: Card(
-        elevation: 5,
         child: Padding(
           padding: const EdgeInsets.all(30),
           child: Column(
