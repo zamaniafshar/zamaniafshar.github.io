@@ -58,32 +58,37 @@ class HomeAppBar extends HookConsumerWidget {
               ),
             ),
             Expanded(
-              child: FractionallySizedBox(
-                widthFactor: screen.adaptive(tablet: 0.9, desktop: 0.7),
-                alignment: Alignment.centerRight,
-                child: Builder(
-                  builder: (context) {
-                    final isSmallScreen = screen.width < kMinLargeTabletWidth;
+              child: Builder(
+                builder: (context) {
+                  final isSmallScreen = screen.width < kMinLargeTabletWidth;
 
-                    if (isSmallScreen) {
-                      return Align(
-                        alignment: Alignment.centerRight,
-                        child: IconButton(
-                          onPressed: () {
-                            Scaffold.of(context).openEndDrawer();
-                          },
-                          iconSize: 35,
-                          icon: Icon(
-                            Icons.menu,
-                            fill: 1,
-                            color: color,
-                          ),
+                  if (isSmallScreen) {
+                    return Align(
+                      alignment: Alignment.centerRight,
+                      child: IconButton(
+                        onPressed: () {
+                          Scaffold.of(context).openEndDrawer();
+                        },
+                        iconSize: 35,
+                        icon: Icon(
+                          Icons.menu,
+                          fill: 1,
+                          color: color,
                         ),
-                      );
-                    }
-                    return const CustomNavigationBar();
-                  },
-                ),
+                      ),
+                    );
+                  }
+                  return Row(
+                    children: [
+                      SizedBox(
+                        width: screen.fromMTD(0, 30, 200),
+                      ),
+                      const Expanded(
+                        child: CustomNavigationBar(),
+                      ),
+                    ],
+                  );
+                },
               ),
             ),
           ],
