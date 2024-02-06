@@ -3,6 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:personal_website/common/responsive/responsive.dart';
 import 'package:personal_website/providers/indexed_list_povider.dart';
+import 'package:personal_website/ui/home/widgets/sliver_app_bar/widgets/change_language_menu_button.dart';
 import 'package:personal_website/ui/home/widgets/sliver_app_bar/widgets/custom_navigation_bar.dart';
 
 class HomeAppBar extends HookConsumerWidget {
@@ -60,15 +61,13 @@ class HomeAppBar extends HookConsumerWidget {
             Expanded(
               child: Builder(
                 builder: (context) {
-                  final isSmallScreen = screen.width < kMinLargeTabletWidth;
+                  final isSmallScreen = !screen.type.isDesktop;
 
                   if (isSmallScreen) {
                     return Align(
-                      alignment: Alignment.centerRight,
+                      alignment: AlignmentDirectional.centerEnd,
                       child: IconButton(
-                        onPressed: () {
-                          Scaffold.of(context).openEndDrawer();
-                        },
+                        onPressed: Scaffold.of(context).openEndDrawer,
                         iconSize: 35,
                         icon: Icon(
                           Icons.menu,
@@ -78,14 +77,14 @@ class HomeAppBar extends HookConsumerWidget {
                       ),
                     );
                   }
-                  return Row(
+                  return const Row(
                     children: [
-                      SizedBox(
-                        width: screen.fromMTD(0, 30, 200),
-                      ),
-                      const Expanded(
+                      SizedBox(width: 100),
+                      Expanded(
                         child: CustomNavigationBar(),
                       ),
+                      SizedBox(width: 100),
+                      ChangeLanguageMenuButton(),
                     ],
                   );
                 },

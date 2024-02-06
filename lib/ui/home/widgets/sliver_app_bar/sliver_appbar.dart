@@ -24,10 +24,7 @@ class HomeSliverAppBar extends StatelessWidget {
       pinned: true,
       titleSpacing: 0,
       actions: const [SizedBox()],
-      title: const Directionality(
-        textDirection: TextDirection.ltr,
-        child: HomeAppBar(),
-      ),
+      title: const HomeAppBar(),
       flexibleSpace: const WelcomeWidget(),
     );
   }

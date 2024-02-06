@@ -7,7 +7,7 @@ import 'package:personal_website/ui/home/widgets/about_me/about_me.dart';
 import 'package:personal_website/ui/home/widgets/contact_me/contact_me.dart';
 import 'package:personal_website/ui/home/widgets/my_services/my_services.dart';
 import 'package:personal_website/ui/home/widgets/my_skills/my_skills.dart';
-import 'package:personal_website/ui/home/widgets/sliver_app_bar/home_sliver_appbar.dart';
+import 'package:personal_website/ui/home/widgets/sliver_app_bar/sliver_appbar.dart';
 
 import 'widgets/sliver_app_bar/widgets/home_drawer.dart';
 
@@ -17,10 +17,11 @@ class HomeScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final screen = Screen.of(context);
-    final isSmallScreen = screen.width < kMinLargeTabletWidth;
+    final isSmallScreen = !screen.type.isDesktop;
+    final drawer = isSmallScreen ? const HomeDrawer() : null;
 
     return Scaffold(
-      endDrawer: isSmallScreen ? const HomeDrawer() : null,
+      endDrawer: drawer,
       body: CustomScrollView(
         shrinkWrap: true,
         controller: ref.watch(homeScrollControllerProvider),
