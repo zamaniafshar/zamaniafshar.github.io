@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:personal_website/common/constants/constants.dart';
+import 'package:personal_website/config/constants/constants.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ContactInformation extends StatelessWidget {

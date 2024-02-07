@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:personal_website/common/constants/constants.dart';
+import 'package:personal_website/config/constants/constants.dart';
 import 'package:personal_website/providers/providers.dart';
 
 final languageProvider = NotifierProvider<LanguageNotifier, Locale>(LanguageNotifier.new);

@@ -1,7 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:personal_website/common/constants/assets_paths.dart';
+import 'package:personal_website/config/constants/assets_paths.dart';
 import 'package:personal_website/common/responsive/responsive.dart';
 import 'package:personal_website/config/theme/text_theme.dart';
 import 'package:personal_website/providers/indexed_list_povider.dart';
