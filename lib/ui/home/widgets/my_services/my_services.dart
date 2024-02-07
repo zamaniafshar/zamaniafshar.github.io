@@ -46,18 +46,20 @@ class LargeScreenLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
-      children: [
-        Expanded(
-          child: WebDevelopment(),
-        ),
-        Expanded(
-          child: MobileDevelopment(),
-        ),
-        Expanded(
-          child: DesktopDevelopment(),
-        ),
-      ],
+    return const IntrinsicHeight(
+      child: Row(
+        children: [
+          Expanded(
+            child: WebDevelopment(),
+          ),
+          Expanded(
+            child: MobileDevelopment(),
+          ),
+          Expanded(
+            child: DesktopDevelopment(),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -71,15 +73,17 @@ class MediumScreenLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Column(
       children: [
-        Row(
-          children: [
-            Expanded(
-              child: WebDevelopment(),
-            ),
-            Expanded(
-              child: MobileDevelopment(),
-            ),
-          ],
+        IntrinsicHeight(
+          child: Row(
+            children: [
+              Expanded(
+                child: WebDevelopment(),
+              ),
+              Expanded(
+                child: MobileDevelopment(),
+              ),
+            ],
+          ),
         ),
         Row(
           children: [

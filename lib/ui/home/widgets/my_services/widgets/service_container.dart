@@ -19,43 +19,40 @@ class ServiceContainer extends StatelessWidget {
     final theme = Theme.of(context);
     final screen = Screen.of(context);
 
-    return SizedBox(
-      height: 500,
-      child: Card(
-        margin: const EdgeInsets.all(16),
-        color: Colors.white,
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: CustomPaint(
-            foregroundPainter: ServiceContainerBorderPainter(theme.primaryColor),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 32),
-              child: Column(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(30),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(color: theme.primaryColor),
-                    ),
-                    child: Icon(
-                      icon,
-                      color: theme.primaryColor,
-                      size: screen.fromMTD(30, 40, 50),
-                    ),
+    return Card(
+      margin: const EdgeInsets.all(16),
+      color: Colors.white,
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: CustomPaint(
+          foregroundPainter: ServiceContainerBorderPainter(theme.primaryColor),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 32),
+            child: Column(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(30),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(color: theme.primaryColor),
                   ),
-                  const SizedBox(height: 15),
-                  Text(
-                    title,
-                    style: theme.textTheme.titleLarge,
+                  child: Icon(
+                    icon,
+                    color: theme.primaryColor,
+                    size: screen.fromMTD(30, 40, 50),
                   ),
-                  const SizedBox(height: 10),
-                  AutoSizeText(
-                    description,
-                    style: theme.textTheme.titleMedium,
-                  ),
-                ],
-              ),
+                ),
+                const SizedBox(height: 15),
+                Text(
+                  title,
+                  style: theme.textTheme.titleLarge,
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  description,
+                  style: theme.textTheme.titleMedium,
+                ),
+              ],
             ),
           ),
         ),
