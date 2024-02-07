@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:personal_website/providers/indexed_list_povider.dart';
+import 'package:personal_website/providers/indexed_list_provider.dart';
 
 final class IndexedItemList extends _IndexedItemListBase {
   const IndexedItemList({

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:personal_website/common/responsive/responsive.dart';
-import 'package:personal_website/providers/indexed_list_povider.dart';
+import 'package:personal_website/providers/indexed_list_provider.dart';
 import 'package:personal_website/ui/home/widgets/indexed_list_item.dart';
 import 'package:personal_website/ui/home/widgets/about_me/about_me.dart';
 import 'package:personal_website/ui/home/widgets/contact_me/contact_me.dart';
