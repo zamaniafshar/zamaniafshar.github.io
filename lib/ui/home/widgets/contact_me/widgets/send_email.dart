@@ -68,7 +68,7 @@ class SendEmail extends StatelessWidget {
     }
     return ConstrainedBox(
       constraints: BoxConstraints.tightFor(
-        height: screen.type.isMobile ? null : 560,
+        height: screen.type.isMobile ? null : 580,
         width: double.infinity,
       ),
       child: Card(
