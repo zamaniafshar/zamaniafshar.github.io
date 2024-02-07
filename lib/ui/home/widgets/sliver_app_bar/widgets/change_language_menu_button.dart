@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:personal_website/config/constants/constants.dart';
-import 'package:personal_website/providers/language_provider.dart';
+import 'package:personal_website/provider/language_provider.dart';
 
 class ChangeLanguageMenuButton extends ConsumerWidget {
   const ChangeLanguageMenuButton({super.key});
