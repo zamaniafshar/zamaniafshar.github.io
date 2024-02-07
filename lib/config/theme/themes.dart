@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:personal_website/common/constants/constants.dart';
 import 'package:personal_website/config/theme/app_colors.dart';
 
 import 'text_theme.dart';
 
-ThemeData get getLightTheme {
+ThemeData createLightTheme(Locale currentLocale) {
+  final fontFamily =
+      currentLocale == kPersianLocale ? kShabnamFarsiDigitFontFamily : kShabnamFontFamily;
   return ThemeData(
-    fontFamily: 'Vazir',
+    fontFamily: fontFamily,
     primaryColorLight: AppColors.greenLight,
     primaryColor: AppColors.green,
     primaryColorDark: AppColors.greenDark,

@@ -12,13 +12,15 @@ class PersonalWebsiteApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final currentLocale = ref.watch(languageProvider);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: getLightTheme,
+      theme: createLightTheme(currentLocale),
       home: const HomeScreen(),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: kSupportedLocales,
-      locale: ref.watch(languageProvider),
+      locale: currentLocale,
       builder: (context, child) {
         return Screen(
           mediaQueryData: MediaQuery.of(context),

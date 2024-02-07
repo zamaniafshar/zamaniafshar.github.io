@@ -81,8 +81,17 @@ flutter:
     - family: SassyFrass
       fonts:
         - asset: assets/fonts/SassyFrass-Regular.ttf
-    - family: Vazir
+
+    - family: Shabnam
       fonts:
-        - asset: assets/fonts/Vazir-Light.ttf
+        - asset: assets/fonts/shabnam/Shabnam.ttf
+        - asset: assets/fonts/shabnam/Shabnam-Light.ttf
+        - asset: assets/fonts/shabnam/Shabnam-Bold.ttf
+
+    - family: ShabnamFD
+      fonts:
+        - asset: assets/fonts/shabnam_fd/Shabnam-FD.ttf
+        - asset: assets/fonts/shabnam_fd/Shabnam-Light-FD.ttf
+        - asset: assets/fonts/shabnam_fd/Shabnam-Bold-FD.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

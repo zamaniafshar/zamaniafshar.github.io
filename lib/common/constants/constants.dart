@@ -12,3 +12,6 @@ const kMyResumeDownloadUrl = '${kBaseResourcesUrl}zamani_afshar_resume.pdf';
 const kSupportedLocales = AppLocalizations.supportedLocales;
 const kEnglishLocale = Locale('en');
 const kPersianLocale = Locale('fa');
+
+const kShabnamFontFamily = 'Shabnam';
+const kShabnamFarsiDigitFontFamily = 'ShabnamFD';
