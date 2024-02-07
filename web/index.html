@@ -31,6 +31,8 @@
 
   <title>personal_website</title>
   <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+
 
   <script>
     // The value below is injected by flutter build, do not touch.
@@ -40,6 +42,17 @@
   <script src="flutter.js" defer></script>
 </head>
 <body>
+  <div class="center">
+    <div class="sk-chase">
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+    </div>
+  </div>
+
   <script>
     window.addEventListener('load', function(ev) {
       // Download main.dart.js
@@ -50,6 +63,7 @@
         onEntrypointLoaded: function(engineInitializer) {
           engineInitializer.initializeEngine().then(function(appRunner) {
             appRunner.runApp();
+            document.querySelector('.center').style.display = 'none';
           });
         }
       });
