@@ -38,15 +38,15 @@ class ContactInformation extends StatelessWidget {
               const SizedBox(height: 30),
               ListTile(
                 leading: const Icon(Icons.location_on),
-                title: Text(localization.contactAddress),
+                title: SelectableText(localization.contactAddress),
               ),
               const ListTile(
                 leading: Icon(Icons.email_rounded),
-                title: Text(kEmailAddress),
+                title: SelectableText(kEmailAddress),
               ),
               const ListTile(
                 leading: Icon(Icons.phone),
-                title: Text(kPhoneNumber),
+                title: SelectableText(kPhoneNumber),
               ),
             ],
           ),
