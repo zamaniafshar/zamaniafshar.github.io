@@ -3,7 +3,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:personal_website/config/constants/constants.dart';
 import 'package:personal_website/common/responsive/responsive.dart';
-import 'package:personal_website/provider/indexed_list_provider.dart';
+import 'package:personal_website/config/constants/home_items_tags.dart';
+import 'package:personal_website/provider/tagged_list_provider.dart';
 import 'package:personal_website/provider/url_handler.dart';
 import 'package:personal_website/ui/widgets/custom_elevated_button.dart';
 
@@ -67,8 +68,8 @@ class AboutMeDescriptions extends ConsumerWidget {
             ),
             const SizedBox(width: 15),
             CustomElevatedButton(
-              // scroll to contact me
-              onPressed: () => ref.read(indexedListNotifierProvider.notifier).animateToLast(),
+              onPressed: () =>
+                  ref.read(taggedListNotifierProvider.notifier).animateToTag(kHomeContactMeItemTag),
               backgroundColor: Colors.white,
               foregroundColor: theme.primaryColor,
               borderSide: BorderSide(

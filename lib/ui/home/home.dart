@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:personal_website/common/responsive/responsive.dart';
-import 'package:personal_website/provider/indexed_list_provider.dart';
-import 'package:personal_website/ui/home/widgets/indexed_list_item.dart';
+import 'package:personal_website/config/constants/home_items_tags.dart';
+import 'package:personal_website/provider/tagged_list_provider.dart';
+import 'package:personal_website/ui/home/widgets/auto_tagged_item.dart';
 import 'package:personal_website/ui/home/widgets/about_me/about_me.dart';
 import 'package:personal_website/ui/home/widgets/contact_me/contact_me.dart';
 import 'package:personal_website/ui/home/widgets/my_services/my_services.dart';
 import 'package:personal_website/ui/home/widgets/my_skills/my_skills.dart';
-import 'package:personal_website/ui/home/widgets/sliver_app_bar/sliver_appbar.dart';
+import 'package:personal_website/ui/home/widgets/home_welcome.dart';
+import 'package:personal_website/ui/home/widgets/sliver_app_bar/home_appbar.dart';
 
 import 'widgets/sliver_app_bar/widgets/home_drawer.dart';
 
@@ -22,70 +24,53 @@ class HomeScreen extends HookConsumerWidget {
 
     return Scaffold(
       endDrawer: drawer,
-      body: CustomScrollView(
-        shrinkWrap: true,
-        controller: ref.watch(homeScrollControllerProvider),
-        slivers: [
-          IndexedSliverItemList(
-            index: 0,
-            notifier: ref.watch(indexedListNotifierProvider.notifier),
-            child: const HomeSliverAppBar(),
-          ),
-          const HomeSliverListContent(),
+      body: const Stack(
+        children: [
+          HomeSliverListContent(),
+          HomeAppBar(),
         ],
       ),
     );
   }
 }
 
-class HomeSliverListContent extends HookConsumerWidget {
+class HomeSliverListContent extends ConsumerWidget {
   const HomeSliverListContent({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final screen = Screen.of(context);
-    final indexedListNotifier = ref.watch(indexedListNotifierProvider.notifier);
 
-    final widgets = [
-      Padding(
-        padding: EdgeInsets.only(
-          top: screen.h(25),
-          bottom: screen.h(7.5),
-        ),
-        child: const AboutMe(),
-      ),
-      Padding(
-        padding: EdgeInsets.only(
-          top: screen.h(7.5),
-          bottom: screen.h(10),
-        ),
-        child: const MySkills(),
-      ),
-      Padding(
-        padding: EdgeInsets.symmetric(
-          vertical: screen.h(10),
-        ),
-        child: const MyServices(),
-      ),
-      Padding(
-        padding: EdgeInsets.symmetric(
-          vertical: screen.h(10),
-        ),
-        child: const ContactMe(),
-      ),
-    ];
-
-    return SliverToBoxAdapter(
-      child: ListView(
-        shrinkWrap: true,
+    // I didn't use ListView or SliverList because of lag and performance issue in these widgets
+    return SingleChildScrollView(
+      controller: ref.watch(homeScrollControllerProvider),
+      child: Column(
         children: [
-          for (int i = 0; i < widgets.length; i++)
-            IndexedItemList(
-              // because we already add another IndexedListItem for SliverAppBar we start from 1
-              index: i + 1,
-              notifier: indexedListNotifier,
-              child: widgets[i],
-            ),
+          const AutoTaggedItem(
+            tag: kHomeWelcomeItemTag,
+            child: HomeWelcome(),
+          ),
+          screen.verticalSpace(30),
+          const AutoTaggedItem(
+            tag: kHomeAboutMeItemTag,
+            child: AboutMe(),
+          ),
+          screen.verticalSpace(15),
+          const AutoTaggedItem(
+            tag: kHomeMySkillsItemTag,
+            child: MySkills(),
+          ),
+          screen.verticalSpace(30),
+          const AutoTaggedItem(
+            tag: kHomeMyServicesTag,
+            child: MyServices(),
+          ),
+          screen.verticalSpace(30),
+          const AutoTaggedItem(
+            tag: kHomeContactMeItemTag,
+            child: ContactMe(),
+          ),
+          screen.verticalSpace(10),
         ],
       ),
     );

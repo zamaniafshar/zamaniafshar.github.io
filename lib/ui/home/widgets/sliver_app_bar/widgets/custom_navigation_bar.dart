@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:personal_website/provider/indexed_list_provider.dart';
+import 'package:personal_website/config/constants/home_items_tags.dart';
+import 'package:personal_website/provider/tagged_list_provider.dart';
 import '../../../../widgets/animated_underline_text.dart';
 
 class CustomNavigationBar extends HookConsumerWidget {
@@ -12,32 +13,32 @@ class CustomNavigationBar extends HookConsumerWidget {
     this.direction = Axis.horizontal,
   });
 
-  final void Function(int index)? onChange;
+  final void Function(String tag)? onChange;
   final Axis direction;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedIndex = ref.watch(indexedListNotifierProvider);
+    final selectedTag = ref.watch(taggedListNotifierProvider);
     final localization = AppLocalizations.of(context)!;
 
-    final List<String> items = [
-      localization.home,
-      localization.aboutMe,
-      localization.skills,
-      localization.services,
-      localization.contact,
-    ];
+    final items = {
+      kHomeWelcomeItemTag: localization.home,
+      kHomeAboutMeItemTag: localization.aboutMe,
+      kHomeMySkillsItemTag: localization.skills,
+      kHomeMyServicesTag: localization.services,
+      kHomeContactMeItemTag: localization.contact,
+    };
 
     List<Widget> buildItems() {
       return [
-        for (int i = 0; i < items.length; i++)
+        for (String key in items.keys)
           Expanded(
             child: NavigationItem(
-              text: items[i],
-              isSelected: selectedIndex == i,
+              text: items[key]!,
+              isSelected: selectedTag == key,
               onTap: () {
-                ref.watch(indexedListNotifierProvider.notifier).animateToIndex(i);
-                onChange?.call(i);
+                ref.watch(taggedListNotifierProvider.notifier).animateToTag(key);
+                onChange?.call(key);
               },
             ),
           ),
