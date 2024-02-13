@@ -152,6 +152,7 @@ class SendMessage extends HookConsumerWidget {
 
                     return CustomElevatedButton(
                       width: double.infinity,
+                      height: 30,
                       gradientBackground: LinearGradient(
                         colors: [
                           theme.primaryColorLight,
@@ -170,19 +171,15 @@ class SendMessage extends HookConsumerWidget {
 
                         ref.read(messageSenderProvider.notifier).send(request);
                       },
-                      child: Container(
-                        height: 25,
-                        alignment: Alignment.center,
-                        child: switch (sendMessageStatus) {
-                          SendMessageStatus.loading => SizedBox.square(
-                              dimension: 25,
-                              child: CircularProgressIndicator(
-                                color: theme.colorScheme.onPrimary,
-                              ),
+                      child: switch (sendMessageStatus) {
+                        SendMessageStatus.loading => SizedBox.square(
+                            dimension: 25,
+                            child: CircularProgressIndicator(
+                              color: theme.colorScheme.onPrimary,
                             ),
-                          _ => Text(localization.contactMeButton),
-                        },
-                      ),
+                          ),
+                        _ => Text(localization.contactMeButton),
+                      },
                     );
                   },
                 ),

@@ -41,7 +41,7 @@ class HomeSliverListContent extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final screen = Screen.of(context);
 
-    // I didn't use ListView or SliverList because of lag and performance issue in these widgets
+    // I didn't use ListView or SliverList because of lag and performance issue
     return SingleChildScrollView(
       controller: ref.watch(homeScrollControllerProvider),
       child: Column(

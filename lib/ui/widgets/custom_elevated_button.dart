@@ -47,6 +47,9 @@ class CustomElevatedButton extends StatelessWidget {
       backgroundColor = this.backgroundColor ?? theme.primaryColor;
     }
 
+    final heightWithPadding = height != null ? height! + padding.vertical : null;
+    final widthWithPadding = width != null ? width! + padding.horizontal : null;
+
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
@@ -59,8 +62,8 @@ class CustomElevatedButton extends StatelessWidget {
         textStyle: TextStyle(fontSize: screen.fromMTD(14, 16, 18)),
       ),
       child: SizedBox(
-        height: height,
-        width: width,
+        height: heightWithPadding,
+        width: widthWithPadding,
         child: Ink(
           decoration: BoxDecoration(
             borderRadius: borderRadius,
