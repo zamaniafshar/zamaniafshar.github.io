@@ -107,7 +107,4 @@ class HomeAppBar extends HookConsumerWidget {
       ),
     );
   }
-
-  @override
-  Size get preferredSize => Size(double.infinity, kToolbarHeight);
 }

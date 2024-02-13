@@ -54,10 +54,12 @@ class SendMessage extends HookConsumerWidget {
         hint: localization.contactEmailHint,
         controller: emailController,
         validator: (text) {
-          if (text == null || text.isEmpty)
+          if (text == null || text.isEmpty) {
             return localization.contactEmptyFormError(localization.contactEmail);
-          if (!_emailValidationRegex.hasMatch(text))
+          }
+          if (!_emailValidationRegex.hasMatch(text)) {
             return localization.contactInvalidEmailFormError;
+          }
           return null;
         },
       ),
