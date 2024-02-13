@@ -3,7 +3,7 @@ import 'package:personal_website/common/responsive/responsive.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:personal_website/ui/widgets/animated_title_text.dart';
 import 'package:personal_website/ui/home/widgets/contact_me/widgets/contact_information.dart';
-import 'package:personal_website/ui/home/widgets/contact_me/widgets/send_email.dart';
+import 'package:personal_website/ui/home/widgets/contact_me/widgets/send_message.dart';
 
 class ContactMe extends StatelessWidget {
   const ContactMe({super.key});
@@ -18,24 +18,24 @@ class ContactMe extends StatelessWidget {
     if (isSmallScreen) {
       contactBody = const Column(
         children: [
-          SendEmail(),
+          SendMessage(),
           SizedBox(height: 50),
           ContactInformation(),
         ],
       );
     } else {
       contactBody = ConstrainedBox(
-        constraints: BoxConstraints(
+        constraints: const BoxConstraints(
           maxWidth: 1100,
-          minHeight: screen.type.isDesktop ? 560 : 0.0,
-          maxHeight: screen.type.isDesktop ? 560 : double.infinity,
+          minHeight: 580,
+          maxHeight: 580,
         ),
         child: const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Expanded(
               flex: 7,
-              child: SendEmail(),
+              child: SendMessage(),
             ),
             SizedBox(width: 50),
             Expanded(
