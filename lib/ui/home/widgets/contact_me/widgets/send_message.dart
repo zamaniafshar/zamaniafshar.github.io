@@ -5,11 +5,10 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:personal_website/common/responsive/responsive.dart';
 import 'package:personal_website/data/message_sender_api.dart';
 import 'package:personal_website/provider/message_sender_provider.dart';
+import 'package:personal_website/ui/home/widgets/contact_me/form_validator.dart';
 import 'package:personal_website/ui/home/widgets/contact_me/widgets/custom_text_form_field.dart';
 import 'package:personal_website/ui/home/widgets/contact_me/widgets/send_message_snack_bars.dart';
 import 'package:personal_website/ui/widgets/custom_elevated_button.dart';
-
-final _emailValidationRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
 
 class SendMessage extends HookConsumerWidget {
   const SendMessage({super.key});
@@ -45,19 +44,13 @@ class SendMessage extends HookConsumerWidget {
         title: localization.contactName,
         hint: localization.contactNameHint,
         controller: fullNameController,
-        validator: (text) => text == null || text.isEmpty
-            ? localization.contactEmptyFormError(localization.contactName)
-            : null,
       ),
       CustomTextFormField(
         title: localization.contactEmail,
         hint: localization.contactEmailHint,
         controller: emailController,
         validator: (text) {
-          if (text == null || text.isEmpty) {
-            return localization.contactEmptyFormError(localization.contactEmail);
-          }
-          if (!_emailValidationRegex.hasMatch(text)) {
+          if (FormValidator.isInvalidEmail(text)) {
             return localization.contactInvalidEmailFormError;
           }
           return null;
@@ -67,9 +60,6 @@ class SendMessage extends HookConsumerWidget {
         title: localization.contactSubject,
         hint: localization.contactSubject,
         controller: subjectController,
-        validator: (text) => text == null || text.isEmpty
-            ? localization.contactEmptyFormError(localization.contactSubject)
-            : null,
       ),
     ];
 
@@ -83,9 +73,6 @@ class SendMessage extends HookConsumerWidget {
       minLines: isSmallScreen ? 10 : null,
       maxLines: isSmallScreen ? 15 : null,
       maxLength: 2000,
-      validator: (text) => text == null || text.isEmpty
-          ? localization.contactEmptyFormError(localization.contactComment)
-          : null,
     );
 
     if (isSmallScreen) {
@@ -160,7 +147,8 @@ class SendMessage extends HookConsumerWidget {
                         ],
                       ),
                       onPressed: () {
-                        if (!formKey.currentState!.validate()) return;
+                        final isInvalid = !formKey.currentState!.validate();
+                        if (isInvalid) return;
 
                         final request = SendMessageRequest(
                           fullName: fullNameController.text,
@@ -191,12 +179,3 @@ class SendMessage extends HookConsumerWidget {
     );
   }
 }
-
-// class SendMessageFormValidator {
-//   String? validateEmail(String? text) {}
-//   String? validateRequiredValueField(
-//     String? text,
-//   ) {
-//     if (text == null || text.isEmpty) return;
-//   }
-// }

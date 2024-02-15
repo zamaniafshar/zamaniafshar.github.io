@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:personal_website/ui/home/widgets/contact_me/form_validator.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
     super.key,
     required this.title,
     required this.hint,
-    required this.validator,
+    this.validator,
     this.maxLines,
     this.minLines,
     this.maxLength,
@@ -19,12 +21,20 @@ class CustomTextFormField extends StatelessWidget {
   final int? minLines;
   final int? maxLength;
   final bool expanded;
-  final String? Function(String? text) validator;
+  final String? Function(String? text)? validator;
   final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final localization = AppLocalizations.of(context)!;
+
+    String? requiredFieldsValidator(String? text) {
+      if (FormValidator.isEmpty(text)) {
+        return localization.contactEmptyFormError(title);
+      }
+      return null;
+    }
 
     Widget textFormFiled = TextFormField(
       controller: controller,
@@ -34,7 +44,11 @@ class CustomTextFormField extends StatelessWidget {
       minLines: minLines,
       maxLength: maxLength,
       textAlignVertical: TextAlignVertical.top,
-      validator: validator,
+      validator: (text) {
+        final result = requiredFieldsValidator(text);
+        if (result is String) return result;
+        return validator?.call(text);
+      },
       decoration: InputDecoration(
         hintText: hint,
         border: const OutlineInputBorder(),
