@@ -21,14 +21,15 @@ class HomeScreen extends HookConsumerWidget {
     final screen = Screen.of(context);
     final isSmallScreen = !screen.type.isDesktop;
     final drawer = isSmallScreen ? const HomeDrawer() : null;
+    final isKeyboardClose = MediaQuery.viewInsetsOf(context).bottom == 0.0;
 
     return Scaffold(
       endDrawer: drawer,
       resizeToAvoidBottomInset: false,
-      body: const Stack(
+      body: Stack(
         children: [
-          HomeSliverListContent(),
-          HomeAppBar(),
+          const HomeSliverListContent(),
+          if (isKeyboardClose) const HomeAppBar(),
         ],
       ),
     );
