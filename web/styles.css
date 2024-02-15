@@ -14,16 +14,32 @@ body {
 }
 
 
-
+/* Mobile */
 .sk-chase {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     position: relative;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
     animation: sk-chase 2.5s infinite linear both;
+}
+
+/* Tablet */
+@media (min-width: 600px) {
+    .sk-chase {
+        width: 70px; 
+        height: 70px;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .sk-chase {
+        width: 60px; 
+        height: 60px;
+    }
 }
 
 .sk-chase-dot {
