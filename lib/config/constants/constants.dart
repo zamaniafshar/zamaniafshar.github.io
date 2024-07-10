@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 const kEmailAddress = 'zamani3509@gmail.com';
-const kPhoneNumber = '09135813299';
 
 const kBaseResourcesUrl =
     'https://raw.githubusercontent.com/zamaniafshar/zamaniafshar.github.io/main/resources/';

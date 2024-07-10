@@ -44,10 +44,6 @@ class ContactInformation extends StatelessWidget {
                 leading: Icon(Icons.email_rounded),
                 title: SelectableText(kEmailAddress),
               ),
-              const ListTile(
-                leading: Icon(Icons.phone),
-                title: SelectableText(kPhoneNumber),
-              ),
             ],
           ),
         ),
