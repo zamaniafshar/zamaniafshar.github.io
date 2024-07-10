@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:personal_website/common/responsive/responsive.dart';
+import 'package:personal_website/responsive/responsive.dart';
 
 class ServiceContainer extends StatelessWidget {
   const ServiceContainer({

@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:personal_website/common/responsive/responsive.dart';
+import 'package:personal_website/responsive/responsive.dart';
 import 'package:personal_website/data/message_sender_api.dart';
 import 'package:personal_website/provider/message_sender_provider.dart';
-import 'package:personal_website/ui/home/widgets/contact_me/form_validator.dart';
-import 'package:personal_website/ui/home/widgets/contact_me/widgets/custom_text_form_field.dart';
-import 'package:personal_website/ui/home/widgets/contact_me/widgets/send_message_snack_bars.dart';
+import 'package:personal_website/ui/contact_me/form_validator.dart';
+import 'package:personal_website/ui/contact_me/widgets/custom_text_form_field.dart';
+import 'package:personal_website/ui/contact_me/widgets/send_message_snack_bars.dart';
 import 'package:personal_website/ui/widgets/custom_elevated_button.dart';
 
 class SendMessage extends HookConsumerWidget {

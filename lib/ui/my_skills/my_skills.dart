@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:personal_website/common/responsive/responsive.dart';
-import 'package:personal_website/ui/home/widgets/my_skills/widgets/language_skills.dart';
-import 'package:personal_website/ui/home/widgets/my_skills/widgets/skills.dart';
+import 'package:personal_website/responsive/responsive.dart';
+import 'package:personal_website/ui/my_skills/language_skills.dart';
+import 'package:personal_website/ui/my_skills/skills.dart';
 
 class MySkills extends StatelessWidget {
   const MySkills({super.key});

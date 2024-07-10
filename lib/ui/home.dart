@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:personal_website/common/responsive/responsive.dart';
+import 'package:personal_website/responsive/responsive.dart';
 import 'package:personal_website/config/constants/home_items_tags.dart';
 import 'package:personal_website/provider/tagged_list_provider.dart';
-import 'package:personal_website/ui/home/widgets/auto_tagged_item.dart';
-import 'package:personal_website/ui/home/widgets/about_me/about_me.dart';
-import 'package:personal_website/ui/home/widgets/contact_me/contact_me.dart';
-import 'package:personal_website/ui/home/widgets/my_services/my_services.dart';
-import 'package:personal_website/ui/home/widgets/my_skills/my_skills.dart';
-import 'package:personal_website/ui/home/widgets/home_welcome.dart';
-import 'package:personal_website/ui/home/widgets/sliver_app_bar/home_appbar.dart';
+import 'package:personal_website/ui/widgets/auto_tagged_item.dart';
+import 'package:personal_website/ui/about_me/about_me.dart';
+import 'package:personal_website/ui/contact_me/contact_me.dart';
+import 'package:personal_website/ui/my_services/my_services.dart';
+import 'package:personal_website/ui/my_skills/my_skills.dart';
+import 'package:personal_website/ui/home_welcome.dart';
+import 'package:personal_website/ui/sliver_app_bar/home_appbar.dart';
 
-import 'widgets/sliver_app_bar/widgets/home_drawer.dart';
+import 'sliver_app_bar/home_drawer.dart';
 
 class HomeScreen extends HookConsumerWidget {
   const HomeScreen({super.key});

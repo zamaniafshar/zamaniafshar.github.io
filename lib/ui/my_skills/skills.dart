@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:personal_website/ui/home/widgets/my_skills/widgets/skills_section.dart';
+import 'package:personal_website/ui/my_skills/skills_section.dart';
 
 class Skills extends StatelessWidget {
   const Skills({
