@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:personal_website/provider/tagged_list_provider.dart';
+import 'package:personal_website/ui/widgets/tagged_list_view.dart';
 
-final class AutoTaggedItem extends ConsumerWidget {
+final class AutoTaggedItem extends StatelessWidget {
   const AutoTaggedItem({
     super.key,
     required this.tag,
@@ -13,9 +12,9 @@ final class AutoTaggedItem extends ConsumerWidget {
   final String tag;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return SizedBox(
-      key: ref.watch(taggedListNotifierProvider.notifier).generateItemKey(tag),
+      key: TaggedListView.of(context).generateItemKey(tag),
       child: child,
     );
   }

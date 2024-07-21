@@ -1,41 +1,40 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:personal_website/config/constants/home_items_tags.dart';
+import 'package:personal_website/provider/current_tag_notifier.dart';
+import 'package:provider/provider.dart';
 
 const _spaceFromTop = kToolbarHeight * 2;
 const _currentItemVisibleArea = 300;
 
-typedef CurrentVisibleItemTag = String;
+class TaggedListView extends StatefulWidget {
+  const TaggedListView({
+    super.key,
+    required this.children,
+    required this.scrollController,
+  });
 
-final homeScrollControllerProvider = Provider((ref) {
-  return ScrollController();
-});
+  final List<Widget> children;
+  final ScrollController scrollController;
 
-final taggedListNotifierProvider =
-    NotifierProvider<TaggedListNotifier, CurrentVisibleItemTag>(TaggedListNotifier.new);
-
-// Because of using SingleChildScrollView all widgets build in the first time and all of them stay alive
-// So globalKey.currentContext will never be null
-final class TaggedListNotifier extends Notifier<CurrentVisibleItemTag> {
   @override
-  build() {
-    _scrollController = ref.watch(homeScrollControllerProvider);
-    _scrollController.addListener(_scrollLister);
+  State<TaggedListView> createState() => TaggedListViewState();
 
-    ref.onDispose(_dispose);
-    return kHomeWelcomeItemTag;
+  static TaggedListViewState of(BuildContext context) {
+    return context.findAncestorStateOfType<TaggedListViewState>()!;
   }
+}
 
-  void _dispose() {
-    _scrollController.removeListener(_scrollLister);
-    _scrollController.dispose();
-  }
-
-  late ScrollController _scrollController;
+class TaggedListViewState extends State<TaggedListView> {
+  late final _scrollController = widget.scrollController;
   final _itemsGlobalKeys = <String, GlobalKey>{};
   bool _isAnimating = false;
+
+  @override
+  void initState() {
+    _scrollController.addListener(_scrollLister);
+    context.read<CurrentTagNotifier>().addListener(_currentTagListener);
+
+    super.initState();
+  }
 
   GlobalKey generateItemKey(String tag) {
     final isAlreadyAdded = _itemsGlobalKeys.containsKey(tag);
@@ -48,12 +47,16 @@ final class TaggedListNotifier extends Notifier<CurrentVisibleItemTag> {
     }
   }
 
-  Future<void> animateToTag(String tag) async {
+  void _currentTagListener() {
+    final tag = context.read<CurrentTagNotifier>().value;
+    _animateToTag(tag);
+  }
+
+  Future<void> _animateToTag(String tag) async {
     final globalKey = _itemsGlobalKeys[tag];
     final renderBox = globalKey!.currentContext!.findRenderObject() as RenderBox;
     final itemDistance = renderBox.localToGlobal(Offset.zero).dy;
 
-    state = tag;
     _isAnimating = true;
     await _scrollController.animateTo(
       _scrollController.offset + itemDistance - _spaceFromTop,
@@ -67,7 +70,7 @@ final class TaggedListNotifier extends Notifier<CurrentVisibleItemTag> {
     if (_isAnimating) return;
     final currentVisibleItemTag = _findCurrentVisibleItemTag();
     if (currentVisibleItemTag == null) return;
-    state = currentVisibleItemTag;
+    context.read<CurrentTagNotifier>().setTag(currentVisibleItemTag);
   }
 
   String? _findCurrentVisibleItemTag() {
@@ -80,5 +83,16 @@ final class TaggedListNotifier extends Notifier<CurrentVisibleItemTag> {
       }
     }
     return null;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // I didn't use ListView or SliverList because of lag and performance issue
+    return SingleChildScrollView(
+      controller: _scrollController,
+      child: Column(
+        children: widget.children,
+      ),
+    );
   }
 }

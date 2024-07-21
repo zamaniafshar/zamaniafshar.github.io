@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:personal_website/config/constants/home_items_tags.dart';
-import 'package:personal_website/provider/tagged_list_provider.dart';
+import 'package:personal_website/provider/current_tag_notifier.dart';
+import 'package:provider/provider.dart';
 import '../widgets/animated_underline_text.dart';
 
-class CustomNavigationBar extends HookConsumerWidget {
+class CustomNavigationBar extends StatelessWidget {
   const CustomNavigationBar({
     super.key,
     this.onChange,
@@ -17,8 +17,8 @@ class CustomNavigationBar extends HookConsumerWidget {
   final Axis direction;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final selectedTag = ref.watch(taggedListNotifierProvider);
+  Widget build(BuildContext context) {
+    final selectedTag = Provider.of<CurrentTagNotifier>(context).value;
     final localization = AppLocalizations.of(context)!;
 
     final items = {
@@ -37,7 +37,7 @@ class CustomNavigationBar extends HookConsumerWidget {
               text: items[key]!,
               isSelected: selectedTag == key,
               onTap: () {
-                ref.watch(taggedListNotifierProvider.notifier).animateToTag(key);
+                context.read<CurrentTagNotifier>().setTag(key);
                 onChange?.call(key);
               },
             ),

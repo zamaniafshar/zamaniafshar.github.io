@@ -1,42 +1,53 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:personal_website/responsive/responsive.dart';
 import 'package:personal_website/data/message_sender_api.dart';
-import 'package:personal_website/provider/message_sender_provider.dart';
+import 'package:personal_website/provider/message_sender_notifier.dart';
 import 'package:personal_website/ui/contact_me/form_validator.dart';
 import 'package:personal_website/ui/contact_me/widgets/custom_text_form_field.dart';
 import 'package:personal_website/ui/contact_me/widgets/send_message_snack_bars.dart';
 import 'package:personal_website/ui/widgets/custom_elevated_button.dart';
+import 'package:provider/provider.dart';
 
-class SendMessage extends HookConsumerWidget {
+class SendMessage extends StatefulWidget {
   const SendMessage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  State<SendMessage> createState() => _SendMessageState();
+}
+
+class _SendMessageState extends State<SendMessage> {
+  final formKey = GlobalKey<FormState>();
+  final fullNameController = TextEditingController();
+  final emailController = TextEditingController();
+  final subjectController = TextEditingController();
+  final commentController = TextEditingController();
+
+  @override
+  void initState() {
+    context.read<MessageSenderNotifier>().addListener(_messageStatusListener);
+
+    super.initState();
+  }
+
+  void _messageStatusListener() {
+    final status = context.read<MessageSenderNotifier>().value;
+    if (status == SendMessageStatus.success) {
+      showSendMessageSuccessSnackbar(context);
+      fullNameController.clear();
+      emailController.clear();
+      subjectController.clear();
+      commentController.clear();
+    } else if (status == SendMessageStatus.failed) {
+      showSendMessageFailureSnackbar(context);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final localization = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
     final screen = Screen.of(context);
-
-    final formKey = useMemoized(() => GlobalKey<FormState>());
-
-    final fullNameController = useTextEditingController();
-    final emailController = useTextEditingController();
-    final subjectController = useTextEditingController();
-    final commentController = useTextEditingController();
-
-    ref.listen(messageSenderProvider, (_, next) {
-      if (next == SendMessageStatus.success) {
-        showSendMessageSuccessSnackbar(context);
-        fullNameController.clear();
-        emailController.clear();
-        subjectController.clear();
-        commentController.clear();
-      } else if (next == SendMessageStatus.failed) {
-        showSendMessageFailureSnackbar(context);
-      }
-    });
 
     Widget child;
     final textFields = [
@@ -133,10 +144,8 @@ class SendMessage extends HookConsumerWidget {
                 const SizedBox(height: 15),
                 child,
                 const SizedBox(height: 30),
-                Consumer(
-                  builder: (context, ref, _) {
-                    final sendMessageStatus = ref.watch(messageSenderProvider);
-
+                Consumer<MessageSenderNotifier>(
+                  builder: (context, notifier, _) {
                     return CustomElevatedButton(
                       width: double.infinity,
                       height: 30,
@@ -157,9 +166,9 @@ class SendMessage extends HookConsumerWidget {
                           comment: commentController.text,
                         );
 
-                        ref.read(messageSenderProvider.notifier).send(request);
+                        notifier.send(request);
                       },
-                      child: switch (sendMessageStatus) {
+                      child: switch (notifier.value) {
                         SendMessageStatus.loading => SizedBox.square(
                             dimension: 25,
                             child: CircularProgressIndicator(

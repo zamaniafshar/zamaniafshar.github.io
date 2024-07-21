@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:personal_website/responsive/responsive.dart';
-import 'package:personal_website/provider/tagged_list_provider.dart';
 import 'package:personal_website/ui/sliver_app_bar/change_language_menu_button.dart';
 import 'package:personal_website/ui/sliver_app_bar/custom_navigation_bar.dart';
 
-class HomeAppBar extends HookConsumerWidget {
-  const HomeAppBar({super.key});
+class HomeAppBar extends HookWidget {
+  const HomeAppBar({
+    super.key,
+    required this.scrollController,
+  });
+
+  final ScrollController scrollController;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final screen = Screen.of(context);
     final theme = Theme.of(context);
 
@@ -19,10 +22,9 @@ class HomeAppBar extends HookConsumerWidget {
     final minArea = maxArea - kToolbarHeight;
 
     useEffect(() {
-      final controller = ref.read(homeScrollControllerProvider);
-      controller.addListener(
+      scrollController.addListener(
         () {
-          final offset = controller.offset.clamp(minArea, maxArea);
+          final offset = scrollController.offset.clamp(minArea, maxArea);
           final minus = maxArea - offset;
           final value = minus / kToolbarHeight;
           animation.value = 1 - value;

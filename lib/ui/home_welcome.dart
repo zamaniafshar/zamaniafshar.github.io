@@ -1,22 +1,22 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:personal_website/provider/current_tag_notifier.dart';
 import 'package:personal_website/responsive/responsive.dart';
 import 'package:personal_website/config/constants/assets_paths.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:personal_website/config/constants/constants.dart';
 import 'package:personal_website/config/constants/home_items_tags.dart';
 import 'package:personal_website/config/theme/text_theme.dart';
-import 'package:personal_website/provider/tagged_list_provider.dart';
-import 'package:personal_website/provider/url_handler.dart';
+import 'package:personal_website/data/url_handler.dart';
 import 'package:personal_website/ui/widgets/custom_elevated_button.dart';
+import 'package:provider/provider.dart';
 
-class HomeWelcome extends ConsumerWidget {
+class HomeWelcome extends StatelessWidget {
   const HomeWelcome({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
     return Theme(
@@ -83,9 +83,9 @@ class HomeWelcome extends ConsumerWidget {
                   ),
                   const SizedBox(height: 20),
                   CustomElevatedButton(
-                    onPressed: () => ref
-                        .read(taggedListNotifierProvider.notifier)
-                        .animateToTag(kHomeContactMeItemTag),
+                    onPressed: () {
+                      context.read<CurrentTagNotifier>().setTag(kHomeContactMeItemTag);
+                    },
                     borderRadius: BorderRadius.circular(100),
                     borderSide: BorderSide(
                       color: theme.primaryColor,

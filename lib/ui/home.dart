@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:personal_website/responsive/responsive.dart';
 import 'package:personal_website/config/constants/home_items_tags.dart';
-import 'package:personal_website/provider/tagged_list_provider.dart';
 import 'package:personal_website/ui/widgets/auto_tagged_item.dart';
 import 'package:personal_website/ui/about_me/about_me.dart';
 import 'package:personal_website/ui/contact_me/contact_me.dart';
@@ -12,12 +10,26 @@ import 'package:personal_website/ui/home_welcome.dart';
 import 'package:personal_website/ui/sliver_app_bar/home_appbar.dart';
 
 import 'sliver_app_bar/home_drawer.dart';
+import 'widgets/tagged_list_view.dart';
 
-class HomeScreen extends HookConsumerWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final scrollController = ScrollController();
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final screen = Screen.of(context);
     final isSmallScreen = !screen.type.isDesktop;
     final drawer = isSmallScreen ? const HomeDrawer() : null;
@@ -28,51 +40,40 @@ class HomeScreen extends HookConsumerWidget {
       resizeToAvoidBottomInset: false,
       body: Stack(
         children: [
-          const HomeSliverListContent(),
-          if (isKeyboardClose) const HomeAppBar(),
-        ],
-      ),
-    );
-  }
-}
-
-class HomeSliverListContent extends ConsumerWidget {
-  const HomeSliverListContent({super.key});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final screen = Screen.of(context);
-
-    // I didn't use ListView or SliverList because of lag and performance issue
-    return SingleChildScrollView(
-      controller: ref.watch(homeScrollControllerProvider),
-      child: Column(
-        children: [
-          const AutoTaggedItem(
-            tag: kHomeWelcomeItemTag,
-            child: HomeWelcome(),
+          TaggedListView(
+            scrollController: scrollController,
+            children: [
+              const AutoTaggedItem(
+                tag: kHomeWelcomeItemTag,
+                child: HomeWelcome(),
+              ),
+              screen.verticalSpace(30),
+              const AutoTaggedItem(
+                tag: kHomeAboutMeItemTag,
+                child: AboutMe(),
+              ),
+              screen.verticalSpace(15),
+              const AutoTaggedItem(
+                tag: kHomeMySkillsItemTag,
+                child: MySkills(),
+              ),
+              screen.verticalSpace(30),
+              const AutoTaggedItem(
+                tag: kHomeMyServicesTag,
+                child: MyServices(),
+              ),
+              screen.verticalSpace(30),
+              const AutoTaggedItem(
+                tag: kHomeContactMeItemTag,
+                child: ContactMe(),
+              ),
+              screen.verticalSpace(10),
+            ],
           ),
-          screen.verticalSpace(30),
-          const AutoTaggedItem(
-            tag: kHomeAboutMeItemTag,
-            child: AboutMe(),
-          ),
-          screen.verticalSpace(15),
-          const AutoTaggedItem(
-            tag: kHomeMySkillsItemTag,
-            child: MySkills(),
-          ),
-          screen.verticalSpace(30),
-          const AutoTaggedItem(
-            tag: kHomeMyServicesTag,
-            child: MyServices(),
-          ),
-          screen.verticalSpace(30),
-          const AutoTaggedItem(
-            tag: kHomeContactMeItemTag,
-            child: ContactMe(),
-          ),
-          screen.verticalSpace(10),
+          if (isKeyboardClose)
+            HomeAppBar(
+              scrollController: scrollController,
+            ),
         ],
       ),
     );

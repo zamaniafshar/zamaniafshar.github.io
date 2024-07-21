@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:personal_website/config/constants/constants.dart';
+import 'package:personal_website/provider/current_tag_notifier.dart';
 import 'package:personal_website/responsive/responsive.dart';
 import 'package:personal_website/config/constants/home_items_tags.dart';
-import 'package:personal_website/provider/tagged_list_provider.dart';
-import 'package:personal_website/provider/url_handler.dart';
+import 'package:personal_website/data/url_handler.dart';
 import 'package:personal_website/ui/widgets/custom_elevated_button.dart';
+import 'package:provider/provider.dart';
 
-class AboutMeDescriptions extends ConsumerWidget {
+class AboutMeDescriptions extends StatelessWidget {
   const AboutMeDescriptions({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final screen = Screen.of(context);
     final localization = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
@@ -68,8 +68,9 @@ class AboutMeDescriptions extends ConsumerWidget {
             ),
             const SizedBox(width: 15),
             CustomElevatedButton(
-              onPressed: () =>
-                  ref.read(taggedListNotifierProvider.notifier).animateToTag(kHomeContactMeItemTag),
+              onPressed: () {
+                context.read<CurrentTagNotifier>().setTag(kHomeContactMeItemTag);
+              },
               backgroundColor: Colors.white,
               foregroundColor: theme.primaryColor,
               borderSide: BorderSide(
