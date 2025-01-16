@@ -11,6 +11,8 @@ It is live at https://zamaniafshar.github.io
 
 - **Animations:** Subtle animations enhance the user experience, making the website more engaging.
 
+- **Automatic Deployment:** Commits pushed to the main branch automatically trigger a GitHub Actions workflow to update the hosted page.
+
 - **Open Source:** Feel free to fork and explore the source code, learn from my implementation, and contribute to the project! (Star this repo and read the code!)
   ![GitHub stars](https://img.shields.io/github/stars/zamaniafshar/zamaniafshar.github.io?style=social)
 
