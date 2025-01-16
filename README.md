@@ -22,4 +22,4 @@ I'd love to see your feedback and contributions! 🌐✨
 
 ## Contact 📬
 
-Feel free to reach out to me with any questions or feedback. You can find my contact information on the home page of this portfolio. Happy coding! 👩‍💻🚀
+Feel free to reach out to me with any questions or feedback. You can find my contact information on the home page of this portfolio. Happy coding! 🚀
