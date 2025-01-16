@@ -17,18 +17,19 @@ class Skills extends StatelessWidget {
       child: const Wrap(
         alignment: WrapAlignment.start,
         children: [
-          SkillLabel(label: 'Dart'),
-          SkillLabel(label: 'Java'),
-          SkillLabel(label: 'Flutter'),
-          SkillLabel(label: 'Android,Ios Platforms'),
-          SkillLabel(label: 'Bloc,Riverpod State Managements'),
-          SkillLabel(label: 'Clean Architecture'),
+          SkillLabel(label: 'Dart | Flutter'),
+          SkillLabel(label: 'Clean | MVC | MVVM Architectures'),
+          SkillLabel(label: 'Clean Code'),
           SkillLabel(label: 'SOLID Principles'),
           SkillLabel(label: 'Design Patterns'),
-          SkillLabel(label: 'Restful Api'),
-          SkillLabel(label: 'Git,Github'),
+          SkillLabel(label: 'Bloc | Riverpod | Provider State Managements'),
+          SkillLabel(label: 'Android | Ios Platforms'),
+          SkillLabel(label: 'REST API | Dio | Http'),
+          SkillLabel(label: 'Databases | Hive | SQLITE | ObjectBox ...'),
+          SkillLabel(label: 'Git | Github | Gitlab | Git Flow'),
           SkillLabel(label: 'Animations'),
           SkillLabel(label: 'Responsive UI'),
+          SkillLabel(label: 'Agile | Scrum | Jira'),
           SkillLabel(label: 'Time Management'),
           SkillLabel(label: 'Problem Solving'),
         ],
@@ -63,7 +64,7 @@ class SkillLabel extends StatelessWidget {
       child: Text(
         label,
         textAlign: TextAlign.center,
-        style: theme.textTheme.titleMedium!.copyWith(
+        style: theme.textTheme.titleSmall!.copyWith(
           color: theme.colorScheme.secondaryContainer,
         ),
       ),
