@@ -42,7 +42,7 @@ jobs:
 
 
       - name: Build Web App
-        run: flutter build web --web-renderer canvaskit --base-href "/"
+        run: flutter build web --web-renderer canvaskit 
 
       - name: Deploy to GitHub Pages 🚀
         uses: JamesIves/github-pages-deploy-action@v4
