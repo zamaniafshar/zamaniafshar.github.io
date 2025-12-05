@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:personal_website/config/l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:personal_website/responsive/responsive.dart';
 import 'package:personal_website/config/constants/assets_paths.dart';

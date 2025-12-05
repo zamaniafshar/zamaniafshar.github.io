@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:personal_website/config/constants/constants.dart';
+import 'package:personal_website/config/l10n/app_localizations.dart';
 import 'package:personal_website/provider/current_tag_notifier.dart';
 import 'package:personal_website/provider/language_notifier.dart';
 import 'package:personal_website/provider/message_sender_notifier.dart';
@@ -7,7 +8,6 @@ import 'package:personal_website/responsive/responsive.dart';
 import 'package:personal_website/config/theme/themes.dart';
 import 'package:personal_website/service_locator.dart';
 import 'package:personal_website/ui/home.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
 class PersonalWebsiteApp extends StatelessWidget {

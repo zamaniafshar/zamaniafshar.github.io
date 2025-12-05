@@ -18,7 +18,7 @@ ThemeData createLightTheme(Locale currentLocale) {
       secondary: Colors.blue,
       secondaryContainer: Colors.blue.shade700,
     ),
-    cardTheme: const CardTheme(
+    cardTheme: const CardThemeData(
       elevation: 5,
     ),
     textTheme: getBlackTextTheme,

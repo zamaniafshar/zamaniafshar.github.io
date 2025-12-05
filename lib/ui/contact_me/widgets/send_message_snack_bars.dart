@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:toastification/toastification.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:personal_website/config/l10n/app_localizations.dart';
 
 void showSendMessageSuccessSnackbar(BuildContext context) {
   final localization = AppLocalizations.of(context)!;

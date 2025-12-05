@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:personal_website/config/l10n/app_localizations.dart';
 import 'package:personal_website/config/constants/home_items_tags.dart';
 import 'package:personal_website/provider/current_tag_notifier.dart';
 import 'package:provider/provider.dart';
