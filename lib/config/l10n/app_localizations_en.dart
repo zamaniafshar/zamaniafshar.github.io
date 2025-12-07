@@ -16,7 +16,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get aboutMe => 'About Me';
 
   @override
-  String get aboutMeTitle => 'Hello, I\'m Mohammad Amin Zamani afshar';
+  String get aboutMeTitle => 'Hello, I\'m Amin Zamani afshar';
 
   @override
   String get contact => 'Contact';
@@ -126,7 +126,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'With expertise in mobile development, I can create user-friendly apps for iOS and Android. Whether native or cross-platform, I build apps optimized for performance, security, and scalability.';
 
   @override
-  String get myName => 'Mohammad Amin Zamani afshar';
+  String get myName => 'Amin Zamani afshar';
 
   @override
   String get services => 'My Services';

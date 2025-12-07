@@ -113,7 +113,7 @@ abstract class AppLocalizations {
   /// No description provided for @aboutMeTitle.
   ///
   /// In en, this message translates to:
-  /// **'Hello, I\'m Mohammad Amin Zamani afshar'**
+  /// **'Hello, I\'m Amin Zamani afshar'**
   String get aboutMeTitle;
 
   /// No description provided for @contact.
@@ -317,7 +317,7 @@ abstract class AppLocalizations {
   /// No description provided for @myName.
   ///
   /// In en, this message translates to:
-  /// **'Mohammad Amin Zamani afshar'**
+  /// **'Amin Zamani afshar'**
   String get myName;
 
   /// No description provided for @services.

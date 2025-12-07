@@ -16,7 +16,7 @@ class AppLocalizationsFa extends AppLocalizations {
   String get aboutMe => 'درباره من';
 
   @override
-  String get aboutMeTitle => 'سلام من محمد امین زمانی افشار هستم';
+  String get aboutMeTitle => 'سلام من امین زمانی افشار هستم';
 
   @override
   String get contact => 'ارتباط با من';
@@ -126,7 +126,7 @@ class AppLocalizationsFa extends AppLocalizations {
       'با تخصص در توسعه اپلیکیشن‌های موبایل، می‌توانم برنامه‌های کاربردی جذاب  برای سیستم‌عامل‌های ای او اس  و اندروید طراحی کنم. اعم از برنامه‌های نیتیو یا کراس‌پلتفرم، من برنامه‌هایی با بهینه‌سازی عملکرد، امنیت و قابلیت مقیاس‌پذیری ایجاد می‌کنم که نیازهای شما را برآورده کند.';
 
   @override
-  String get myName => 'محمد امین زمانی افشار';
+  String get myName => 'امین زمانی افشار';
 
   @override
   String get services => 'خدمات من';
